@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="210.0" layoutY="27.0" prefHeight="80.0" prefWidth="339.0" text="USER REGISTRATION" textFill="WHITE">
@@ -22,12 +21,12 @@
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>
             </Button>
-            <TextField layoutX="33.0" layoutY="71.0" prefHeight="35.0" prefWidth="351.0" promptText="Firsname">
+            <TextField layoutX="33.0" layoutY="71.0" prefHeight="35.0" prefWidth="351.0" promptText="First name">
                <font>
                   <Font name="Century Gothic Bold" size="14.0" />
                </font>
             </TextField>
-            <TextField layoutX="33.0" layoutY="134.0" prefHeight="35.0" prefWidth="351.0" promptText="Lastname">
+            <TextField layoutX="33.0" layoutY="134.0" prefHeight="35.0" prefWidth="351.0" promptText="Last name">
                <font>
                   <Font name="Century Gothic Bold" size="14.0" />
                </font>
