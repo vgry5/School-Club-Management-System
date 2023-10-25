@@ -1,0 +1,9 @@
+#container
+{
+    -fx-background-color: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
+}
+
+#registerbutton
+{
+    -fx-background-color: #38ef7d;
+}
