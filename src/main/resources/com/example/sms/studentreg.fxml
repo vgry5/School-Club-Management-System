@@ -7,50 +7,51 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+
 <AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <Label layoutX="210.0" layoutY="27.0" prefHeight="80.0" prefWidth="339.0" text="USER REGISTRATION" textFill="WHITE">
+         <font>
+            <Font name="Century Gothic Bold" size="35.0" />
+         </font>
+      </Label>
       <AnchorPane layoutX="166.0" layoutY="82.0" prefHeight="541.0" prefWidth="412.0" style="-fx-background-color: white; -fx-border-radius: 5;">
          <children>
-            <Button fx:id="registerbutton1" layoutX="145.0" layoutY="465.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="123.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="REGISTER" textFill="WHITE">
+            <Button fx:id="registerbutton" layoutX="144.0" layoutY="458.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="123.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="REGISTER" textFill="WHITE">
                <font>
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>
             </Button>
-            <TextField layoutX="33.0" layoutY="92.0" prefHeight="35.0" prefWidth="351.0" promptText="Firsname">
+            <TextField layoutX="33.0" layoutY="71.0" prefHeight="35.0" prefWidth="351.0" promptText="Firsname">
                <font>
                   <Font name="Century Gothic Bold" size="14.0" />
                </font>
             </TextField>
-            <TextField layoutX="33.0" layoutY="156.0" prefHeight="35.0" prefWidth="351.0" promptText="Lastname">
+            <TextField layoutX="33.0" layoutY="134.0" prefHeight="35.0" prefWidth="351.0" promptText="Lastname">
                <font>
                   <Font name="Century Gothic Bold" size="14.0" />
                </font>
             </TextField>
-            <TextField layoutX="33.0" layoutY="216.0" prefHeight="35.0" prefWidth="351.0" promptText="Age">
+            <TextField layoutX="33.0" layoutY="194.0" prefHeight="35.0" prefWidth="351.0" promptText="Age">
                <font>
                   <Font name="Century Gothic Bold" size="14.0" />
                </font>
             </TextField>
-            <TextField layoutX="33.0" layoutY="278.0" prefHeight="35.0" prefWidth="351.0" promptText="Admisson number">
+            <TextField layoutX="33.0" layoutY="261.0" prefHeight="35.0" prefWidth="351.0" promptText="Admisson number">
                <font>
                   <Font name="Century Gothic Bold" size="14.0" />
                </font>
             </TextField>
-            <TextField layoutX="32.0" layoutY="340.0" prefHeight="35.0" prefWidth="351.0" promptText="Username">
+            <TextField layoutX="32.0" layoutY="325.0" prefHeight="35.0" prefWidth="351.0" promptText="Username">
                <font>
                   <Font name="Century Gothic Bold" size="14.0" />
                </font>
             </TextField>
-            <PasswordField layoutX="33.0" layoutY="401.0" prefHeight="35.0" prefWidth="351.0" promptText="Password">
+            <PasswordField layoutX="33.0" layoutY="393.0" prefHeight="35.0" prefWidth="351.0" promptText="Password">
                <font>
                   <Font name="Century Gothic Bold" size="14.0" />
                </font>
             </PasswordField>
-            <Label prefHeight="59.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to right, #be93c5, #7bc6cc);" text="       STUDENT SIGN UP" textFill="#fdfdfd">
-               <font>
-                  <Font name="Century Gothic Bold" size="35.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
    </children>
