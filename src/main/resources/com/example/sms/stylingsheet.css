@@ -4,6 +4,12 @@
 }
 
 #registerbutton
+{-fx-background-color:#38ef7d}
+#clubbutton
+{
+    -fx-background-color: #38ef7d;
+}
+#clubbutton1
 {
     -fx-background-color: #38ef7d;
 }
