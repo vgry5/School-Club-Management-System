@@ -14,7 +14,7 @@ public class schedule {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    public void calender (ActionEvent actionEvent) throws IOException {   // going to event view
+    public void calender (ActionEvent actionEvent) throws IOException {   // going to calender view
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("calender.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
