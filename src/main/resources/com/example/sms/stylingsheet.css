@@ -3,16 +3,18 @@
     -fx-background-color: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
 }
 
-#registerbutton1
-{-fx-background-color:#38ef7d}
+#registerbutton
+{
+    -fx-background-color:#38ef7d
+}
 #clubbutton
 {
     -fx-background-color: #38ef7d;
 }
-#clubbutton1
+#existing
 {
     -fx-background-color: #38ef7d;
-}nnb
+}
 #schedulebutton
 {
     -fx-background-color: #38ef7d;
@@ -21,3 +23,19 @@
 {
     -fx-background-color: #38ef7d;
 }
+#studentbutton
+{
+    -fx-background-color:#38ef7d
+}
+#advisorbutton
+{
+    -fx-background-color:#38ef7d
+}
+#adminbutton
+{
+    -fx-background-color:#38ef7d
+}
+#clubbutton1
+{
+    -fx-background-color: #38ef7d;
+}nnb

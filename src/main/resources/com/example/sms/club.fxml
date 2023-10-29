@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="457.0" prefWidth="694.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="457.0" prefWidth="694.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sms.schedule">
     <children>
         <Label layoutX="164.0" layoutY="82.0" prefHeight="80.0" prefWidth="365.0" text="Club Profile Interface " textFill="WHITE">
             <font>
@@ -17,7 +17,7 @@
                   <Font name="Century Gothic Bold" size="16.0" />
               </font>
           </Button>
-      <Button fx:id="clubbutton1" layoutX="432.0" layoutY="264.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="134.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="Existing Clubs" textFill="WHITE">
+      <Button fx:id="existing" layoutX="432.0" layoutY="264.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="134.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="Existing Clubs" textFill="WHITE">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
