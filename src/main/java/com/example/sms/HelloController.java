@@ -16,9 +16,9 @@ public class HelloController {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    public void defolt (ActionEvent actionEvent) throws IOException {   // going to event view
+    public void studentLogin (ActionEvent actionEvent) throws IOException {   // going to event view
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("schedule .fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("studentlogin.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root, 744, 689);
         stage.setScene(scene);
