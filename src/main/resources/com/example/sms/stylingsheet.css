@@ -5,6 +5,8 @@
 
 #registerbutton
 {-fx-background-color:#38ef7d}
+#existing
+{-fx-background-color:#38ef7d}
 #studentbutton
 {-fx-background-color:#38ef7d}
 #advisorbutton
@@ -16,14 +18,8 @@
 #signupbutton
 {-fx-background-color:#38ef7d}
 #clubbutton
-{
-    -fx-background-color: #38ef7d;
-}
+{-fx-background-color: #38ef7d;}
 #clubbutton1
-{
-    -fx-background-color: #38ef7d;
-}
+{-fx-background-color: #38ef7d;}
 #schedulebutton
-{
-    -fx-background-color: #38ef7d;
-}
+{-fx-background-color: #38ef7d;}
