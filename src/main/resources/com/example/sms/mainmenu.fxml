@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sms.mainmenucontroller">
     <children>
         <AnchorPane layoutX="166.0" layoutY="74.0" prefHeight="541.0" prefWidth="412.0" style="-fx-background-color: white; -fx-border-radius: 5;">
             <children>
-                <Button fx:id="studentbutton" layoutX="144.0" layoutY="133.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="123.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="STUDENT" textFill="WHITE">
+                <Button fx:id="studentbutton" layoutX="144.0" layoutY="133.0" mnemonicParsing="false" onAction="#studentpage" prefHeight="48.0" prefWidth="123.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="STUDENT" textFill="WHITE">
                     <font>
                         <Font name="Century Gothic Bold" size="16.0" />
                     </font>
@@ -24,7 +24,7 @@
                   <Font name="Century Gothic Bold" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="advisorbutton" layoutX="144.0" layoutY="271.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="123.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="ADVISOR" textFill="WHITE">
+            <Button fx:id="advisorbutton" layoutX="144.0" layoutY="271.0" mnemonicParsing="false" onAction="#staffpage" prefHeight="48.0" prefWidth="123.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="ADVISOR" textFill="WHITE">
                <font>
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>
@@ -34,7 +34,7 @@
                   <Font name="Century Gothic Bold" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="adminbutton" layoutX="144.0" layoutY="414.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="123.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="ADMIN" textFill="WHITE">
+            <Button fx:id="adminbutton" layoutX="144.0" layoutY="414.0" mnemonicParsing="false" onAction="#adminpage" prefHeight="48.0" prefWidth="123.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="ADMIN" textFill="WHITE">
                <font>
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>
