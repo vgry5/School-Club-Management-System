@@ -36,6 +36,16 @@
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>
             </Button>
+            <Label fx:id="usernamemessage" layoutX="32.0" layoutY="78.0" prefHeight="18.0" prefWidth="249.0" textFill="RED">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="passwordmessage" layoutX="29.0" layoutY="143.0" prefHeight="18.0" prefWidth="249.0" textFill="RED">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </children>
