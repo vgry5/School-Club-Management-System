@@ -11,7 +11,7 @@
     <children>
         <AnchorPane layoutX="166.0" layoutY="184.0" prefHeight="310.0" prefWidth="413.0" style="-fx-background-color: white; -fx-border-radius: 5;">
             <children>
-                <Button fx:id="enterbutton" layoutX="145.0" layoutY="233.0" mnemonicParsing="false" onAction="#login" prefHeight="48.0" prefWidth="123.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="ENTER" textFill="WHITE">
+                <Button fx:id="enterbutton" layoutX="144.0" layoutY="234.0" mnemonicParsing="false" onAction="#login" prefHeight="48.0" prefWidth="123.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="ENTER" textFill="WHITE">
                     <font>
                         <Font name="Century Gothic Bold" size="16.0" />
                     </font>
@@ -31,6 +31,16 @@
                         <Font name="Century Gothic Bold" size="35.0" />
                     </font>
                 </Label>
+            <Label fx:id="passwordmessage" layoutX="31.0" layoutY="144.0" prefHeight="18.0" prefWidth="249.0" textFill="RED">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="usernamemessage" layoutX="31.0" layoutY="77.0" prefHeight="18.0" prefWidth="249.0" textFill="RED">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </children>

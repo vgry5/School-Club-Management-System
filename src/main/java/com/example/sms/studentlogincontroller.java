@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -27,10 +28,17 @@ public class studentlogincontroller {
     private PasswordField passwordinput;
 
     @FXML
+    private Label passwordmessage;
+
+    @FXML
     private Button signupbutton;
 
     @FXML
     private TextField usernameinput;
+
+    @FXML
+    private Label usernamemessage;
+
 
     private Stage stage; //create variables for scene, stage and root
     private Scene scene;
