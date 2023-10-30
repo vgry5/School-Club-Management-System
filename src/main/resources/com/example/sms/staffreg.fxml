@@ -16,27 +16,27 @@
                         <Font name="Century Gothic Bold" size="16.0" />
                     </font>
                 </Button>
-                <TextField layoutX="33.0" layoutY="92.0" prefHeight="35.0" prefWidth="351.0" promptText="Firsname">
+                <TextField fx:id="firstnameinput" layoutX="33.0" layoutY="92.0" prefHeight="35.0" prefWidth="351.0" promptText="Firsname">
                     <font>
                         <Font name="Century Gothic Bold" size="14.0" />
                     </font>
                 </TextField>
-                <TextField layoutX="33.0" layoutY="154.0" prefHeight="35.0" prefWidth="351.0" promptText="Lastname">
+                <TextField fx:id="lastnameinput" layoutX="33.0" layoutY="154.0" prefHeight="35.0" prefWidth="351.0" promptText="Lastname">
                     <font>
                         <Font name="Century Gothic Bold" size="14.0" />
                     </font>
                 </TextField>
-                <TextField layoutX="33.0" layoutY="214.0" prefHeight="35.0" prefWidth="351.0" promptText="StaffID">
+                <TextField fx:id="staffidinput" layoutX="33.0" layoutY="214.0" prefHeight="35.0" prefWidth="351.0" promptText="StaffID">
                     <font>
                         <Font name="Century Gothic Bold" size="14.0" />
                     </font>
                 </TextField>
-                <TextField layoutX="32.0" layoutY="274.0" prefHeight="35.0" prefWidth="351.0" promptText="Username">
+                <TextField fx:id="usernameinput" layoutX="32.0" layoutY="274.0" prefHeight="35.0" prefWidth="351.0" promptText="Username">
                     <font>
                         <Font name="Century Gothic Bold" size="14.0" />
                     </font>
                 </TextField>
-                <PasswordField layoutX="33.0" layoutY="335.0" prefHeight="35.0" prefWidth="351.0" promptText="Password">
+                <PasswordField fx:id="passwordinput" layoutX="33.0" layoutY="335.0" prefHeight="35.0" prefWidth="351.0" promptText="Password">
                     <font>
                         <Font name="Century Gothic Bold" size="14.0" />
                     </font>

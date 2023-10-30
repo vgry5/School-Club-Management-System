@@ -4,14 +4,22 @@
 }
 
 #registerbutton
-{
-    -fx-background-color:#38ef7d
-}
+{-fx-background-color:#38ef7d}
+#studentbutton
+{-fx-background-color:#38ef7d}
+#advisorbutton
+{-fx-background-color:#38ef7d}
+#adminbutton
+{-fx-background-color:#38ef7d}
+#enterbutton
+{-fx-background-color:#38ef7d}
+#signupbutton
+{-fx-background-color:#38ef7d}
 #clubbutton
 {
     -fx-background-color: #38ef7d;
 }
-#existing
+#clubbutton1
 {
     -fx-background-color: #38ef7d;
 }
@@ -19,23 +27,3 @@
 {
     -fx-background-color: #38ef7d;
 }
-#exclub
-{
-    -fx-background-color: #38ef7d;
-}
-#studentbutton
-{
-    -fx-background-color:#38ef7d
-}
-#advisorbutton
-{
-    -fx-background-color:#38ef7d
-}
-#adminbutton
-{
-    -fx-background-color:#38ef7d
-}
-#clubbutton1
-{
-    -fx-background-color: #38ef7d;
-}nnb
