@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.Objects;
 
 public class mainmenuController {
@@ -31,12 +32,16 @@ public class mainmenuController {
     private Scene scene;
     private Parent root;
 
+    private Connection connect;
+
     public void studentpage(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("studentlogin.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
+      //  connect = DatabaseConnection.connect();   sql  connection
     }
 
     public void staffpage(ActionEvent event) throws IOException {
