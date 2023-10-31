@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="644.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="644.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sms.club">
     <children>
         <Label layoutX="245.0" layoutY="-12.0" prefHeight="80.0" prefWidth="237.0" text="Existing CLubs" textFill="WHITE">
             <font>
@@ -16,11 +16,11 @@
         </Label>
         <AnchorPane layoutX="9.0" layoutY="110.0" prefHeight="523.0" prefWidth="724.0" style="-fx-background-color: white; -fx-border-radius: 5;">
          <children>
-            <TableView fx:id="existingclubtable" layoutY="1.0" prefHeight="523.0" prefWidth="724.0">
+            <TableView fx:id="existingclubtable" layoutX="-8.0" prefHeight="523.0" prefWidth="724.0">
               <columns>
-                <TableColumn prefWidth="103.19998168945312" text="Club ID" />
-                <TableColumn prefWidth="288.800048828125" text="Club Name" />
-                  <TableColumn prefWidth="333.5999755859375" text="Students " />
+                <TableColumn fx:id="clubid" prefWidth="103.19998168945312" text="Club ID" />
+                <TableColumn fx:id="clubname" prefWidth="288.800048828125" text="Club Name" />
+                  <TableColumn fx:id="student" prefWidth="333.5999755859375" text="Students " />
               </columns>
             </TableView>
          </children>
