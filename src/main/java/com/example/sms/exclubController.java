@@ -24,7 +24,7 @@ public class exclubController {
     private Scene scene;
     private Parent root;
 
-    private void clubCreation (ActionEvent event) throws IOException {
+    private void exclubs (ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("existingclubs.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
