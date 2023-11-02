@@ -6,11 +6,16 @@ public class Students {
     public int age;
     public String username;
     public String password;
+    public int admissionNumber;
+
+
+
 
     public Students(String firstname, String lastname, int age, String username, String password) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.age = age;
+        this.admissionNumber = admissionNumber;
         this.username = username;
         this.password = password;
     }
@@ -54,4 +59,11 @@ public class Students {
     public void setPassword(String password) {
         this.password = password;
     }
+    public void setAdmissionNumber(int admissionNumber) {
+        this.admissionNumber = admissionNumber;
+    }
+    public int getAdmissionNumber() {
+        return admissionNumber;
+    }
+
 }

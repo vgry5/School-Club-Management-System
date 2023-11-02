@@ -1,11 +1,24 @@
 package com.example.sms;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Objects;
 
 public class studentregcontroller {
 
@@ -53,9 +66,13 @@ public class studentregcontroller {
 
     @FXML
     private Label usernamemessage;
+    private DatabaseConnection connectSRegister;
+    private Stage stage; //create variables for scene, stage and root
+    private Scene scene;
+    private Parent root;
 
-
-    public void signup() {
+    public void StudentRegister(){this.connectSRegister = new DatabaseConnection();}
+    public void signup(ActionEvent event) throws SQLException, IOException {
         String firstname = firstnameinput.getText();
         String lastname = lastnameinput.getText();
         String age = ageinput.getText();
@@ -65,11 +82,39 @@ public class studentregcontroller {
         if (studentDetailsValidate(firstname, lastname, age, admissionNumber, username, password) == false) {
             return;
         }
-        ;
-        Students student = new Students(firstname, lastname, Integer.parseInt(age), username, password);
+        Students student = new Students(firstname, lastname, Integer.parseInt(age), username, password);String insertQuery =
+                "INSERT INTO students (`First Name`, `Last name`, `age`, `Admission number`, `username`, `password`) VALUES (?, ?, ?, ?, ?, ?)";
+        Connection connection = connectSRegister.connect();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+            // Set the values for the placeholders (question marks) in the SQL query
+            preparedStatement.setString(1, student.getFirstname()); // Replace value1 with the actual value for column1
+            preparedStatement.setString(2, student.getLastname()); // Replace value2 with the actual value for column2
+            preparedStatement.setInt(3, student.getAge()); // Replace value3 with the actual value for column3
+            preparedStatement.setInt(4, student.getAdmissionNumber()); // Replace value4 with the actual value for column4
+            preparedStatement.setString(5, student.getUsername()); // Replace value5 with the actual value for column5
+            preparedStatement.setString(6, student.getPassword()); // Replace value6 with the actual value for column6
+
+            // Execute the SQL INSERT statement
+            int rowsInserted = preparedStatement.executeUpdate();
+
+            if (rowsInserted > 0) {
+                System.out.println("Data inserted successfully!");
+            } else {
+                System.out.println("Data insertion failed.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("studentlogin.fxml")));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
     }
 
-    public boolean studentDetailsValidate(String firstName, String lastName, String inputAge, String inputAdmissionNumber, String username, String password) {
+        public boolean studentDetailsValidate(String firstName, String lastName, String inputAge, String inputAdmissionNumber, String username, String password) {
         boolean resultFirstname = firstName.matches("[a-zA-Z]+");  //Check if firstname contains only letter and store the result in a boolean
         boolean resultLastname = lastName.matches("[a-zA-Z]+");    //Check if firstname contains only letter and store the result in a boolean
         if (resultFirstname == false) {

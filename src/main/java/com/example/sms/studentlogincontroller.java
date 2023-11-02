@@ -57,7 +57,7 @@ public class studentlogincontroller {
     public void login(ActionEvent event) throws IOException, SQLException {
         String username = usernameinput.getText();
         String password = passwordinput.getText();
-        ObservableList<club> clubList = FXCollections.observableArrayList();
+
 
         String selectQuery = "SELECT * FROM `students`;";
         Connection comm= connect.connect();
