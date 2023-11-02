@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class schedule {
+public class scheduleController {
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -21,9 +21,9 @@ public class schedule {
     private TextField EventName;
     @FXML
     private DatePicker date;
-    @FXML
-    private TextField location;
-
+//    @FXML
+//    private TextField location;
+//
 
     public void eventSchedule(ActionEvent event ) throws IOException{
 

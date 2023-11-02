@@ -32,7 +32,7 @@ public class mainmenuController {
     private Scene scene;
     private Parent root;
 
-    private Connection connect;
+
 
     public void studentpage(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("studentlogin.fxml")));

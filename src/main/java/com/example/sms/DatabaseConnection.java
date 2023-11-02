@@ -11,14 +11,15 @@ public class DatabaseConnection {
 
     private static Connection connection;
 
-    public static Connection connect() throws SQLException {
-        if (connection == null || connection.isClosed()) {
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                connection = DriverManager.getConnection(URL, USER, PASSWORD);
-            } catch (ClassNotFoundException e) {
-                throw new SQLException("MySQL JDBC driver not found.");
-            }
+    public static   Connection connect() throws SQLException {
+        if  (connection == null || connection.isClosed()) {
+//            try {
+//                Class.forName("com.mysql.cj.jdbc.Driver");
+//                connection = DriverManager.getConnection(URL, USER, PASSWORD);
+//            } catch (ClassNotFoundException e) {
+//                throw new SQLException("MySQL JDBC driver not found.");
+//            }
+            connection = DriverManager.getConnection(URL, USER, PASSWORD);
         }
         return connection;
     }
@@ -27,5 +28,10 @@ public class DatabaseConnection {
         if (connection != null && !connection.isClosed()) {
             connection.close();
         }
+    }
+
+    public static Connection getConnection(String s, String root, String s1) {
+
+        return null;
     }
 }
