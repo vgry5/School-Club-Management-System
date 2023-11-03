@@ -6,12 +6,12 @@ public class Students {
     public int age;
     public String username;
     public String password;
-    public int admissionNumber;
+    public String admissionNumber;
 
 
 
 
-    public Students(String firstname, String lastname, int age, String username, String password) {
+    public Students(String firstname, String lastname, int age, String admissionNumber, String username, String password) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.age = age;
@@ -59,10 +59,10 @@ public class Students {
     public void setPassword(String password) {
         this.password = password;
     }
-    public void setAdmissionNumber(int admissionNumber) {
+    public void setAdmissionNumber(String admissionNumber) {
         this.admissionNumber = admissionNumber;
     }
-    public int getAdmissionNumber() {
+    public String getAdmissionNumber() {
         return admissionNumber;
     }
 

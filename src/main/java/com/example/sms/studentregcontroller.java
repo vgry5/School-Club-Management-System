@@ -82,18 +82,17 @@ public class studentregcontroller {
         if (studentDetailsValidate(firstname, lastname, age, admissionNumber, username, password) == false) {
             return;
         }
-        Students student = new Students(firstname, lastname, Integer.parseInt(age), username, password);String insertQuery =
+        Students student = new Students(firstname, lastname, Integer.parseInt(age),admissionNumber, username, password);String insertQuery =
                 "INSERT INTO students (`First Name`, `Last name`, `age`, `Admission number`, `username`, `password`) VALUES (?, ?, ?, ?, ?, ?)";
         Connection connection = connectSRegister.connect();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
-            // Set the values for the placeholders (question marks) in the SQL query
-            preparedStatement.setString(1, student.getFirstname()); // Replace value1 with the actual value for column1
-            preparedStatement.setString(2, student.getLastname()); // Replace value2 with the actual value for column2
-            preparedStatement.setInt(3, student.getAge()); // Replace value3 with the actual value for column3
-            preparedStatement.setInt(4, student.getAdmissionNumber()); // Replace value4 with the actual value for column4
-            preparedStatement.setString(5, student.getUsername()); // Replace value5 with the actual value for column5
-            preparedStatement.setString(6, student.getPassword()); // Replace value6 with the actual value for column6
+            preparedStatement.setString(1, student.getFirstname());
+            preparedStatement.setString(2, student.getLastname());
+            preparedStatement.setInt(3, student.getAge());
+            preparedStatement.setString(4, student.getAdmissionNumber());
+            preparedStatement.setString(5, student.getUsername());
+            preparedStatement.setString(6, student.getPassword());
 
             // Execute the SQL INSERT statement
             int rowsInserted = preparedStatement.executeUpdate();
