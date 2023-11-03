@@ -9,7 +9,7 @@
 
 <AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sms.stafflogincontroller">
     <children>
-        <AnchorPane layoutX="166.0" layoutY="184.0" prefHeight="310.0" prefWidth="413.0" style="-fx-background-color: white; -fx-border-radius: 5;">
+        <AnchorPane layoutX="166.0" layoutY="184.0" prefHeight="322.0" prefWidth="413.0" style="-fx-background-color: white; -fx-border-radius: 5;">
             <children>
                 <Button fx:id="enterbutton" layoutX="59.0" layoutY="232.0" mnemonicParsing="false" onAction="#advisorlogin" prefHeight="48.0" prefWidth="123.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="ENTER" textFill="WHITE">
                     <font>
@@ -36,12 +36,7 @@
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>
             </Button>
-            <Label fx:id="usernamemessage" layoutX="32.0" layoutY="78.0" prefHeight="18.0" prefWidth="249.0" textFill="RED">
-               <font>
-                  <Font name="Century Gothic Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="passwordmessage" layoutX="29.0" layoutY="143.0" prefHeight="18.0" prefWidth="249.0" textFill="RED">
+            <Label fx:id="message" layoutX="32.0" layoutY="293.0" prefHeight="18.0" prefWidth="351.0" textAlignment="CENTER" textFill="RED">
                <font>
                   <Font name="Century Gothic Bold" size="14.0" />
                </font>

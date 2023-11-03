@@ -14,6 +14,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class stafflogincontroller {
@@ -28,24 +32,44 @@ public class stafflogincontroller {
     private PasswordField passwordinput;
 
     @FXML
-    private Label passwordmessage;
-
-    @FXML
     private Button signupbutton;
 
     @FXML
     private TextField usernameinput;
 
     @FXML
-    private Label usernamemessage;
+    private Label message;
 
     private Stage stage; //create variables for scene, stage and root
     private Scene scene;
     private Parent root;
+    private DatabaseConnection connect;
 
-public void advisorlogin() {
+public void advisorlogin(ActionEvent event) throws IOException, SQLException{
     String username = usernameinput.getText();
     String password = passwordinput.getText();
+    String selectQuery = "SELECT * FROM `teachers`;";
+    Connection comm= connect.connect();
+    try (PreparedStatement statement = comm.prepareStatement(selectQuery)) {
+        ResultSet results = statement.executeQuery();
+        while (results.next()) {
+            if (username.equals(results.getString(4)) && password.equals(results.getString(5))) {
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("schedule .fxml")));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+
+            }
+
+        }
+
+    } catch (IOException e) {
+        throw new RuntimeException(e);
+    } catch (SQLException ex) {
+        throw new RuntimeException(ex);
+    }
+    message.setText("Incorrect username or password");
 }
 
     public void signup(ActionEvent event) throws IOException {

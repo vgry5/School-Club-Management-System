@@ -71,7 +71,6 @@ public class studentregcontroller {
     private Scene scene;
     private Parent root;
 
-    public void StudentRegister(){this.connectSRegister = new DatabaseConnection();}
     public void signup(ActionEvent event) throws SQLException, IOException {
         String firstname = firstnameinput.getText();
         String lastname = lastnameinput.getText();
@@ -82,8 +81,9 @@ public class studentregcontroller {
         if (studentDetailsValidate(firstname, lastname, age, admissionNumber, username, password) == false) {
             return;
         }
-        Students student = new Students(firstname, lastname, Integer.parseInt(age),admissionNumber, username, password);String insertQuery =
-                "INSERT INTO students (`First Name`, `Last name`, `age`, `Admission number`, `username`, `password`) VALUES (?, ?, ?, ?, ?, ?)";
+        Students student = new Students(firstname, lastname, Integer.parseInt(age),admissionNumber, username, password);
+        String insertQuery =
+                "INSERT INTO students (`Firstname`, `Lastname`, `Age`, `Admission Number`, `Username`, `Password`) VALUES (?, ?, ?, ?, ?, ?)";
         Connection connection = connectSRegister.connect();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
@@ -151,6 +151,13 @@ public class studentregcontroller {
         if (resultUsername == false) {
             usernamemessage.setText("Input only letters and numbers");
             return false;
+        }
+        usernamemessage.setText(" ");
+        for (int i = 0; i < OOPCoursework.studentList.size(); i++) { //Check if the driver is already there
+            if (username.equals(OOPCoursework.studentList.get(i).username)) {
+                usernamemessage.setText("This username already exists");
+                return false;
+            }
         }
         usernamemessage.setText(" ");
         if (password.length() != 8) {
