@@ -6,11 +6,16 @@ public class club {
     private String description;
     private String advisorID;
 
+    private int no_students;
+
+
+
     //Constructor
-    public club (String name,String description,String advisorID){
+    public club (String name,String description,String advisorID,int no_students){
         this.name = name;
         this.description = description;
         this.advisorID = advisorID;
+        this.no_students = no_students;
     }
     //Getters and Setters(Encapsulation)
 
@@ -31,5 +36,12 @@ public class club {
     }
     public void setAdvisorID(String advisorID) {
         this.advisorID = advisorID;
+    }
+    public int getNo_students() {
+        return no_students;
+    }
+
+    public void setNo_students(int no_students) {
+        this.no_students = no_students;
     }
 }
