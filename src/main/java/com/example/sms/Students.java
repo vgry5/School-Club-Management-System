@@ -9,8 +9,6 @@ public class Students {
     public String admissionNumber;
 
 
-
-
     public Students(String firstname, String lastname, int age, String admissionNumber, String username, String password) {
         this.firstname = firstname;
         this.lastname = lastname;
