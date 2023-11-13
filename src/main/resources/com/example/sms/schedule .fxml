@@ -4,7 +4,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -23,21 +22,19 @@
                         <Font name="Century Gothic Bold" size="16.0" />
                     </font>
                 </Button>
-                <TextField layoutX="33.0" layoutY="71.0" prefHeight="35.0" prefWidth="351.0" promptText="Event Name ">
+                <TextField fx:id="EventName" layoutX="33.0" layoutY="71.0" prefHeight="35.0" prefWidth="351.0" promptText="Event Name ">
                     <font>
                         <Font name="Century Gothic Bold" size="14.0" />
                     </font>
                 </TextField>
-            <ComboBox layoutX="33.0" layoutY="133.0" prefHeight="35.0" prefWidth="351.0" promptText="Select Your Club" />
-            <DatePicker layoutX="33.0" layoutY="198.0" prefHeight="35.0" prefWidth="351.0" promptText="Select Date" />
-            <TextField layoutX="31.0" layoutY="271.0" prefHeight="35.0" prefWidth="351.0" promptText="Location">
+            <ComboBox fx:id="clubSelect" layoutX="33.0" layoutY="133.0" prefHeight="35.0" prefWidth="351.0" promptText="Select Your Club" />
+            <DatePicker fx:id="date" layoutX="33.0" layoutY="198.0" prefHeight="35.0" prefWidth="351.0" promptText="Select Date" />
+            <TextField fx:id="Location" layoutX="31.0" layoutY="271.0" prefHeight="35.0" prefWidth="351.0" promptText="Location  (physical/ online)">
                <font>
                   <Font name="Century Gothic Bold" size="14.0" />
                </font>
             </TextField>
-            <RadioButton layoutX="33.0" layoutY="344.0" mnemonicParsing="false" text="Event " />
-            <RadioButton layoutX="174.0" layoutY="344.0" mnemonicParsing="false" text="Meeting" />
-            <RadioButton layoutX="320.0" layoutY="344.0" mnemonicParsing="false" text="Activity " />
+            <ComboBox fx:id="eventType" layoutX="33.0" layoutY="338.0" prefHeight="35.0" prefWidth="351.0" promptText="select the type of event" />
             </children>
         </AnchorPane>
     </children>

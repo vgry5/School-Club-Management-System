@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="644.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sms.club">
+<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="644.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sms.clubCreationController">
     <children>
         <Label layoutX="240.0" layoutY="42.0" prefHeight="80.0" prefWidth="237.0" text="Club Creation" textFill="WHITE">
             <font>
@@ -30,9 +30,12 @@
                         <Font name="Century Gothic Bold" size="14.0" />
                     </font>
                 </TextField>
+            <Label fx:id="namelabel" layoutX="43.0" layoutY="4.0" prefHeight="28.0" prefWidth="218.0" />
+            <Label fx:id="descriplabel" layoutX="43.0" layoutY="108.0" prefHeight="28.0" prefWidth="218.0" />
+            <Label fx:id="idlabel" layoutX="43.0" layoutY="214.0" prefHeight="28.0" prefWidth="218.0" />
             </children>
         </AnchorPane>
-          <Button fx:id="create" layoutX="304.0" layoutY="542.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="123.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="Create " textFill="WHITE">
+          <Button fx:id="create" layoutX="304.0" layoutY="542.0" mnemonicParsing="false" onAction="#clubCreation" prefHeight="48.0" prefWidth="123.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="Create " textFill="WHITE">
               <font>
                   <Font name="Century Gothic Bold" size="16.0" />
               </font>

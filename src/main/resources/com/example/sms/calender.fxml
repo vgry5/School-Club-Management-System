@@ -4,15 +4,15 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sms.Calender">
+<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sms.CalenderController">
     <children>
         <AnchorPane layoutX="160.0" layoutY="82.0" prefHeight="541.0" prefWidth="412.0" style="-fx-background-color: white; -fx-border-radius: 5;">
          <children>
-            <TableView prefHeight="541.0" prefWidth="412.0">
+            <TableView fx:id="tableView" layoutY="-6.0" prefHeight="541.0" prefWidth="412.0">
               <columns>
-                <TableColumn prefWidth="139.0" text="CLUB Name" />
-                <TableColumn minWidth="0.0" prefWidth="136.0" text="EVENT" />
-                  <TableColumn prefWidth="136.0" text="DATE" />
+                <TableColumn fx:id="ClubName" prefWidth="139.0" text="CLUB Name" />
+                <TableColumn fx:id="EventName" minWidth="0.0" prefWidth="136.0" text="EVENT" />
+                  <TableColumn fx:id="Date" prefWidth="136.0" text="DATE" />
               </columns>
             </TableView>
          </children></AnchorPane>

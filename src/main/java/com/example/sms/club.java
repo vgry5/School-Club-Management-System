@@ -1,19 +1,25 @@
 package com.example.sms;
 
 public class club {
-    private String name;
+    //Encapsulation
+    private  String name;
     private String description;
-    private int advisorID;
+    private String advisorID;
+
+    private int no_students;
+
+
 
     //Constructor
-    public club (String name,String description,int advisorID){
+    public club (String name,String description,String advisorID,int no_students){
         this.name = name;
         this.description = description;
         this.advisorID = advisorID;
+        this.no_students = no_students;
     }
     //Getters and Setters(Encapsulation)
 
-    public String getName() {
+    public  String getName() {
         return name;
     }
     public void setName(String name) {
@@ -25,10 +31,17 @@ public class club {
     public void setDescription(String description) {
         this.description = description;
     }
-    public int getAdvisorID() {
+    public String  getAdvisorID() {
         return advisorID;
     }
-    public void setAdvisorID(int advisorID) {
+    public void setAdvisorID(String advisorID) {
         this.advisorID = advisorID;
+    }
+    public int getNo_students() {
+        return no_students;
+    }
+
+    public void setNo_students(int no_students) {
+        this.no_students = no_students;
     }
 }

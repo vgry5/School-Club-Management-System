@@ -78,7 +78,7 @@ public class studentregcontroller {
         String admissionNumber = adnumberinput.getText();
         String username = usernameinput.getText();
         String password = passwordinput.getText();
-        if (studentDetailsValidate(firstname, lastname, age, admissionNumber, username, password) == false) {
+        if (!studentDetailsValidate(firstname, lastname, age, admissionNumber, username, password)) {
             return;
         }
         Students student = new Students(firstname, lastname, Integer.parseInt(age),admissionNumber, username, password);
