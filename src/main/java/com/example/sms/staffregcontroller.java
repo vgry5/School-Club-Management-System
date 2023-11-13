@@ -1,11 +1,24 @@
 package com.example.sms;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Objects;
 
 public class staffregcontroller {
 
@@ -48,7 +61,12 @@ public class staffregcontroller {
     @FXML
     private Label staffmessage;
 
-    public void signup() {
+    private Stage stage; //create variables for scene, stage and root
+    private Scene scene;
+    private Parent root;
+    private DatabaseConnection connectSRegister;
+
+    public void signup(ActionEvent event) throws SQLException, IOException {
         String firstname = firstnameinput.getText();
         String lastname = lastnameinput.getText();
         String staffid = staffidinput.getText();
@@ -58,6 +76,33 @@ public class staffregcontroller {
             return;
         }
         Staff advisor = new Staff(firstname, lastname, staffid, username, password);
+        String insertQuery =
+                "INSERT INTO teachers (`Firstname`, `Lastname`, `StaffID`, `Username`, `Password`) VALUES (?, ?, ?, ?, ?)";
+        Connection connection = connectSRegister.connect();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+            preparedStatement.setString(1, advisor.getFirstname());
+            preparedStatement.setString(2, advisor.getLastname());
+            preparedStatement.setString(3, advisor.getStaffid());
+            preparedStatement.setString(4, advisor.getUsername());
+            preparedStatement.setString(5, advisor.getPassword());
+
+            // Execute the SQL INSERT statement
+            int rowsInserted = preparedStatement.executeUpdate();
+
+            if (rowsInserted > 0) {
+                System.out.println("Data inserted successfully!");
+            } else {
+                System.out.println("Data insertion failed.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("stafflogin.fxml")));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public boolean staffDetailsValidate(String firstName, String lastName, String staffid, String username, String password) {
@@ -83,6 +128,13 @@ public class staffregcontroller {
         if (resultUsername == false) {
             usernamemessage.setText("Input only letters and numbers");
             return false;
+        }
+        usernamemessage.setText(" ");
+        for (int i = 0; i < OOPCoursework.advisorList.size(); i++) { //Check if the driver is already there
+            if (username.equals(OOPCoursework.advisorList.get(i).username)) {
+                usernamemessage.setText("This username already exists");
+                return false;
+            }
         }
         usernamemessage.setText(" ");
         if (password.length() != 8) {

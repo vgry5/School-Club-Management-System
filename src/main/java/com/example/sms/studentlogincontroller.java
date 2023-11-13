@@ -36,16 +36,13 @@ public class studentlogincontroller {
     private PasswordField passwordinput;
 
     @FXML
-    private Label passwordmessage;
-
-    @FXML
     private Button signupbutton;
 
     @FXML
     private TextField usernameinput;
 
     @FXML
-    private Label usernamemessage;
+    private Label message;
 
 
     private Stage stage; //create variables for scene, stage and root
@@ -53,19 +50,16 @@ public class studentlogincontroller {
     private Parent root;
 
     private DatabaseConnection connect;
-    public void  studentlogincontroller(){this.connect = new DatabaseConnection(); }
     public void login(ActionEvent event) throws IOException, SQLException {
         String username = usernameinput.getText();
         String password = passwordinput.getText();
-
-
         String selectQuery = "SELECT * FROM `students`;";
         Connection comm= connect.connect();
         try (PreparedStatement statement = comm.prepareStatement(selectQuery)) {
             ResultSet results = statement.executeQuery();
             while (results.next()) {
                 if (username.equals(results.getString(5)) && password.equals(results.getString(6))) {
-                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("schedule .fxml")));
+                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("clubcreation.fxml")));
                     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     scene = new Scene(root);
                     stage.setScene(scene);
@@ -80,6 +74,7 @@ public class studentlogincontroller {
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+        message.setText("Incorrect username or password");
     }
 
 
