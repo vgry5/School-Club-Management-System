@@ -64,7 +64,6 @@ public class studentlogincontroller {
         try (PreparedStatement statement = comm.prepareStatement(selectQuery)) {
             ResultSet results = statement.executeQuery();
             while (results.next()) {
-                System.out.println(results.getString(5));
                 if (username.equals(results.getString(5)) && password.equals(results.getString(6))) {
                     root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("schedule .fxml")));
                     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -43,7 +43,7 @@ public class OOPCoursework extends Application {
             while (results.next()) {
                 Students  person = new Students(results.getString(1),results.getString(2),results.getInt(3),results.getString(4),results.getString(5),results.getString(6));
                 studentList.add(person);
-                System.out.println(results);
+
             }
         }
 
