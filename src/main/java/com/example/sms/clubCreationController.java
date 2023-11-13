@@ -30,11 +30,7 @@ public class clubCreationController {
     @FXML
     private Label idlabel;
 
-    private  DatabaseConnection connectclubcreation;
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+//  private  DatabaseConnection connectclubcreation;
 
     public clubCreationController() {
     }
@@ -49,7 +45,7 @@ public class clubCreationController {
         club Clubs = new club(Clubname,Clubdescrip,advisorID);
         String insertQuery =
                 "INSERT INTO clubs(`Name` , `Advisor ID`, `Description`)VALUES(?, ?, ?)";
-        Connection connection = connectclubcreation.connect();
+        Connection connection = DatabaseConnection.connect();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
             preparedStatement.setString(1, Clubs.getName());
@@ -64,30 +60,30 @@ public class clubCreationController {
                 System.out.println("Data insertion failed");
             }
         }catch (SQLException e){
-                e.printStackTrace();
+            System.out.println();
             }
 
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("clubcreation.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("clubcreation.fxml")));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
     public boolean clubcreation_validation(String Clubname, String Clubdescrip, String advisorID){
-        boolean ResultClubName = Clubname.matches("[a-zA-Z]");//Checks if the club name contains only letters and stores the result of the checking in a boolean
-        boolean ResultDescription = Clubdescrip.matches("[a-zA-Z]");//Checks if the club description contains only letters and stores the result of the checking in a boolean
-        boolean ResultAdvisorID = advisorID.matches("[a-zA-Z0-9]");//Checks if the advisor ID  contains only letters and numbers and stores the result of the checking in a boolean
-        if (ResultClubName == false){
+        boolean ResultClubName = Clubname.matches("[a-zA-Z]+$");//Checks if the club name contains only letters and stores the result of the checking in a boolean
+        boolean ResultDescription = Clubdescrip.matches("[a-zA-Z ]+");//Checks if the club description contains only letters and stores the result of the checking in a boolean
+        boolean ResultAdvisorID = advisorID.matches("[a-zA-Z0-9]+$");//Checks if the advisor ID  contains only letters and numbers and stores the result of the checking in a boolean
+        if (!ResultClubName){
             namelabel.setText("Input only letters");
             return false;
         }
         namelabel.setText(" ");
-        if (ResultDescription == false){
+        if (!ResultDescription){
             descriplabel.setText("Input only letters");
             return false;
         }
         descriplabel.setText(" ");
-        if (ResultAdvisorID == false){
+        if (!ResultAdvisorID){
             idlabel.setText("Input only letters and numbers");
             return false;
         }

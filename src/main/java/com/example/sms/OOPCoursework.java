@@ -17,9 +17,10 @@ public class OOPCoursework extends Application {
     static ArrayList<Students> studentList = new ArrayList<>();
     static ArrayList<Staff> advisorList = new ArrayList<>();
     static ArrayList<Admins> adminList = new ArrayList<>();
+    static ArrayList<club>  clublist = new ArrayList<>();
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        previousData();
+//        previousData();
         FXMLLoader fxmlLoader = new FXMLLoader(OOPCoursework.class.getResource("mainmenu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 744, 689);
         stage.setTitle("CLUB HUB");
@@ -55,7 +56,15 @@ public class OOPCoursework extends Application {
                 adminList.add(admin);
             }
         }
-
+        selectQuery = "SELECT * FROM `clubs`;";
+        comm = connect.connect();
+        try (PreparedStatement statement = comm.prepareStatement(selectQuery)){
+            ResultSet results = statement.executeQuery();
+            while (results.next()){
+                club Clubs = new club(results.getString(1),results.getString(2),results.getString(3));
+                clublist.add(Clubs);
+            }
+        }
     }
 
     public static void main(String[] args) {
