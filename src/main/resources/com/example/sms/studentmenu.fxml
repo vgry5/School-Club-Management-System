@@ -5,21 +5,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sms.mainmenuController">
+<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sms.studentmenucontroller">
     <children>
         <AnchorPane layoutX="166.0" layoutY="74.0" prefHeight="541.0" prefWidth="412.0" style="-fx-background-color: white; -fx-border-radius: 5;">
             <children>
-                <Button fx:id="joinbutton" layoutX="98.0" layoutY="236.0" mnemonicParsing="false" onAction="#studentpage" prefHeight="48.0" prefWidth="225.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="JOIN A CLUB" textFill="WHITE">
+                <Button fx:id="joinbutton" layoutX="98.0" layoutY="236.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="225.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="JOIN A CLUB" textFill="WHITE">
                     <font>
                         <Font name="Century Gothic Bold" size="16.0" />
                     </font>
                 </Button>
-                <Button fx:id="viewbutton" layoutX="101.0" layoutY="323.0" mnemonicParsing="false" onAction="#staffpage" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="VIEW EXISTING CLUBS" textFill="WHITE">
+                <Button fx:id="viewbutton" layoutX="101.0" layoutY="323.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="VIEW EXISTING CLUBS" textFill="WHITE">
                     <font>
                         <Font name="Century Gothic Bold" size="16.0" />
                     </font>
                 </Button>
-                <Button fx:id="withdrawbutton" layoutX="98.0" layoutY="414.0" mnemonicParsing="false" onAction="#adminpage" prefHeight="48.0" prefWidth="225.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="WITHDRAW FROM A CLUB" textFill="WHITE">
+                <Button fx:id="withdrawbutton" layoutX="98.0" layoutY="414.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="225.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="WITHDRAW FROM A CLUB" textFill="WHITE">
                     <font>
                         <Font name="Century Gothic Bold" size="16.0" />
                     </font>
@@ -29,14 +29,14 @@
                   <Font name="Century Gothic Bold" size="35.0" />
                </font>
             </Label>
-            <Button fx:id="studentprofilebutton" layoutX="101.0" layoutY="153.0" mnemonicParsing="false" onAction="#studentpage" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="VIEW STUDENT PROFILE" textFill="WHITE">
+            <Button fx:id="studentprofilebutton" layoutX="101.0" layoutY="153.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="VIEW STUDENT PROFILE" textFill="WHITE">
                <font>
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>
             </Button>
             </children>
         </AnchorPane>
-      <Button fx:id="backbutton" layoutX="635.0" layoutY="23.0" mnemonicParsing="false" onAction="#studentpage" prefHeight="48.0" prefWidth="83.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="BACK" textFill="WHITE">
+      <Button fx:id="backbutton" layoutX="628.0" layoutY="23.0" mnemonicParsing="false" onAction="#back" prefHeight="48.0" prefWidth="83.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="BACK" textFill="WHITE">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
