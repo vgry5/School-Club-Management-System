@@ -44,8 +44,4 @@ public class club {
     public void setNo_students(int no_students) {
         this.no_students = no_students;
     }
-
-
-
-
 }

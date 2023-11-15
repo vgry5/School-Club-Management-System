@@ -39,13 +39,13 @@ public class clubCreationController {
         String Clubname = name.getText();
         String Clubdescrip = description.getText();
         String advisorID = adid.getText();
+        int no_students = 0;
         if (!clubcreation_validation(Clubname, Clubdescrip, advisorID)){
             return;
         }
-        int no_students = 0;
         club Clubs = new club(Clubname,Clubdescrip,advisorID,no_students);
         String insertQuery =
-                "INSERT INTO clubs(`Name` , `Advisor ID`, `Description`,No_Students)VALUES(?, ?, ?, ?)";
+                "INSERT INTO clubs(`Name` , `Advisor ID`, `Description`, `No_Students`)VALUES(?, ?, ?, ?)";
         Connection connection = DatabaseConnection.connect();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
