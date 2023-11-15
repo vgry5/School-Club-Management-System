@@ -5,7 +5,10 @@ public class club {
     private  String name;
     private String description;
     private String advisorID;
+
     private int no_students;
+
+
 
     //Constructor
     public club (String name,String description,String advisorID,int no_students){
@@ -34,9 +37,11 @@ public class club {
     public void setAdvisorID(String advisorID) {
         this.advisorID = advisorID;
     }
-    public int getNo_students() {return no_students;}
-    public void setNo_students(int no_students) {this.no_students = no_students;
+    public int getNo_students() {
+        return no_students;
     }
-    public void Edit (){}//Method to delete an existing student and change club name
 
+    public void setNo_students(int no_students) {
+        this.no_students = no_students;
+    }
 }
