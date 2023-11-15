@@ -175,4 +175,13 @@ public class studentregcontroller {
         studentmessage.setText(" ");
         return true;
     }
+
+    @FXML
+    void back(ActionEvent event)throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("studentlogin.fxml")));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

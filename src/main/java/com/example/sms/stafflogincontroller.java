@@ -54,7 +54,7 @@ public void advisorlogin(ActionEvent event) throws IOException, SQLException{
         ResultSet results = statement.executeQuery();
         while (results.next()) {
             if (username.equals(results.getString(4)) && password.equals(results.getString(5))) {
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("schedule .fxml")));
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("clubcreation.fxml")));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);

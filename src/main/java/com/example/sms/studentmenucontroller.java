@@ -37,6 +37,7 @@ public class studentmenucontroller {
     private Scene scene;
     private Parent root;
 
+
     @FXML
     void back(ActionEvent event)throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("studentlogin.fxml")));
@@ -46,4 +47,40 @@ public class studentmenucontroller {
         stage.show();
     }
 
+    @FXML
+    void studentdetails(ActionEvent event)throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("studentdetails.fxml")));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void join(ActionEvent event)throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("joinclub.fxml")));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void view(ActionEvent event)throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("studentexistingclub.fxml")));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void withdraw(ActionEvent event)throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("leaveclub.fxml")));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }
+
