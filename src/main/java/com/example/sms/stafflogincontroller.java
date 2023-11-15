@@ -21,10 +21,6 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 public class stafflogincontroller {
-
-    @FXML
-    private AnchorPane container;
-
     @FXML
     private Button enterbutton;
 
@@ -74,6 +70,13 @@ public void advisorlogin(ActionEvent event) throws IOException, SQLException{
 
     public void signup(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("staffreg.fxml")));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void enter (ActionEvent event) throws IOException{
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("advisor.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
