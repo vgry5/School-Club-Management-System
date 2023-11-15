@@ -34,7 +34,7 @@
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="viewevents" layoutX="101.0" layoutY="122.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="VIEW EVENTS" textFill="WHITE">
+            <Button fx:id="vieweventsbutton" layoutX="101.0" layoutY="122.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="VIEW EVENTS" textFill="WHITE">
                <font>
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>
