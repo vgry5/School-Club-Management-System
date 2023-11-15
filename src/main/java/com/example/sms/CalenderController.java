@@ -56,7 +56,7 @@ public class CalenderController implements Initializable {
         try (PreparedStatement statement = comm.prepareStatement(selectQuery)) {
             ResultSet results = statement.executeQuery();
             while (results.next()) {
-                event PastEvent = new event(results.getString(3), results.getString(2), results.getString(1));
+                event PastEvent = new event(results.getString(1), results.getString(2), results.getString(3),results.getString(4),results.getString(5));
                 eventList.add(PastEvent);
                 System.out.println(eventList);
 
