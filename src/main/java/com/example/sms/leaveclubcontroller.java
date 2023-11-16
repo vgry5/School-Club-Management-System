@@ -16,6 +16,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -43,6 +46,8 @@ public class leaveclubcontroller implements Initializable {
     private Scene scene;
     private Parent root;
 
+    private DatabaseConnection connectSRegister;
+
     @FXML
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -62,9 +67,40 @@ public class leaveclubcontroller implements Initializable {
         }
     }
     @FXML
-    void leave(ActionEvent event)throws IOException {
-        int selectedDriver = clubtable.getSelectionModel().getSelectedIndex();
-        clubtable.getItems().remove(selectedDriver); //selectedDriver saves the index of the driver from the table and used to delete the driver
+    void leave(ActionEvent event) throws IOException, SQLException {
+        int selectedClub = clubtable.getSelectionModel().getSelectedIndex();
+        clubtable.getItems().remove(selectedClub); //selectedDriver saves the index of the driver from the table and used to delete the driver
+        String username = studentlogincontroller.studentLoginDetails.get(0);
+        String password = studentlogincontroller.studentLoginDetails.get(1);
+        int i;
+        for (i = 0; i < OOPCoursework.studentList.size(); i++) {
+            if (OOPCoursework.studentList.get(i).username.equals(username) && OOPCoursework.studentList.get(i).password.equals(password)) {
+                System.out.println(OOPCoursework.studentList.get(i).clubString());
+                OOPCoursework.studentList.get(i).removeClub(selectedClub);
+                break;
+            }
+        }
+        String insertQuery =
+                "UPDATE students SET clubs = ? WHERE Username = ?";
+        Connection connection = connectSRegister.connect();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+            preparedStatement.setString(2, username);
+            preparedStatement.setString(1, OOPCoursework.studentList.get(i).clubString());
+
+            // Execute the update
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            // Check the number of rows affected
+            if (rowsAffected > 0) {
+                System.out.println("Club updated successfully for student with username: " + username);
+            } else {
+                System.out.println("No rows were updated. Student with username " + username + " not found.");
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 

@@ -67,6 +67,29 @@ public class OOPCoursework extends Application {
                 clublist.add(Clubs);
             }
         }
+        selectQuery = "SELECT " + "clubs" + " FROM students";
+        int i = 0;
+        try (PreparedStatement preparedStatement = comm.prepareStatement(selectQuery)) {
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                // Loop through the result set
+                while (resultSet.next()) {
+                    String columnValue = resultSet.getString("clubs");
+                    if(columnValue == null) {
+                        i++;
+                        continue;
+                    }
+                    String[] clubs = columnValue.split(",");
+                    for (String club : clubs) {
+                        for(int z = 0 ; z < OOPCoursework.clublist.size() ; z++) {
+                            if (club.equals(OOPCoursework.clublist.get(z).getName())) {
+                                OOPCoursework.studentList.get(i).addClub(OOPCoursework.clublist.get(z));
+                            }
+                        }
+                    }
+                    i++;
+                    }
+                }
+            }
     }
 
     public static void main(String[] args) {

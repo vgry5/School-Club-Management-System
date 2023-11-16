@@ -92,10 +92,14 @@ public class Students {
         clubs.add(club);
     }
 
+    public void removeClub(int index){
+        clubs.remove(index);
+    }
+
     public String clubString() {
         StringBuilder result = new StringBuilder();
         for (club element : clubs) {
-            result.append(element.getName()).append(" ");
+            result.append(element.getName()).append(",");
         }
 
         // Remove the trailing space
