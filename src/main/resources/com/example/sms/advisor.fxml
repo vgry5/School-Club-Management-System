@@ -9,12 +9,12 @@
     <children>
         <AnchorPane layoutX="166.0" layoutY="74.0" prefHeight="541.0" prefWidth="412.0" style="-fx-background-color: white; -fx-border-radius: 5;">
             <children>
-                <Button fx:id="joinbutton" layoutX="98.0" layoutY="261.0" mnemonicParsing="false" onAction="#joinbutton" prefHeight="48.0" prefWidth="225.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="CREAT A CLUB" textFill="WHITE">
+                <Button fx:id="joinbutton" layoutX="94.0" layoutY="188.0" mnemonicParsing="false" onAction="#joinbutton" prefHeight="48.0" prefWidth="225.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="CREAT A CLUB" textFill="WHITE">
                     <font>
                         <Font name="Century Gothic Bold" size="16.0" />
                     </font>
                 </Button>
-                <Button fx:id="viewbutton" layoutX="101.0" layoutY="376.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="VIEW INCHARGE CLUB" textFill="WHITE">
+                <Button fx:id="viewbutton" layoutX="94.0" layoutY="271.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="VIEW INCHARGE CLUB" textFill="WHITE">
                     <font>
                         <Font name="Century Gothic Bold" size="16.0" />
                     </font>
@@ -24,14 +24,24 @@
                         <Font name="Century Gothic Bold" size="35.0" />
                     </font>
                 </Label>
-                <Button fx:id="advisorbutton" layoutX="101.0" layoutY="153.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="VIEW ADVISOR PROFILE" textFill="WHITE">
+                <Button fx:id="advisorbutton" layoutX="100.0" layoutY="108.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="VIEW ADVISOR PROFILE" textFill="WHITE">
                     <font>
                         <Font name="Century Gothic Bold" size="16.0" />
                     </font>
                 </Button>
+            <Button fx:id="schedulebutton1" layoutX="94.0" layoutY="346.0" mnemonicParsing="false" onAction="#ScheduleButton" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="SCHEDULE AN EVENT" textFill="WHITE">
+               <font>
+                  <Font name="Century Gothic Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="Eventbutton" layoutX="100.0" layoutY="427.0" mnemonicParsing="false" onAction="#EventButton" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="EVENT" textFill="WHITE">
+               <font>
+                  <Font name="Century Gothic Bold" size="16.0" />
+               </font>
+            </Button>
             </children>
         </AnchorPane>
-        <Button fx:id="backbutton" layoutX="628.0" layoutY="23.0" mnemonicParsing="false" onAction="#back" prefHeight="48.0" prefWidth="83.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="BACK" textFill="WHITE">
+        <Button fx:id="backbutton" layoutX="628.0" layoutY="23.0" mnemonicParsing="false" onAction="#back" prefHeight="48.0" prefWidth="83.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="back" textFill="WHITE">
             <font>
                 <Font name="Century Gothic Bold" size="16.0" />
             </font>

@@ -1,15 +1,11 @@
 package com.example.sms;
 public class event {
-    String Location,clubName , eventName , date, EType;
-
-
-    public  event (String eventName , String clubName , String date , String location , String EType){
+    String Description,clubName , eventName , date;
+    public  event (String eventName , String clubName , String date , String Description){
         this.clubName=clubName;
         this.eventName=eventName;
         this.date=date;
-        this.Location = location;
-        this.EType = EType;
-
+        this.Description = Description;
     }
     public String getClubName() {
         return clubName;
@@ -34,19 +30,13 @@ public class event {
     public String getDate() {
         return date;
     }
-    public String getLocation() {
-        return Location;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setLocation(String location) {
-        Location = location;
+    public void setDescription(String description) {
+        Description = description;
     }
 
-    public String getEType() {
-        return EType;
-    }
 
-    public void setEType(String EType) {
-        this.EType = EType;
-    }
 }
