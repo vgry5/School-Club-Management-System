@@ -43,5 +43,10 @@
             </Label>
             </children>
         </AnchorPane>
+      <Button fx:id="backbutton" layoutX="638.0" layoutY="33.0" mnemonicParsing="false" onAction="#back" prefHeight="48.0" prefWidth="83.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="BACK" textFill="WHITE">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

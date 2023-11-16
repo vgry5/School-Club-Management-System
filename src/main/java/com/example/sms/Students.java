@@ -1,5 +1,7 @@
 package com.example.sms;
 
+import java.util.ArrayList;
+
 public class Students {
     public String firstname;
     public String lastname;
@@ -8,6 +10,7 @@ public class Students {
     public String password;
     public String admissionNumber;
 
+    public ArrayList<String> clubs;
 
     public Students(String firstname, String lastname, int age, String admissionNumber, String username, String password) {
         this.firstname = firstname;
@@ -16,6 +19,16 @@ public class Students {
         this.admissionNumber = admissionNumber;
         this.username = username;
         this.password = password;
+    }
+
+    public Students(String firstname, String lastname, int age, String admissionNumber, String username, String password, ArrayList<String> clubs) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
+        this.admissionNumber = admissionNumber;
+        this.username = username;
+        this.password = password;
+        this.clubs = clubs;
     }
 
     public String getFirstname() {

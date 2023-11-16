@@ -30,7 +30,7 @@ public class clubCreationController {
     @FXML
     private Label idlabel;
 
-//  private  DatabaseConnection connectclubcreation;
+    private  DatabaseConnection connectclubcreation;
 
     public clubCreationController() {
     }
@@ -46,7 +46,7 @@ public class clubCreationController {
         club Clubs = new club(Clubname,Clubdescrip,advisorID,no_students);
         String insertQuery =
                 "INSERT INTO clubs(`Name` , `Advisor ID`, `Description`, `No_Students`)VALUES(?, ?, ?, ?)";
-        Connection connection = DatabaseConnection.connect();
+        Connection connection = connectclubcreation.connect();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
             preparedStatement.setString(1, Clubs.getName());

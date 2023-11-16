@@ -20,7 +20,7 @@ public class OOPCoursework extends Application {
     static ArrayList<club>  clublist = new ArrayList<>();
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-//        previousData();
+        previousData();
         FXMLLoader fxmlLoader = new FXMLLoader(OOPCoursework.class.getResource("mainmenu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 744, 689);
         stage.setTitle("CLUB HUB");
