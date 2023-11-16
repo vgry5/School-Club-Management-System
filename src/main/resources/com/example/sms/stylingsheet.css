@@ -3,41 +3,6 @@
     -fx-background-color: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
 }
 
-#registerbutton
-{-fx-background-color:#38ef7d}
-#existing
-{-fx-background-color:#38ef7d}
-#studentbutton
-{-fx-background-color:#38ef7d}
-#advisorbutton
-{-fx-background-color:#38ef7d}
-#adminbutton
-{-fx-background-color:#38ef7d}
-#enterbutton
-{-fx-background-color:#38ef7d}
-#signupbutton
-{-fx-background-color:#38ef7d}
-#clubbutton
-{-fx-background-color: #38ef7d;}
-#clubbutton1
-{-fx-background-color: #38ef7d;}
-#schedulebutton
-{-fx-background-color: #38ef7d;}
-#exclub
-{-fx-background-color:#38ef7d}
-#create
-{-fx-background-color: #38ef7d;}
-#studentprofilebutton
-{-fx-background-color: #38ef7d;}
-#joinbutton
-{-fx-background-color: #38ef7d;}
-#viewbutton
-{-fx-background-color: #38ef7d;}
-#withdrawbutton
-{-fx-background-color: #38ef7d;}
-#backbutton
-{-fx-background-color: #38ef7d;}
-#vieweventsbutton
-{-fx-background-color: #38ef7d;}
-#leavebutton
-{-fx-background-color: #38ef7d;}
+.button{
+-fx-background-color:#38ef7d}
+

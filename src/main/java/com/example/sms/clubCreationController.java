@@ -9,11 +9,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class clubCreationController {
@@ -29,6 +29,7 @@ public class clubCreationController {
     private Label descriplabel;
     @FXML
     private Label idlabel;
+    static ArrayList<club> clubinitiallist  = new ArrayList<>();
 
     private  DatabaseConnection connectclubcreation;
 
@@ -44,6 +45,7 @@ public class clubCreationController {
             return;
         }
         club Clubs = new club(Clubname,Clubdescrip,advisorID,no_students);
+        clubinitiallist.add(Clubs);
         String insertQuery =
                 "INSERT INTO clubs(`Name` , `Advisor ID`, `Description`, `No_Students`)VALUES(?, ?, ?, ?)";
         Connection connection = connectclubcreation.connect();
