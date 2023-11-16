@@ -33,36 +33,30 @@ public class scheduleController implements Initializable {
     @FXML
     private TextField EventName;
     @FXML
-    private ComboBox<String> Location;
-    @FXML
     private ComboBox<String> clubSelect;
     @FXML
     private DatePicker date;
     @FXML
-    private ComboBox<String> eventType;
+    private TextField description;
     private DatabaseConnection connectSchedule;
-    ArrayList<String> eventTypeList = new ArrayList<>();
     ArrayList<String> clublist = new ArrayList<>();
-    ArrayList<String> locationList = new ArrayList<>();
-
-    public void add(ActionEvent actionEvent) throws IOException, SQLException {
+    public void addEvent(ActionEvent actionEvent) throws IOException, SQLException {
         String eventName = EventName.getText();
         String club = clubSelect.getValue();
         String Date = date.getValue().format(DateTimeFormatter.ofPattern("yyy-MM-dd"));
-        String location = Location.getValue();
-        String EventType = eventType.getValue();
+        String Description = description.getText();
 
-        event Event1 = new event(eventName, club, Date, location, EventType);
+        event Event1 = new event(eventName, club, Date, Description);
         String insertQuery =
-                "INSERT INTO events (`Event Name`, `club`, `date`, `Location`, `Event type`) VALUES (?, ?, ?, ?, ?)";
+                "INSERT INTO events (`Event Name`, `club`, `date`, `Description`) VALUES (?, ?, ?, ?)";
 
         Connection connection = connectSchedule.connect();
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
             preparedStatement.setString(1, Event1.getEventName());
             preparedStatement.setString(2, Event1.getClubName());
             preparedStatement.setString(3, Event1.getDate());
-            preparedStatement.setString(4, Event1.getLocation());
-            preparedStatement.setString(5, Event1.getEType());
+            preparedStatement.setString(4, Event1.getDescription());
+
 
             int rowsInserted = preparedStatement.executeUpdate();
 
@@ -75,17 +69,14 @@ public class scheduleController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("calender.fxml")));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root, 744, 689);
+        stage.setScene(scene);
+        stage.show();
+
+
     }
-//    public void calender(ActionEvent actionEvent) throws IOException, SQLException {   // going to calendar view and adding the data to database
-//
-//
-//
-//        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("calender.fxml")));
-//        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-//        scene = new Scene(root, 744, 689);
-//        stage.setScene(scene);
-//        stage.show();
-//    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -94,28 +85,10 @@ public class scheduleController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        String Meeting = "Meeting";
-        String Event = "Event";
-        String Activity = "Activity";
-        String Physical = "Physical";
-        String Online = "Online";
-        locationList.add(Physical);
-        locationList.add(Online);
-        ObservableList<String> loc = Location.getItems();
-        loc.add(Physical);
-        loc.add(Online);
-        eventTypeList.add(Meeting);
-        eventTypeList.add(Event);
-        eventTypeList.add(Activity);
-        ObservableList<String> item = eventType.getItems();
-        item.add(eventTypeList.get(0));
-        item.add(eventTypeList.get(1));
-        item.add(eventTypeList.get(2));
         ObservableList<String> clubs1 = clubSelect.getItems();
         int index = 0;
         while (index < clublist.size()) {
             clubs1.add(clublist.get(index));
-
             index++;
         }
 
@@ -131,17 +104,12 @@ public class scheduleController implements Initializable {
             while (results.next()) {
                 club club = new club(results.getString(1), results.getString(2), results.getString(3), results.getInt(4));
                 clublist.add(club.getName());
-
-
-
             }
-
         }
-
     }
     @FXML
     void back(ActionEvent event)throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("studentmenu.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("advisor.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
