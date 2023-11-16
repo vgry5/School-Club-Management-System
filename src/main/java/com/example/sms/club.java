@@ -17,6 +17,12 @@ public class club {
         this.advisorID = advisorID;
         this.no_students = no_students;
     }
+
+    public club (String name,String description,String advisorID){
+        this.name = name;
+        this.description = description;
+        this.advisorID = advisorID;
+    }
     //Getters and Setters(Encapsulation)
 
     public  String getName() {
@@ -44,4 +50,13 @@ public class club {
     public void setNo_students(int no_students) {
         this.no_students = no_students;
     }
+
+    public void addStudent() {
+        no_students++;
+    }
+
+    public void removeStudent() {
+        no_students--;
+    }
+
 }

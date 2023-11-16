@@ -3,25 +3,29 @@ package com.example.sms;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class leaveclubcontroller {
-
-    @FXML
-    private TableColumn<?, ?> advisorcol;
+public class leaveclubcontroller implements Initializable {
 
     @FXML
-    private TableView<?> clubtable;
+    private TableColumn<club, String> advisorcol;
+
+    @FXML
+    private TableView<club> clubtable;
 
     @FXML
     private AnchorPane container;
@@ -30,14 +34,39 @@ public class leaveclubcontroller {
     private Button leavebutton;
 
     @FXML
-    private TableColumn<?, ?> namecol;
+    private TableColumn<club, String> namecol;
 
     @FXML
-    private TableColumn<?, ?> studentscol;
+    private TableColumn<club, Integer> studentscol;
 
     private Stage stage; //create variables for scene, stage and root
     private Scene scene;
     private Parent root;
+
+    @FXML
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        //Set values of column attributes to the drivers class
+        namecol.setCellValueFactory(new PropertyValueFactory<club, String>("name"));
+        advisorcol.setCellValueFactory(new PropertyValueFactory<club, String>("advisorID"));
+        studentscol.setCellValueFactory(new PropertyValueFactory<club, Integer>("no_students"));
+        //Add drivers to the table from drivers list
+        String username = studentlogincontroller.studentLoginDetails.get(0);
+        String password = studentlogincontroller.studentLoginDetails.get(1);
+        for (int i = 0; i < OOPCoursework.studentList.size(); i++) {
+            if (OOPCoursework.studentList.get(i).username.equals(username) && OOPCoursework.studentList.get(i).password.equals(password)) {
+                for (int z = 0; z < OOPCoursework.studentList.get(i).clubs.size(); z++) {
+                    clubtable.getItems().add(OOPCoursework.studentList.get(i).clubs.get(z));
+                }
+            }
+        }
+    }
+    @FXML
+    void leave(ActionEvent event)throws IOException {
+        int selectedDriver = clubtable.getSelectionModel().getSelectedIndex();
+        clubtable.getItems().remove(selectedDriver); //selectedDriver saves the index of the driver from the table and used to delete the driver
+    }
+
 
     @FXML
     void back(ActionEvent event)throws IOException {
