@@ -11,7 +11,7 @@
     <children>
         <AnchorPane layoutX="139.0" layoutY="80.0" prefHeight="524.0" prefWidth="483.0" style="-fx-background-color: white; -fx-border-radius: 5;">
             <children>
-                <Button fx:id="leavebutton" layoutX="180.0" layoutY="444.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="123.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="LEAVE" textFill="WHITE">
+                <Button fx:id="leavebutton" layoutX="180.0" layoutY="444.0" mnemonicParsing="false" onAction="#leave" prefHeight="48.0" prefWidth="123.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="LEAVE" textFill="WHITE">
                     <font>
                         <Font name="Century Gothic Bold" size="16.0" />
                     </font>
