@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -38,7 +39,16 @@ public class scheduleController implements Initializable {
     private DatePicker date;
     @FXML
     private TextField description;
+    @FXML
+    private Label Descriptionmessage;
+    @FXML
+    private Label clubmessage;
+    @FXML
+    private Label datemessage;
+    @FXML
+    private Label eventmessage;
     private DatabaseConnection connectSchedule;
+
     ArrayList<String> clublist = new ArrayList<>();
     public void addEvent(ActionEvent actionEvent) throws IOException, SQLException {
         String eventName = EventName.getText();
@@ -91,11 +101,7 @@ public class scheduleController implements Initializable {
             clubs1.add(clublist.get(index));
             index++;
         }
-
-
     }
-
-
     private void previuosClubs() throws SQLException {
         String selectQuery = "SELECT * FROM `clubs`;";
         Connection comm = connectSchedule.connect();
@@ -115,7 +121,11 @@ public class scheduleController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
+//    public boolean eventValidation(String eventName , String club , String date , String description){
+//        if (EventName.getText().isEmpty()){
+//            return false;
+//        }
+//    }
 }
 
 
