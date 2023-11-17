@@ -75,8 +75,8 @@ public class leaveclubcontroller implements Initializable {
         int i;
         for (i = 0; i < OOPCoursework.studentList.size(); i++) {
             if (OOPCoursework.studentList.get(i).username.equals(username) && OOPCoursework.studentList.get(i).password.equals(password)) {
-                System.out.println(OOPCoursework.studentList.get(i).clubString());
-                OOPCoursework.studentList.get(i).removeClub(selectedClub);
+                club club = OOPCoursework.studentList.get(i).removeClub(selectedClub);
+                club.removeStudent();
                 break;
             }
         }

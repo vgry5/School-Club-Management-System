@@ -92,8 +92,8 @@ public class Students {
         clubs.add(club);
     }
 
-    public void removeClub(int index){
-        clubs.remove(index);
+    public club removeClub(int index){
+        return clubs.remove(index);
     }
 
     public String clubString() {

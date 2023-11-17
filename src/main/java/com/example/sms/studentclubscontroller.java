@@ -46,6 +46,7 @@ public class studentclubscontroller implements Initializable {
     @FXML
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         //Set values of column attributes to the drivers class
         namecol.setCellValueFactory(new PropertyValueFactory<club, String>("name"));
         advisorcol.setCellValueFactory(new PropertyValueFactory<club, String>("advisorID"));
