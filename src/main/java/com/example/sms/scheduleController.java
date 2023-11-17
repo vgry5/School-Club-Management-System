@@ -121,11 +121,11 @@ public class scheduleController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    public boolean eventValidation(String eventName , String club , String date , String description){
-        if (EventName.getText().isEmpty()){
-            return false;
-        }
-    }
+//    public boolean eventValidation(String eventName , String club , String date , String description){
+//        if (EventName.getText().isEmpty()){
+//            return false;
+//        }
+//    }
 }
 
 
