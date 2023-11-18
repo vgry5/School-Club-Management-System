@@ -1,5 +1,7 @@
 package com.example.sms;
 
+import java.util.ArrayList;
+
 public class club {
     //Encapsulation
     private  String name;
@@ -7,6 +9,7 @@ public class club {
     private String advisorID;
 
     private int no_students;
+    public ArrayList<Students> students = new ArrayList<>();
 
 
 
@@ -58,5 +61,20 @@ public class club {
     public void removeStudent() {
         no_students--;
     }
-
+    public ArrayList<Students> getStudents(){
+        return students;
+    }
+    public void setStudents(ArrayList<Students> students){this.students = students;}
+    public Students removeStudent(int index){return students.remove(index);}
+    public String StudentString(){
+        StringBuilder result = new StringBuilder();
+        for (Students element : students){
+            result.append(element.getUsername()).append(",");
+        }
+        if (result.length()>0){
+            result.setLength(result.length() -1);
+        }
+        String string = String.valueOf(result);
+        return string;
+    }
 }

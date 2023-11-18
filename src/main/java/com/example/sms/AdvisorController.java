@@ -32,13 +32,15 @@ public class AdvisorController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+    public void viewbutton(ActionEvent actionEvent)throws IOException{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("inchargeclub.fxml")));
+        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
-    }
-    public void advisorbutton(ActionEvent actionEvent){
-    }
-    public void viewbutton (ActionEvent actionEvent){
-
-    }
     public void ScheduleButton (ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("schedule .fxml")));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -55,10 +57,9 @@ public class AdvisorController {
         stage.show();
 
     }
-
-
     @FXML
     void back(ActionEvent event)throws IOException {
+        stafflogincontroller.username1 = " ";
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainmenu.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);

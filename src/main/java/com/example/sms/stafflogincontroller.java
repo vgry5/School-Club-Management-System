@@ -21,6 +21,7 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 public class stafflogincontroller {
+    static String username1;
     @FXML
     private Button enterbutton;
 
@@ -44,13 +45,14 @@ public class stafflogincontroller {
 public void advisorlogin(ActionEvent event) throws IOException, SQLException{
     String username = usernameinput.getText();
     String password = passwordinput.getText();
+    username1 = username;
     String selectQuery = "SELECT * FROM `teachers`;";
     Connection comm= connect.connect();
     try (PreparedStatement statement = comm.prepareStatement(selectQuery)) {
         ResultSet results = statement.executeQuery();
         while (results.next()) {
             if (username.equals(results.getString(4)) && password.equals(results.getString(5))) {
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("clubcreation.fxml")));
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("advisor.fxml")));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);
@@ -75,11 +77,5 @@ public void advisorlogin(ActionEvent event) throws IOException, SQLException{
         stage.setScene(scene);
         stage.show();
     }
-    public void enter (ActionEvent event) throws IOException{
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("advisor.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 }
+

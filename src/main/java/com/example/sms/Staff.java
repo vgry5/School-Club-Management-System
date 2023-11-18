@@ -7,6 +7,16 @@ public class Staff {
     public String username;
     public String password;
 
+    public String getClub() {
+        return Club;
+    }
+
+    public void setClub(String club) {
+        Club = club;
+    }
+
+    public String Club;
+
     public Staff(String firstname, String lastname, String staffid, String username, String password) {
         this.firstname = firstname;
         this.lastname = lastname;

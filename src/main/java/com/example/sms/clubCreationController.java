@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class clubCreationController {
+
     @FXML
     private TextField name;
     @FXML
@@ -29,9 +30,12 @@ public class clubCreationController {
     private Label descriplabel;
     @FXML
     private Label idlabel;
-    static ArrayList<club> clubinitiallist  = new ArrayList<>();
+    static ArrayList<String> ClubcreationDetails = new ArrayList<>();
 
     private  DatabaseConnection connectclubcreation;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     public clubCreationController() {
     }
@@ -45,9 +49,10 @@ public class clubCreationController {
             return;
         }
         club Clubs = new club(Clubname,Clubdescrip,advisorID,no_students);
-        clubinitiallist.add(Clubs);
+        ClubcreationDetails.add(Clubname);
+        ClubcreationDetails.add(Clubdescrip);
         String insertQuery =
-                "INSERT INTO clubs(`Name` , `Advisor ID`, `Description`, `No_Students`)VALUES(?, ?, ?, ?)";
+                "INSERT INTO clubs(`Name` , `AdvisorID`, `Description`, `No_Students`)VALUES(?, ?, ?, ?)";
         Connection connection = connectclubcreation.connect();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
@@ -66,6 +71,7 @@ public class clubCreationController {
             System.out.println();
             }
 
+
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("clubcreation.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -76,21 +82,30 @@ public class clubCreationController {
         boolean ResultClubName = Clubname.matches("[a-zA-Z]+$");//Checks if the club name contains only letters and stores the result of the checking in a boolean
         boolean ResultDescription = Clubdescrip.matches("[a-zA-Z ]+");//Checks if the club description contains only letters and stores the result of the checking in a boolean
         boolean ResultAdvisorID = advisorID.matches("[a-zA-Z0-9]+$");//Checks if the advisor ID  contains only letters and numbers and stores the result of the checking in a boolean
-        if (!ResultClubName){
+        if (ResultClubName==false){
             namelabel.setText("Input only letters");
             return false;
         }
         namelabel.setText(" ");
-        if (!ResultDescription){
+        if (ResultDescription==false){
             descriplabel.setText("Input only letters");
             return false;
         }
         descriplabel.setText(" ");
-        if (!ResultAdvisorID){
+        if (ResultAdvisorID==false){
             idlabel.setText("Input only letters and numbers");
             return false;
         }
         idlabel.setText(" ");
         return true;
     }
+    @FXML
+    void back(ActionEvent event)throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("advisor.fxml")));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }
+

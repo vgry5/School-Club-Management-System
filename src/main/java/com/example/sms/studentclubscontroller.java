@@ -47,11 +47,11 @@ public class studentclubscontroller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        //Set values of column attributes to the drivers class
+        //Set values of column attributes to the student class
         namecol.setCellValueFactory(new PropertyValueFactory<club, String>("name"));
         advisorcol.setCellValueFactory(new PropertyValueFactory<club, String>("advisorID"));
         studentscol.setCellValueFactory(new PropertyValueFactory<club, Integer>("no_students"));
-        //Add drivers to the table from drivers list
+        //Add clubs to the table from student
         String username = studentlogincontroller.studentLoginDetails.get(0);
         String password = studentlogincontroller.studentLoginDetails.get(1);
         for (int i = 0; i < OOPCoursework.studentList.size(); i++) {
