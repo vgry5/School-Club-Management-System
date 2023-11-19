@@ -49,7 +49,7 @@ public class studentmenucontroller {
     }
     @FXML
     void Calender(ActionEvent event)throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("calender.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StudentCalender.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

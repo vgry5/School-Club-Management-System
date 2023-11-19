@@ -21,6 +21,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -53,9 +54,18 @@ public class scheduleController implements Initializable {
     public void addEvent(ActionEvent actionEvent) throws IOException, SQLException {
         String eventName = EventName.getText();
         String club = clubSelect.getValue();
-        String Date = date.getValue().format(DateTimeFormatter.ofPattern("yyy-MM-dd"));
+        LocalDate DateError = date.getValue();
+        String Date = null;
+        if (DateError != null) {
+            Date = DateError.format(DateTimeFormatter.ofPattern("yyy-MM-dd"));
+        } else
+            datemessage.setText("Please select a Date ");
+        datemessage.setText(" ");
         String Description = description.getText();
 
+        if (!eventValidation(eventName, club, Date, Description)) {
+            return;
+        }
         event Event1 = new event(eventName, club, Date, Description);
         String insertQuery =
                 "INSERT INTO events (`Event Name`, `club`, `date`, `Description`) VALUES (?, ?, ?, ?)";
@@ -121,11 +131,29 @@ public class scheduleController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-//    public boolean eventValidation(String eventName , String club , String date , String description){
-//        if (EventName.getText().isEmpty()){
-//            return false;
-//        }
-//    }
+    public boolean eventValidation(String eventName , String club , String date , String description){
+        if (eventName.isEmpty()){
+            eventmessage.setText("Please enter a event name ");
+            return false;
+        }
+        eventmessage.setText(" ");
+        if (club == null){
+            clubmessage.setText("Select the club ");
+            return false;
+        }
+        clubmessage.setText(" ");
+        if ( date == null){
+            datemessage.setText("Please select a Date ");
+            return false;
+        }
+        datemessage.setText(" ");
+        if (description.isEmpty()){
+            Descriptionmessage.setText("Please enter a event name ");
+            return false;
+        }
+        Descriptionmessage.setText(" ");
+        return true;
+    }
 }
 
 
