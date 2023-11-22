@@ -43,7 +43,7 @@
                   <TableColumn fx:id="namecol" prefWidth="258.40008544921875" text="Name " />
               </columns>
             </TableView>
-            <Button fx:id="create11" layoutX="259.0" layoutY="560.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="198.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="Remove a Student" textFill="WHITE">
+            <Button fx:id="create11" layoutX="259.0" layoutY="560.0" mnemonicParsing="false" onAction="#remove" prefHeight="35.0" prefWidth="198.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="Remove a Student" textFill="WHITE">
                <font>
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>

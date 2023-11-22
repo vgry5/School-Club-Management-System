@@ -62,8 +62,8 @@ public class OOPCoursework extends Application {
         try (PreparedStatement statement = comm.prepareStatement(selectQuery)){
             ResultSet results = statement.executeQuery();
             while (results.next()){
-                club Clubs = new club(results.getString(1),results.getString(2),
-                        results.getString(3),results.getInt(4));
+                club Clubs = new club(results.getString(1),results.getString(3),
+                        results.getString(2),results.getInt(4));
                 clublist.add(Clubs);
             }
         }
