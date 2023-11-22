@@ -124,13 +124,16 @@ public class scheduleController implements Initializable {
         }
     }
     private void previuosClubs() throws SQLException {
+        String userName = stafflogincontroller.username1;
         String selectQuery = "SELECT * FROM `clubs`;";
         Connection comm = connectSchedule.connect();
         try (PreparedStatement statement = comm.prepareStatement(selectQuery)) {
             ResultSet results = statement.executeQuery();
             while (results.next()) {
-                club club = new club(results.getString(1), results.getString(2), results.getString(3), results.getInt(4));
-                clublist.add(club.getName());
+                if (userName.equals(results.getString(2)) ) {
+                    club club = new club(results.getString(1), results.getString(2), results.getString(3), results.getInt(4));
+                    clublist.add(club.getName());
+                }
             }
         }
     }
