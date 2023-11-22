@@ -9,7 +9,7 @@ public class club {
     private String advisorID;
 
     private int no_students;
-    public ArrayList<Students> students = new ArrayList<>();
+  public ArrayList<Students> students = new ArrayList<>();
 
 
 
@@ -25,6 +25,13 @@ public class club {
         this.name = name;
         this.description = description;
         this.advisorID = advisorID;
+    }
+    public club (String name,String description,String advisorID,int no_students,ArrayList<Students> students){
+        this.name = name;
+        this.description = description;
+        this.advisorID = advisorID;
+        this.no_students = no_students;
+        this.students = students;
     }
     //Getters and Setters(Encapsulation)
 
