@@ -1,5 +1,6 @@
 package com.example.sms;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,6 +38,8 @@ public class scheduleController implements Initializable {
     @FXML
     private ComboBox<String> clubSelect;
     @FXML
+    private ComboBox<String> EventType;
+    @FXML
     private DatePicker date;
     @FXML
     private TextField description;
@@ -48,12 +51,16 @@ public class scheduleController implements Initializable {
     private Label datemessage;
     @FXML
     private Label eventmessage;
+    @FXML
+    private Label EventTypemessage;
     private DatabaseConnection connectSchedule;
 
     ArrayList<String> clublist = new ArrayList<>();
+
     public void addEvent(ActionEvent actionEvent) throws IOException, SQLException {
         String eventName = EventName.getText();
         String club = clubSelect.getValue();
+        String eventType = EventType.getValue();
         LocalDate DateError = date.getValue();
         String Date = null;
         if (DateError != null) {
@@ -63,19 +70,21 @@ public class scheduleController implements Initializable {
         datemessage.setText(" ");
         String Description = description.getText();
 
-        if (!eventValidation(eventName, club, Date, Description)) {
+        if (!eventValidation(eventName, club,eventType, Date, Description)) {
             return;
         }
-        event Event1 = new event(eventName, club, Date, Description);
+        event Event1 = new event(eventName, club,eventType, Date, Description);
         String insertQuery =
-                "INSERT INTO events (`Event Name`, `club`, `date`, `Description`) VALUES (?, ?, ?, ?)";
+                "INSERT INTO events (`Event Name`, `club`,`Event Type`, `date`, `Description`) VALUES (?, ?, ?,?, ?)";
 
         Connection connection = connectSchedule.connect();
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
             preparedStatement.setString(1, Event1.getEventName());
             preparedStatement.setString(2, Event1.getClubName());
-            preparedStatement.setString(3, Event1.getDate());
-            preparedStatement.setString(4, Event1.getDescription());
+            preparedStatement.setString(3,Event1.getEventType());
+            preparedStatement.setString(4, Event1.getDate());
+            preparedStatement.setString(5, Event1.getDescription());
+
 
 
             int rowsInserted = preparedStatement.executeUpdate();
@@ -105,6 +114,8 @@ public class scheduleController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        ObservableList<String> eventType = FXCollections.observableArrayList("Activity","Event","Meeting");
+        EventType.setItems(eventType);
         ObservableList<String> clubs1 = clubSelect.getItems();
         int index = 0;
         while (index < clublist.size()) {
@@ -131,7 +142,7 @@ public class scheduleController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    public boolean eventValidation(String eventName , String club , String date , String description){
+    public boolean eventValidation(String eventName , String club, String eventType, String date , String description){
         if (eventName.isEmpty()){
             eventmessage.setText("Please enter a event name ");
             return false;
@@ -141,6 +152,11 @@ public class scheduleController implements Initializable {
             clubmessage.setText("Select the club ");
             return false;
         }
+        if (eventType  == null){
+            EventTypemessage.setText("Select the event type");
+            return false;
+        }
+        EventTypemessage.setText(" ");
         clubmessage.setText(" ");
         if ( date == null){
             datemessage.setText("Please select a Date ");

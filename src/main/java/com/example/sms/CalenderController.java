@@ -40,6 +40,8 @@ public class CalenderController implements Initializable {
     @FXML
     public TableColumn<event, String> Date;
     @FXML
+    public TableColumn<event, String> EventType;
+    @FXML
     public TableColumn<event, String> Description;
 
     @FXML
@@ -52,6 +54,7 @@ public class CalenderController implements Initializable {
         ObservableList<event> EventObserver = FXCollections.observableArrayList(eventList);
         ClubName.setCellValueFactory(new PropertyValueFactory<>("ClubName"));
         EventName.setCellValueFactory(new PropertyValueFactory<>("EventName"));
+        EventType.setCellValueFactory(new PropertyValueFactory<>("EventType"));
         Date.setCellValueFactory(new PropertyValueFactory<>("Date"));
         Description.setCellValueFactory(new PropertyValueFactory<>("Description"));
         tableView.setItems(EventObserver);
@@ -64,7 +67,7 @@ public class CalenderController implements Initializable {
         try (PreparedStatement statement = comm.prepareStatement(selectQuery)) {
             ResultSet results = statement.executeQuery();
             while (results.next()) {
-                event PastEvent = new event(results.getString(1), results.getString(2), results.getString(3),results.getString(4));
+                event PastEvent = new event(results.getString(1), results.getString(2), results.getString(3),results.getString(4),results.getString(5));
                 eventList.add(PastEvent);
             }
         }

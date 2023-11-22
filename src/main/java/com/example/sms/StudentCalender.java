@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class StudentCalender {
+public class StudentCalender implements Initializable {
 
         static ArrayList<event> eventList = new ArrayList<>();
         private DatabaseConnection connect;
@@ -41,10 +41,12 @@ public class StudentCalender {
         @FXML
         public TableColumn<event, String> Date;
         @FXML
+        public TableColumn<event, String> EventType;
+        @FXML
         public TableColumn<event, String> Description;
 
         @FXML
-        public void initialize(URL url, ResourceBundle resourceBundle) {
+        public void initialize (URL url, ResourceBundle resourceBundle) {
             try {
                 data();
             } catch (SQLException e) {
@@ -65,7 +67,7 @@ public class StudentCalender {
             try (PreparedStatement statement = comm.prepareStatement(selectQuery)) {
                 ResultSet results = statement.executeQuery();
                 while (results.next()) {
-                    event PastEvent = new event(results.getString(1), results.getString(2), results.getString(3),results.getString(4));
+                    event PastEvent = new event(results.getString(1), results.getString(2), results.getString(3),results.getString(4),results.getString(5));
                     eventList.add(PastEvent);
                 }
             }

@@ -9,19 +9,20 @@
 
 <AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sms.CalenderController">
     <children>
-      <Label alignment="CENTER" layoutX="66.0" layoutY="113.0" prefHeight="80.0" prefWidth="612.0" style="-fx-background-color: linear-gradient(to right, #be93c5, #7bc6cc);" text="EVENTS" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="-6.0" layoutY="113.0" prefHeight="80.0" prefWidth="752.0" style="-fx-background-color: linear-gradient(to right, #be93c5, #7bc6cc);" text="EVENTS" textFill="WHITE">
          <font>
             <Font name="Century Gothic Bold" size="35.0" />
          </font>
       </Label>
-        <AnchorPane layoutX="67.0" layoutY="185.0" prefHeight="351.0" prefWidth="612.0" style="-fx-background-color: white; -fx-border-radius: 5;">
+        <AnchorPane layoutX="1.0" layoutY="180.0" prefHeight="356.0" prefWidth="744.0" style="-fx-background-color: white; -fx-border-radius: 5;">
          <children>
-            <TableView fx:id="tableView" prefHeight="350.0" prefWidth="612.0">
+            <TableView fx:id="tableView" prefHeight="350.0" prefWidth="744.0">
               <columns>
-                <TableColumn fx:id="ClubName" prefWidth="148.0" text="CLUB Name" />
-                <TableColumn fx:id="EventName" minWidth="0.0" prefWidth="155.0" text="EVENT" />
-                  <TableColumn fx:id="Date" prefWidth="98.0" text="DATE" />
-                  <TableColumn fx:id="Description" prefWidth="209.0" text="Description" />
+                <TableColumn fx:id="ClubName" prefWidth="131.0" text="CLUB Name" />
+                <TableColumn fx:id="EventName" minWidth="0.0" prefWidth="172.0" text="EVENT NAME" />
+                  <TableColumn fx:id="EventType" minWidth="4.0" prefWidth="115.0" text="Event Type" />
+                  <TableColumn fx:id="Date" prefWidth="123.0" text="DATE" />
+                  <TableColumn fx:id="Description" prefWidth="230.0" text="Description" />
               </columns>
             </TableView>
          </children></AnchorPane>
