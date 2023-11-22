@@ -78,11 +78,22 @@ public class InchargeclubController  implements Initializable {
                 break;
             }
         }
+        System.out.println(advisorClub);
         String insertQuery =
                 "UPDATE students SET clubs = ? WHERE Username = ?";
         Connection connection = connectRegister.connect();
 
-       // try(PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)){
-          /// preparedStatement.setString(OOPCoursework.studentList.get(i).);
+        try(PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)){
+            preparedStatement.setString(2,OOPCoursework.studentList.get(i).getUsername());
+            preparedStatement.setString(1,OOPCoursework.studentList.get(i).clubString());
+            int affectedRow = preparedStatement.executeUpdate();
+            if (affectedRow >0){
+                System.out.println("Updated");
+            }else{
+                System.out.println("Not updated");
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();}
         }
      }
