@@ -91,7 +91,6 @@ public class OOPCoursework extends Application {
                 }
             }
     }
-
     public static void main(String[] args) {
         launch();
     }
