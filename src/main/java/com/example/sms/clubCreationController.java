@@ -79,9 +79,17 @@ public class clubCreationController {
         stage.show();
     }
     public boolean clubcreation_validation(String Clubname, String Clubdescrip, String advisorID){
-        boolean ResultClubName = Clubname.matches("[a-zA-Z]+$");//Checks if the club name contains only letters and stores the result of the checking in a boolean
+        boolean ResultClubName = Clubname.matches("[a-zA-Z ]+$");//Checks if the club name contains only letters and stores the result of the checking in a boolean
         boolean ResultDescription = Clubdescrip.matches("[a-zA-Z ]+");//Checks if the club description contains only letters and stores the result of the checking in a boolean
         boolean ResultAdvisorID = advisorID.matches("[a-zA-Z0-9]+$");//Checks if the advisor ID  contains only letters and numbers and stores the result of the checking in a boolean
+
+        for(int  i=0;i<OOPCoursework.clublist.size();i++){//Checks if the club was already made in the system
+            String currentClubName = OOPCoursework.clublist.get(i).getName().trim();
+            if(currentClubName.equalsIgnoreCase(Clubname.trim())){
+                namelabel.setText("Club already present!");
+                break;//not working
+            }
+        }
         if (ResultClubName==false){
             namelabel.setText("Input only letters");
             return false;
