@@ -55,6 +55,7 @@ public class StudentCalender implements Initializable {
             ObservableList<event> EventObserver = FXCollections.observableArrayList(eventList);
             ClubName.setCellValueFactory(new PropertyValueFactory<>("ClubName"));
             EventName.setCellValueFactory(new PropertyValueFactory<>("EventName"));
+            EventType.setCellValueFactory(new PropertyValueFactory<>("EventType"));
             Date.setCellValueFactory(new PropertyValueFactory<>("Date"));
             Description.setCellValueFactory(new PropertyValueFactory<>("Description"));
             tableView.setItems(EventObserver);

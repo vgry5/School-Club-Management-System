@@ -7,11 +7,7 @@ public class club {
     private  String name;
     private String description;
     private String advisorID;
-
     private int no_students;
-    public ArrayList<Students> students = new ArrayList<>();
-
-
 
     //Constructor
     public club (String name,String description,String advisorID,int no_students){
@@ -26,6 +22,7 @@ public class club {
         this.description = description;
         this.advisorID = advisorID;
     }
+
     //Getters and Setters(Encapsulation)
 
     public  String getName() {
@@ -61,20 +58,5 @@ public class club {
     public void removeStudent() {
         no_students--;
     }
-    public ArrayList<Students> getStudents(){
-        return students;
+
     }
-    public void setStudents(ArrayList<Students> students){this.students = students;}
-    public Students removeStudent(int index){return students.remove(index);}
-    public String StudentString(){
-        StringBuilder result = new StringBuilder();
-        for (Students element : students){
-            result.append(element.getUsername()).append(",");
-        }
-        if (result.length()>0){
-            result.setLength(result.length() -1);
-        }
-        String string = String.valueOf(result);
-        return string;
-    }
-}
