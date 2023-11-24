@@ -9,12 +9,12 @@
     <children>
         <AnchorPane layoutX="166.0" layoutY="74.0" prefHeight="541.0" prefWidth="412.0" style="-fx-background-color: white; -fx-border-radius: 5;">
             <children>
-                <Button fx:id="joinbutton" layoutX="91.0" layoutY="166.0" mnemonicParsing="false" onAction="#joinbutton" prefHeight="48.0" prefWidth="225.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="CREAT A CLUB" textFill="WHITE">
+                <Button fx:id="joinbutton" layoutX="86.0" layoutY="169.0" mnemonicParsing="false" onAction="#joinbutton" prefHeight="48.0" prefWidth="225.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="CREAT A CLUB" textFill="WHITE">
                     <font>
                         <Font name="Century Gothic Bold" size="16.0" />
                     </font>
                 </Button>
-                <Button fx:id="viewbutton" layoutX="94.0" layoutY="247.0" mnemonicParsing="false" onAction="#viewbutton" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="VIEW INCHARGE CLUB" textFill="WHITE">
+                <Button fx:id="viewbutton" layoutX="86.0" layoutY="247.0" mnemonicParsing="false" onAction="#viewbutton" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="VIEW INCHARGE CLUB" textFill="WHITE">
                     <font>
                         <Font name="Century Gothic Bold" size="16.0" />
                     </font>
@@ -24,22 +24,22 @@
                         <Font name="Century Gothic Bold" size="35.0" />
                     </font>
                 </Label>
-                <Button fx:id="advisorbutton" layoutX="97.0" layoutY="87.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="VIEW ADVISOR PROFILE" textFill="WHITE">
+                <Button fx:id="advisorbutton" layoutX="89.0" layoutY="94.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="VIEW ADVISOR PROFILE" textFill="WHITE">
                     <font>
                         <Font name="Century Gothic Bold" size="16.0" />
                     </font>
                 </Button>
-            <Button fx:id="schedulebutton1" layoutX="94.0" layoutY="322.0" mnemonicParsing="false" onAction="#ScheduleButton" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="SCHEDULE AN EVENT" textFill="WHITE">
+            <Button fx:id="schedulebutton1" layoutX="86.0" layoutY="323.0" mnemonicParsing="false" onAction="#ScheduleButton" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="SCHEDULE AN EVENT" textFill="WHITE">
                <font>
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="Eventbutton" layoutX="97.0" layoutY="404.0" mnemonicParsing="false" onAction="#EventButton" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="EVENT" textFill="WHITE">
+            <Button fx:id="Eventbutton" layoutX="89.0" layoutY="394.0" mnemonicParsing="false" onAction="#EventButton" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="EVENT" textFill="WHITE">
                <font>
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="attendancemarkbtn" layoutX="97.0" layoutY="467.0" mnemonicParsing="false" onAction="#maarkattendance" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="MARK ATTENDANCE" textFill="WHITE">
+            <Button fx:id="report" layoutX="89.0" layoutY="466.0" mnemonicParsing="false" onAction="#report" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="REPORT" textFill="WHITE">
                <font>
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>

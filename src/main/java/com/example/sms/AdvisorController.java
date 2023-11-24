@@ -22,9 +22,6 @@ public class AdvisorController {
     private Button schedulebutton1;
     @FXML
     private Button Eventbutton;
-
-    @FXML
-    private Button attendancemarkbtn;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -69,13 +66,13 @@ public class AdvisorController {
         stage.setScene(scene);
         stage.show();
     }
-    @FXML
-    void maarkattendance(ActionEvent event)throws IOException {
-        stafflogincontroller.username1 = " ";
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ClubAttendance.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+    public void report (ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ReportGeneration.fxml")));
+        Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
     }
+
 }
