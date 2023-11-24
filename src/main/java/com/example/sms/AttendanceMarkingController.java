@@ -21,25 +21,20 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class AttendanceMarkingController implements Initializable {
 
     ArrayList<String> eventslist = new ArrayList<>();
 
-    @FXML
-    private AnchorPane ProjectTable;
 
     @FXML
     private Button absentbtn;
 
     @FXML
-    private TableColumn<Students, String> attendance;
+    private TableColumn<String, String> attendance;
 
-    @FXML
-    private AnchorPane container;
+
 
     @FXML
     private Button presentbtn;
@@ -51,7 +46,7 @@ public class AttendanceMarkingController implements Initializable {
     private TableView<String> stdNameTbl;
 
     @FXML
-    private TableColumn<String, String> studentname;
+    private TableColumn<Students, String> studentname;
 
     @FXML
     private Button backbutton;
@@ -96,9 +91,9 @@ public class AttendanceMarkingController implements Initializable {
             throw new RuntimeException(e);
         }
         ObservableList<String> ViewStudents = FXCollections.observableArrayList(displayStudent);
-        studentname.setCellValueFactory(new PropertyValueFactory<>("Student Name"));
-        attendance.setCellValueFactory(new PropertyValueFactory<>("Attendance"));
-        stdNameTbl.setItems(ViewStudents);
+//        studentname.setCellValueFactory(new PropertyValueFactory<Students,String>("firstname"));
+        //attendance.setCellValueFactory(new PropertyValueFactory<String,String>("attendance"));
+//        stdNameTbl.setItems(ViewStudents);
     }
     @FXML
     void back(ActionEvent event)throws IOException {
@@ -111,12 +106,23 @@ public class AttendanceMarkingController implements Initializable {
     public void clubMembers() throws SQLException {
         String selectQuery = "SELECT * FROM `students`;";
         Connection comm = connectEvent.connect();
+        int i = 0;
         try (PreparedStatement statement = comm.prepareStatement(selectQuery)) {
-            ResultSet results = statement.executeQuery();
-            if (clubName.equals(results.getString(6))){
-                displayStudent.add(results.getString(1));
+            try (ResultSet resultSet = statement.executeQuery()) {
+                // Loop through the result set
+                while (resultSet.next()) {
+                    String columnValue = resultSet.getString("clubs");
+                    if (columnValue == null) {
+                        i++;
+                        continue;
+                    }
+                    String[] clubs = columnValue.split(",");
+                    List<String> arrayList = new ArrayList<>(Arrays.asList(clubs));
+                    if (arrayList.contains(ClubAttendanceController.club1)) {
+                        displayStudent.add(resultSet.getString(1));
+                    }
+                }
             }
-
         }
     }
-}
+    }
