@@ -53,6 +53,7 @@ public class ClubAttendanceController implements Initializable {
         studentscol.setCellValueFactory(new PropertyValueFactory<club, Integer>("no_students"));
         for (int i = 0; i < OOPCoursework.clublist.size(); i++) {
             clubtable.getItems().add(OOPCoursework.clublist.get(i));
+
         }
     }
     @FXML

@@ -32,7 +32,7 @@ public class AttendanceMarkingController implements Initializable {
     private Button absentbtn;
 
     @FXML
-    private TableColumn<String, String> attendance;
+    private TableColumn<Attendance, String> attendance;
 
 
 
@@ -43,10 +43,10 @@ public class AttendanceMarkingController implements Initializable {
     private ComboBox<String> selecteventdropdown;
 
     @FXML
-    private TableView<String> stdNameTbl;
+    private TableView<Attendance> stdNameTbl;
 
     @FXML
-    private TableColumn<Students, String> studentname;
+    private TableColumn<Attendance, String> studentname;
 
     @FXML
     private Button backbutton;
@@ -58,7 +58,9 @@ public class AttendanceMarkingController implements Initializable {
 
     String clubName = ClubAttendanceController.club1; //getting the selected club for the table in club attendance.
 
-    ArrayList<String> displayStudent = new ArrayList<>();
+    ObservableList<Attendance> displayStudent = FXCollections.observableArrayList();
+    ObservableList<Attendance> markAttendance = FXCollections.observableArrayList();
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -73,6 +75,8 @@ public class AttendanceMarkingController implements Initializable {
             events.add(eventslist.get(index));
             index++;
         }
+
+        stdNameTbl.setItems(displayStudent);
     }
     private void allEvents() throws SQLException {
         String selectQuery = "SELECT * FROM `events`;";
@@ -90,10 +94,10 @@ public class AttendanceMarkingController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        ObservableList<String> ViewStudents = FXCollections.observableArrayList(displayStudent);
-//        studentname.setCellValueFactory(new PropertyValueFactory<Students,String>("firstname"));
-        //attendance.setCellValueFactory(new PropertyValueFactory<String,String>("attendance"));
-//        stdNameTbl.setItems(ViewStudents);
+        studentname.setCellValueFactory(new PropertyValueFactory<Attendance, String>("username1"));
+       attendance.setCellValueFactory(new PropertyValueFactory<Attendance, String>("attendence"));
+
+
     }
     @FXML
     void back(ActionEvent event)throws IOException {
@@ -103,6 +107,10 @@ public class AttendanceMarkingController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+    String name;
+    String blank;
+
     public void clubMembers() throws SQLException {
         String selectQuery = "SELECT * FROM `students`;";
         Connection comm = connectEvent.connect();
@@ -119,10 +127,58 @@ public class AttendanceMarkingController implements Initializable {
                     String[] clubs = columnValue.split(",");
                     List<String> arrayList = new ArrayList<>(Arrays.asList(clubs));
                     if (arrayList.contains(ClubAttendanceController.club1)) {
-                        displayStudent.add(resultSet.getString(1));
+                        name = resultSet.getString("Firstname");
+                        blank = "Absent";
+
+                        // Check if the student is already in the displayStudent list
+                        boolean studentFound = false;
+                        for (Attendance attendance : displayStudent) {
+                            if (attendance.getAttendence().equals(name)) {
+                                // Update the existing row to present
+                                attendance.setAttendence("Present");
+                                studentFound = true;
+                                break;
+                            }
+                        }
+
+                        // If the student is not found in the list, add a new row
+                        if (!studentFound) {
+                            displayStudent.addAll(new Attendance(name, blank));
+                        }
                     }
                 }
             }
         }
     }
+
+    @FXML
+    void markPresent(ActionEvent event) throws IOException {
+        Attendance selectedAttendance = stdNameTbl.getSelectionModel().getSelectedItem();
+        if (selectedAttendance == null) {
+            System.out.println("hukpn");
+            return;
+        }
+
+        // Update the status to "Present"
+        selectedAttendance.setAttendence("Present");
+
+        // Refresh the TableView
+        stdNameTbl.refresh();
     }
+
+    @FXML
+    void markAbsent(ActionEvent event) throws IOException {
+        Attendance selectedAttendance = stdNameTbl.getSelectionModel().getSelectedItem();
+        if (selectedAttendance == null) {
+            System.out.println("hukpn");
+            return;
+        }
+
+        // Update the status to "Present"
+        selectedAttendance.setAttendence("Absent");
+
+        // Refresh the TableView
+        stdNameTbl.refresh();
+    }
+
+}
