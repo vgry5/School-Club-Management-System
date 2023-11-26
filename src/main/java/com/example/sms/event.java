@@ -55,3 +55,4 @@ public class event {
     public void setDescription(String description) {
         Description = description;
     }
+}
