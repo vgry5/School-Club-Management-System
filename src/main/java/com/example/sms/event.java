@@ -11,6 +11,13 @@ public class event {
         this.date=date;
         this.Description = Description;
     }
+
+    public event(String clubName, String eventName, String eventType) {
+        this.clubName = clubName;
+        this.eventName = eventName;
+        this.EventType = eventType;
+    }
+
     public String getClubName() {
         return clubName;
     }

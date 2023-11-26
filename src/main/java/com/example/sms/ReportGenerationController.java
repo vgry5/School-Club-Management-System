@@ -10,11 +10,16 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -40,24 +45,30 @@ public class ReportGenerationController implements Initializable {
     private Button backbutton;
 
     @FXML
-    private TableView<?> clubActivities;
-
+    private TableView<event> clubActivities;
+    @FXML
+    private TableColumn<event,String> eventNameA;
+    @FXML
+    private TableColumn<event,String> clubNameA;
+    @FXML
+    private TableColumn<event,String> EventType;
     @FXML
     private TableView<?> clubMembership;
 
-    @FXML
-    private TableColumn<?, ?> clubName;
 
 
 
-    @FXML
-    private TableColumn<?, ?> eventName;
+
+
 
     @FXML
     private Button generateButton;
 
     @FXML
     private TableColumn<?, ?> noOfStudent;
+    private DatabaseConnection connectReport;
+
+
 
     @FXML
     void back(ActionEvent event) throws IOException {
@@ -69,7 +80,7 @@ public class ReportGenerationController implements Initializable {
 
     }
     @FXML
-    void generate (ActionEvent event)throws IOException {
+    void generate (ActionEvent event) throws IOException, SQLException {
         String report = reportSelect.getValue();
         if (report!= null){
             if (report.equals("club membership")){
@@ -92,11 +103,30 @@ public class ReportGenerationController implements Initializable {
     }
     private void ClubMembership(){
         clubMembership.toFront();
+
     }
     private void eventAttendence(){
         EventAttendence.toFront();
     }
-    private void clubActivities(){
+    private void clubActivities() throws SQLException {
+        previousActivity();
+        System.out.println(CalenderController.eventList);
+        ObservableList<event> EventOberver = FXCollections.observableList(FXCollections.observableList(CalenderController.eventList));
+        clubNameA.setCellValueFactory(new PropertyValueFactory<>("ClubName"));
+        eventNameA.setCellValueFactory(new PropertyValueFactory<>("EventName"));
+        EventType.setCellValueFactory(new PropertyValueFactory<>("EventType"));
+        clubActivities.setItems(EventOberver);
         clubActivities.toFront();
+    }
+    private void previousActivity() throws SQLException {
+        String selectQuery = "SELECT * FROM `events`;";
+        Connection comm = connectReport.connect();
+        try (PreparedStatement statement = comm.prepareStatement(selectQuery)) {
+            ResultSet results = statement.executeQuery();
+            while (results.next()){
+               event pastEvent = new event(results.getString(1),results.getString(2),results.getString(3));
+               CalenderController.eventList.add(pastEvent);
+            }
+        }
     }
 }
