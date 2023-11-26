@@ -75,7 +75,7 @@ public class AdvisorController {
 
     }
     public void Attendance (ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ClubAttendance.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AttendanceMarking.fxml")));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

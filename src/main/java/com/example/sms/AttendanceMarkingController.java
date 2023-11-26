@@ -51,6 +51,9 @@ public class AttendanceMarkingController implements Initializable {
     @FXML
     private Button backbutton;
 
+    @FXML
+    private Button submitattendance;
+
     private Stage stage; //create variables for scene, stage and root
     private Scene scene;
     private Parent root;
@@ -101,7 +104,7 @@ public class AttendanceMarkingController implements Initializable {
     }
     @FXML
     void back(ActionEvent event)throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ClubAttendance.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("advisor.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -170,7 +173,6 @@ public class AttendanceMarkingController implements Initializable {
     void markAbsent(ActionEvent event) throws IOException {
         Attendance selectedAttendance = stdNameTbl.getSelectionModel().getSelectedItem();
         if (selectedAttendance == null) {
-            System.out.println("hukpn");
             return;
         }
 
@@ -179,6 +181,15 @@ public class AttendanceMarkingController implements Initializable {
 
         // Refresh the TableView
         stdNameTbl.refresh();
+    }
+
+    @FXML
+    void submitattendance(ActionEvent event)throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("advisor.fxml")));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

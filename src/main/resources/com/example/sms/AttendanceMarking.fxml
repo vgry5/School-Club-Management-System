@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sms.AttendanceMarkingController">
+<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sms.AttendanceMarkingController">
     <children>
   <AnchorPane fx:id="ProjectTable" layoutX="156.0" layoutY="85.0" prefHeight="541.0" prefWidth="412.0" style="-fx-background-color: white; -fx-border-radius: 5;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
       <children>
@@ -36,7 +36,12 @@
             </Button>
       </children>
   </AnchorPane>
-      <Button fx:id="backbutton" layoutX="636.0" layoutY="24.0" mnemonicParsing="false" onAction="#back" prefHeight="48.0" prefWidth="83.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="BACK" textFill="WHITE">
+      <Button fx:id="backbutton" layoutX="587.0" layoutY="24.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="132.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="MAIN MENU" textFill="WHITE">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="submitattendance" layoutX="564.0" layoutY="641.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="178.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="MARK ATTENDANCE" textFill="WHITE">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
