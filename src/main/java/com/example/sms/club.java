@@ -6,22 +6,21 @@ public class club {
     //Encapsulation
     private  String name;
     private String description;
-    private Staff advisor;
+    private String advisorID;
     private int no_students;
-    private ArrayList<event> events = new ArrayList<>();
 
     //Constructor
-    public club (String name,String description,Staff advisor,int no_students){
+    public club (String name,String description,String advisorID,int no_students){
         this.name = name;
         this.description = description;
-        this.advisor = advisor;
+        this.advisorID = advisorID;
         this.no_students = no_students;
     }
 
-    public club (String name,String description,Staff advisor){
+    public club (String name,String description,String advisorID){
         this.name = name;
         this.description = description;
-        this.advisor = advisor;
+        this.advisorID = advisorID;
     }
 
     //Getters and Setters(Encapsulation)
@@ -33,9 +32,6 @@ public class club {
         this.name = name;
         return name;
     }
-    public String getAdvisorUsername() {
-        return advisor.getUsername();
-    }
     public String getDescription() {
         return description;
     }
@@ -43,7 +39,12 @@ public class club {
         this.description = description;
         return description;
     }
-
+    public String  getAdvisorID() {
+        return advisorID;
+    }
+    public void setAdvisorID(String advisorID) {
+        this.advisorID = advisorID;
+    }
     public int getNo_students() {
         return no_students;
     }
@@ -60,4 +61,4 @@ public class club {
         no_students--;
     }
 
-    }
+}
