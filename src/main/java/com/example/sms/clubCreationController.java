@@ -47,7 +47,12 @@ public class clubCreationController {
         if (!clubcreation_validation(Clubname, Clubdescrip, advisorID)){
             return;
         }
-        club Clubs = new club(Clubname,Clubdescrip,advisorID,no_students);
+        for(int i = 0; i<OOPCoursework.advisorList.size();i++){
+            if(OOPCoursework.advisorList.get(i).getUsername().equals(advisorID)){
+
+            }
+        }
+        club Clubs = new club(Clubname,Clubdescrip,no_students);
         OOPCoursework.clublist.add(Clubs);
         String insertQuery =
                 "INSERT INTO clubs(`Name` , `AdvisorID`, `Description`, `No_Students`)VALUES(?, ?, ?, ?)";
@@ -55,7 +60,7 @@ public class clubCreationController {
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
             preparedStatement.setString(1, Clubs.getName());
-            preparedStatement.setString(2, Clubs.getAdvisorID());
+            preparedStatement.setString(2, Clubs.getAdvisorUsername());
             preparedStatement.setString(3, Clubs.getDescription());
             preparedStatement.setInt(4,Clubs.getNo_students());
             int rowInsert = preparedStatement.executeUpdate();

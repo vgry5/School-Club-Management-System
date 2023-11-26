@@ -7,15 +7,15 @@ public class Staff {
     public String username;
     public String password;
 
-    public String getClub() {
+    public club getClub() {
         return Club;
     }
 
-    public void setClub(String club) {
+    public void setClub(club club) {
         Club = club;
     }
 
-    public String Club;
+    public club Club;
 
     public Staff(String firstname, String lastname, String staffid, String username, String password) {
         this.firstname = firstname;
