@@ -33,7 +33,6 @@ public class InchargeclubController  implements Initializable {
     @FXML
     private TextField description;
     private DatabaseConnection connectRegister;
-
     @FXML
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
