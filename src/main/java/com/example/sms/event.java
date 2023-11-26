@@ -1,43 +1,25 @@
 package com.example.sms;
 public class event {
-    String Description, eventName , date,EventType;
-    club Club ;
-
-    public club getClub() {
-        return Club;
-    }
-
-    public void setClub(club club) {
-        Club = club;
-    }
-
-    public Attendance getAttendance() {
-        return attendance;
-    }
-
-    public void setAttendance(Attendance attendance) {
-        this.attendance = attendance;
-    }
-
-    Attendance attendance;
+    String Description,clubName , eventName , date,EventType;
 
 
-    public  event (String eventName ,club Club, String eventType ,String date ,String Description  ){
-        this.Club=Club;
+
+    public  event (String eventName , String clubName , String eventType ,String date ,String Description  ){
+        this.clubName=clubName;
         this.eventName=eventName;
         this.EventType = eventType;
         this.date=date;
         this.Description = Description;
     }
 
-    public event(club Club, String eventName, String eventType) {
-        this.Club = Club;
+    public event(String clubName, String eventName, String eventType) {
+        this.clubName = clubName;
         this.eventName = eventName;
         this.EventType = eventType;
     }
 
     public String getClubName() {
-        return Club.getName();
+        return clubName;
     }
 
     public String getEventName() {
@@ -45,7 +27,7 @@ public class event {
     }
 
     public void setClubName(String clubName) {
-        this.Club = Club;
+        this.clubName = clubName;
     }
 
     public void setEventName(String eventName) {
@@ -73,6 +55,3 @@ public class event {
     public void setDescription(String description) {
         Description = description;
     }
-
-
-}
