@@ -102,6 +102,7 @@ public class ReportGenerationController implements Initializable {
         reportSelect.setItems(report);
     }
     private void ClubMembership(){
+
         clubMembership.toFront();
 
     }
@@ -128,5 +129,9 @@ public class ReportGenerationController implements Initializable {
                CalenderController.eventList.add(pastEvent);
             }
         }
+    }
+    private void previousClub() throws SQLException{
+        Connection connection = connectReport.connect();
+
     }
 }
