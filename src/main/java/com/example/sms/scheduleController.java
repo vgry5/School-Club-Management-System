@@ -56,10 +56,11 @@ public class scheduleController implements Initializable {
     private DatabaseConnection connectSchedule;
 
     ArrayList<String> clublist = new ArrayList<>();
+    private club Club;
 
     public void addEvent(ActionEvent actionEvent) throws IOException, SQLException {
         String eventName = EventName.getText();
-        String club = clubSelect.getValue();
+        //String club = clubSelect.getValue();
         String eventType = EventType.getValue();
         LocalDate DateError = date.getValue();
         String Date = null;
@@ -70,10 +71,10 @@ public class scheduleController implements Initializable {
         datemessage.setText(" ");
         String Description = description.getText();
 
-        if (!eventValidation(eventName, club,eventType, Date, Description)) {
+        if (!eventValidation(eventName,eventType, Date, Description)) {
             return;
         }
-        event Event1 = new event(eventName, club,eventType, Date, Description);
+        event Event1 = new event(eventName, Club,eventType, Date, Description);
         String insertQuery =
                 "INSERT INTO events (`Event Name`, `club`,`Event Type`, `date`, `Description`) VALUES (?, ?, ?,?, ?)";
 
@@ -125,6 +126,11 @@ public class scheduleController implements Initializable {
     }
     private void previuosClubs() throws SQLException {
         String userName = stafflogincontroller.username1;
+//        for(int a =0;a< OOPCoursework.clublist.size();a++){
+//            if (userName.equals(OOPCoursework.clublist(a))){
+//
+//            }
+//        }
         String selectQuery = "SELECT * FROM `clubs`;";
         Connection comm = connectSchedule.connect();
         try (PreparedStatement statement = comm.prepareStatement(selectQuery)) {
@@ -132,6 +138,7 @@ public class scheduleController implements Initializable {
             while (results.next()) {
                 if (userName.equals(results.getString(2)) ) {
                     club club = new club(results.getString(1), results.getString(2), results.getString(3), results.getInt(4));
+
                     clublist.add(club.getName());
                 }
             }
@@ -145,16 +152,13 @@ public class scheduleController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    public boolean eventValidation(String eventName , String club, String eventType, String date , String description){
+    public boolean eventValidation(String eventName , String eventType, String date , String description){
         if (eventName.isEmpty()){
             eventmessage.setText("Please enter a event name ");
             return false;
         }
         eventmessage.setText(" ");
-        if (club == null){
-            clubmessage.setText("Select the club ");
-            return false;
-        }
+
         if (eventType  == null){
             EventTypemessage.setText("Select the event type");
             return false;

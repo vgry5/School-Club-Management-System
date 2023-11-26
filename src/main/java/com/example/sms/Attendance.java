@@ -1,7 +1,7 @@
 package com.example.sms;
 
 public class Attendance extends scheduleController{
-    String eventName;
+    event Event;
      String username1;
      String clubName1;
      String attendence;
@@ -14,8 +14,8 @@ public class Attendance extends scheduleController{
         this.attendence = attendence;
     }
 
-    public Attendance(String eventName, String username1, String clubName1 , String attendence){
-        this.eventName = eventName;
+    public Attendance(event Event, String username1, String clubName1 , String attendence){
+        this.Event = Event;
         this.username1 = username1;
         this.clubName1 = clubName1;
 
@@ -26,12 +26,12 @@ public class Attendance extends scheduleController{
         this.attendence = attendence;
     }
 
-    public String getEventName() {
-        return eventName;
+    public event getEventName() {
+        return Event;
     }
 
     public void setEventName(String eventName) {
-        this.eventName = eventName;
+        this.Event = Event;
     }
 
     public String getUsername1() {
