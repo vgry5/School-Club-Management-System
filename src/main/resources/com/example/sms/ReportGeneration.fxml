@@ -37,19 +37,19 @@
                   <TableColumn fx:id="noOfStudent" prefWidth="136.0" text="No of Students" />
               </columns>
             </TableView>
-            <TableView fx:id="clubActivities" layoutY="93.0" prefHeight="278.0" prefWidth="499.0">
-              <columns>
-                <TableColumn prefWidth="168.0" text="Event Name" />
-                <TableColumn prefWidth="190.0" text="Club Name" />
-                  <TableColumn prefWidth="139.0" text="Event Type" />
-              </columns>
-            </TableView>
-            <AnchorPane layoutY="91.0" prefHeight="348.0" prefWidth="499.0" style="-fx-background-color: white;" />
             <Label fx:id="reportMessage" layoutX="37.0" layoutY="66.0" prefHeight="18.0" prefWidth="212.0" textFill="RED">
                <font>
                   <Font name="Century Gothic Bold" size="14.0" />
                </font>
             </Label>
+            <TableView fx:id="clubActivities" layoutY="93.0" prefHeight="278.0" prefWidth="499.0">
+              <columns>
+                <TableColumn fx:id="eventNameA" prefWidth="168.0" text="Event Name" />
+                <TableColumn fx:id="clubNameA" prefWidth="190.0" text="Club Name" />
+                  <TableColumn fx:id="EventType" prefWidth="139.0" text="Event Type" />
+              </columns>
+            </TableView>
+            <AnchorPane layoutY="91.0" prefHeight="348.0" prefWidth="499.0" style="-fx-background-color: white;" />
          </children>
       </AnchorPane>
       <Button fx:id="backbutton" layoutX="593.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" prefHeight="49.0" prefWidth="137.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="Main Menu" textFill="WHITE">

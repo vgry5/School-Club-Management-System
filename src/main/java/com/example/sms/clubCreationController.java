@@ -30,7 +30,6 @@ public class clubCreationController {
     private Label descriplabel;
     @FXML
     private Label idlabel;
-    static ArrayList<String> ClubcreationDetails = new ArrayList<>();
 
     private  DatabaseConnection connectclubcreation;
     private Stage stage;
@@ -49,8 +48,7 @@ public class clubCreationController {
             return;
         }
         club Clubs = new club(Clubname,Clubdescrip,advisorID,no_students);
-        ClubcreationDetails.add(Clubname);
-        ClubcreationDetails.add(advisorID);
+        OOPCoursework.clublist.add(Clubs);
         String insertQuery =
                 "INSERT INTO clubs(`Name` , `AdvisorID`, `Description`, `No_Students`)VALUES(?, ?, ?, ?)";
         Connection connection = connectclubcreation.connect();

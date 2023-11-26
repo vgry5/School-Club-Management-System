@@ -45,13 +45,14 @@ public class stafflogincontroller {
 public void advisorlogin(ActionEvent event) throws IOException, SQLException{
     String username = usernameinput.getText();
     String password = passwordinput.getText();
-    username1 = username;
+
     String selectQuery = "SELECT * FROM `teachers`;";
     Connection comm= connect.connect();
     try (PreparedStatement statement = comm.prepareStatement(selectQuery)) {
         ResultSet results = statement.executeQuery();
         while (results.next()) {
             if (username.equals(results.getString(4)) && password.equals(results.getString(5))) {
+                username1 = username;
                 root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("advisor.fxml")));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);

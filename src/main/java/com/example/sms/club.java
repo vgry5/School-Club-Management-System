@@ -28,14 +28,16 @@ public class club {
     public  String getName() {
         return name;
     }
-    public void setName(String name) {
+    public String setName(String name) {
         this.name = name;
+        return name;
     }
     public String getDescription() {
         return description;
     }
-    public void setDescription(String description) {
+    public String setDescription(String description) {
         this.description = description;
+        return description;
     }
     public String  getAdvisorID() {
         return advisorID;
@@ -59,4 +61,4 @@ public class club {
         no_students--;
     }
 
-    }
+}
