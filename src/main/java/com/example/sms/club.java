@@ -18,9 +18,9 @@ public class club {
         this.no_students = no_students;
     }
 
-    public club (String name,String description,String advisorID){
+    public club (String name,int no_students,String advisorID){
         this.name = name;
-        this.description = description;
+        this.no_students = no_students;
         this.advisorID = advisorID;
     }
 

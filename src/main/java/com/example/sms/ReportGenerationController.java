@@ -11,7 +11,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -57,9 +56,9 @@ public class ReportGenerationController implements Initializable {
     @FXML
     private TableView<club> clubMembership;
     @FXML
-    private TableColumn<club,String> NoofStudentC;
+    private TableColumn<club, Integer> NoofStudentC;
     @FXML
-    private TableColumn<club,String> clubNameC;
+    private TableColumn<club, String> clubNameC;
     @FXML
     private TableColumn<club,String> AdviserNameC;
 
@@ -72,10 +71,12 @@ public class ReportGenerationController implements Initializable {
     @FXML
     private Button generateButton;
 
-    @FXML
-    private TableColumn<?, ?> noOfStudent;
+//    @FXML
+//    private TableColumn<?, ?> noOfStudent;
     private DatabaseConnection connectReport;
 
+    public ReportGenerationController() {
+    }
 
 
     @FXML
@@ -112,15 +113,14 @@ public class ReportGenerationController implements Initializable {
     private void ClubMembership(){
 
 
-        clubMembership.toFront();
 
     }
     private void eventAttendence(){
         EventAttendence.toFront();
     }
+
     private void clubActivities() throws SQLException {
         previousActivity();
-        System.out.println(CalenderController.eventList);
         ObservableList<event> EventOberver = FXCollections.observableList(FXCollections.observableList(CalenderController.eventList));
         clubNameA.setCellValueFactory(new PropertyValueFactory<>("ClubName"));
         eventNameA.setCellValueFactory(new PropertyValueFactory<>("EventName"));
@@ -128,6 +128,7 @@ public class ReportGenerationController implements Initializable {
         clubActivities.setItems(EventOberver);
         clubActivities.toFront();
     }
+
     private void previousActivity() throws SQLException {
         String selectQuery = "SELECT * FROM `events`;";
         Connection comm = connectReport.connect();

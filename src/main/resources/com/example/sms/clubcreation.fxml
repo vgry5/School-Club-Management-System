@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="644.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sms.clubCreationController">
+<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="644.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sms.clubCreationController">
     <children>
         <Label layoutX="247.0" layoutY="46.0" prefHeight="80.0" prefWidth="237.0" text="Club Creation" textFill="WHITE">
             <font>
@@ -35,7 +35,7 @@
                   <Font name="Century Gothic Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="moreclub" layoutX="34.0" layoutY="20.0" prefHeight="18.0" prefWidth="345.0" textFill="RED">
+            <Label fx:id="moreclub" layoutX="34.0" layoutY="252.0" prefHeight="35.0" prefWidth="345.0" textFill="RED">
                <font>
                   <Font name="Century Gothic Bold" size="14.0" />
                </font>

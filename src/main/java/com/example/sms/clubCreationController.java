@@ -70,8 +70,9 @@ public class clubCreationController {
                 System.out.println("hi");
                 break;
             }
+            moreclub.setText(" ");
         }
-        moreclub.setText(" ");
+
     }
 
     public boolean clubcreation_validation(String Clubname, String Clubdescrip) {
