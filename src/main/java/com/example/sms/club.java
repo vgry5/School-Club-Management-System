@@ -1,6 +1,7 @@
 package com.example.sms;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class club {
     //Encapsulation
@@ -17,9 +18,9 @@ public class club {
         this.no_students = no_students;
     }
 
-    public club (String name,String description,String advisorID){
+    public club (String name,int no_students,String advisorID){
         this.name = name;
-        this.description = description;
+        this.no_students = no_students;
         this.advisorID = advisorID;
     }
 
@@ -60,5 +61,5 @@ public class club {
     public void removeStudent() {
         no_students--;
     }
+    }
 
-}
