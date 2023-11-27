@@ -37,6 +37,8 @@ public class ReportGenerationController implements Initializable {
 
     @FXML
     private TableView<String> EventAttendence;
+    private TableColumn<Staff,String> AdviserNameE;
+
 
     @FXML
     private TableColumn<?, ?> NoofStudent;
@@ -53,7 +55,13 @@ public class ReportGenerationController implements Initializable {
     @FXML
     private TableColumn<event,String> EventType;
     @FXML
-    private TableView<?> clubMembership;
+    private TableView<club> clubMembership;
+    @FXML
+    private TableColumn<club,String> NoofStudentC;
+    @FXML
+    private TableColumn<club,String> clubNameC;
+    @FXML
+    private TableColumn<club,String> AdviserNameC;
 
 
 
@@ -103,6 +111,7 @@ public class ReportGenerationController implements Initializable {
     }
     private void ClubMembership(){
 
+
         clubMembership.toFront();
 
     }
@@ -130,8 +139,5 @@ public class ReportGenerationController implements Initializable {
             }
         }
     }
-    private void previousClub() throws SQLException{
-        Connection connection = connectReport.connect();
 
-    }
 }

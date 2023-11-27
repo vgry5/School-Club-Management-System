@@ -1,14 +1,13 @@
 package com.example.sms;
 public class event {
-    String Description,clubName , eventName , date,EventType;
+    String Description, clubName, eventName, date, EventType;
 
 
-
-    public  event (String eventName , String clubName , String eventType ,String date ,String Description  ){
-        this.clubName=clubName;
-        this.eventName=eventName;
+    public event(String eventName, String clubName, String eventType, String date, String Description) {
+        this.clubName = clubName;
+        this.eventName = eventName;
         this.EventType = eventType;
-        this.date=date;
+        this.date = date;
         this.Description = Description;
     }
 
@@ -33,6 +32,7 @@ public class event {
     public void setEventName(String eventName) {
         this.eventName = eventName;
     }
+
     public String getEventType() {
         return EventType;
     }
@@ -48,6 +48,7 @@ public class event {
     public String getDate() {
         return date;
     }
+
     public String getDescription() {
         return Description;
     }
@@ -55,6 +56,5 @@ public class event {
     public void setDescription(String description) {
         Description = description;
     }
-
-
 }
+

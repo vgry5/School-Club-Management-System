@@ -5,6 +5,7 @@ public class Attendance extends scheduleController{
      String username1;
      String clubName1;
      String attendence;
+     String date;
 
     public String getAttendence() {
         return attendence;
@@ -14,10 +15,13 @@ public class Attendance extends scheduleController{
         this.attendence = attendence;
     }
 
-    public Attendance(String eventName, String username1, String clubName1 , String attendence){
+    public Attendance(String eventName,String clubName1 ,String date, String username1,  String attendence){
         this.eventName = eventName;
-        this.username1 = username1;
         this.clubName1 = clubName1;
+        this.date = date;
+        this.username1 = username1;
+        this.attendence = attendence;
+
 
     }
 
@@ -25,7 +29,12 @@ public class Attendance extends scheduleController{
         this.username1 = username1;
         this.attendence = attendence;
     }
-
+    public String getDate() {
+        return date;
+    }
+    public void setDate(String date) {
+        this.date = date;
+    }
     public String getEventName() {
         return eventName;
     }
