@@ -47,6 +47,8 @@ public class AttendanceMarkingController implements Initializable {
 
     @FXML
     private Button submitattendance;
+    @FXML
+    private Button viewbtn;
 
     private Stage stage; //create variables for scene, stage and root
     private Scene scene;
@@ -54,6 +56,7 @@ public class AttendanceMarkingController implements Initializable {
     private DatabaseConnection connectEvent;
 
    String clubName; //getting the selected club for the table in club attendance.
+    Attendance selectedAttendance;
 
     ObservableList<Attendance> displayStudent = FXCollections.observableArrayList();
     ObservableList<Attendance> markAttendance = FXCollections.observableArrayList();
@@ -71,9 +74,8 @@ public class AttendanceMarkingController implements Initializable {
             events.add(eventslist.get(index));
             index = index+2;
         }
-
-        stdNameTbl.setItems(displayStudent);
     }
+
     private void allEvents() throws SQLException {
         String selectQuery = "SELECT * FROM `events`;";
         Connection comm = connectEvent.connect();
@@ -81,7 +83,7 @@ public class AttendanceMarkingController implements Initializable {
             ResultSet results = statement.executeQuery();
             while (results.next()) {
                 for (int i = 0; i < OOPCoursework.clublist.size(); i++) {
-                    if (stafflogincontroller.username1 == OOPCoursework.clublist.get(i).getAdvisorID()){
+                    if (stafflogincontroller.username1.equals(OOPCoursework.clublist.get(i).getAdvisorID())){
                         clubName = OOPCoursework.clublist.get(i).getName();
                         if (clubName.equals(results.getString(2))){
                             eventslist.add(results.getString(1));
@@ -91,14 +93,6 @@ public class AttendanceMarkingController implements Initializable {
                 }
             }
         }
-        try {
-            clubMembers();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        studentname.setCellValueFactory(new PropertyValueFactory<Attendance, String>("username1"));
-       attendance.setCellValueFactory(new PropertyValueFactory<Attendance, String>("attendence"));
-
 
     }
     @FXML
@@ -114,6 +108,7 @@ public class AttendanceMarkingController implements Initializable {
     String blank;
 
     public void clubMembers() throws SQLException {
+        attendenceDatabse();
         String selectQuery = "SELECT * FROM `students`;";
         Connection comm = connectEvent.connect();
         int i = 0;
@@ -128,24 +123,20 @@ public class AttendanceMarkingController implements Initializable {
                     }
                     String[] clubs = columnValue.split(",");
                     List<String> arrayList = new ArrayList<>(Arrays.asList(clubs));
-                    if (arrayList.contains(ClubAttendanceController.club1)) {
-                        name = resultSet.getString("Firstname");
+                    if (arrayList.contains(clubName)){
+                        name = resultSet.getString(1);
                         blank = "Absent";
 
                         // Check if the student is already in the displayStudent list
                         boolean studentFound = false;
                         for (Attendance attendance : displayStudent) {
-                            if (attendance.getAttendence().equals(name)) {
-                                // Update the existing row to present
-                                attendance.setAttendence("Present");
+                            if (attendance.getUsername1().equals(name)) {
                                 studentFound = true;
-                                break;
                             }
                         }
-
                         // If the student is not found in the list, add a new row
                         if (!studentFound) {
-                            displayStudent.addAll(new Attendance(name, blank));
+                            displayStudent.add(new Attendance(name, blank));
                         }
                     }
                 }
@@ -153,9 +144,9 @@ public class AttendanceMarkingController implements Initializable {
         }
     }
 
-    @FXML
+   @FXML
     void markPresent(ActionEvent event) throws IOException {
-        Attendance selectedAttendance = stdNameTbl.getSelectionModel().getSelectedItem();
+        selectedAttendance = stdNameTbl.getSelectionModel().getSelectedItem();
         if (selectedAttendance == null) {
             return;
         }
@@ -169,7 +160,7 @@ public class AttendanceMarkingController implements Initializable {
 
     @FXML
     void markAbsent(ActionEvent event) throws IOException {
-        Attendance selectedAttendance = stdNameTbl.getSelectionModel().getSelectedItem();
+        selectedAttendance = stdNameTbl.getSelectionModel().getSelectedItem();
         if (selectedAttendance == null) {
             return;
         }
@@ -179,24 +170,23 @@ public class AttendanceMarkingController implements Initializable {
 
         // Refresh the TableView
         stdNameTbl.refresh();
-    }
-
+   }
+    String eventName;
     @FXML
     public String submitattendance(ActionEvent event) throws IOException, SQLException {
-        String eventName = selecteventdropdown.getValue();
-        String club = scheduleController.userClub;
+         eventName = selecteventdropdown.getValue();
+        String club = clubName;
         String date = null;
         for (int i = 0; i < eventslist.size(); i++) {
             if (eventName.equals(eventslist.get(i))) {
-                date = eventslist.get(i + 2);
-                return date;
+                date = eventslist.get(i + 1);
             }
         }
         String studentName = stdNameTbl.getSelectionModel().getSelectedItem().getUsername1();
-        String attendance = "present";
+        String attendance = selectedAttendance.getAttendence();
         Attendance attendance2 = new Attendance(eventName, club, date, studentName ,attendance);
         String insertQuery =
-                "INSERT INTO attendanc(`Event Name`, `Club Name`, `Date`, `Student Name`, `Attendance`) VALUES ('?','?','?','?','?')";
+                "INSERT INTO attendanc(`Event Name`, `Club Name`, `Date`, `Student Name`, `Attendance`) VALUES (?,?,?,?,?)";
 
         Connection connection = connectEvent.connect();
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
@@ -224,6 +214,35 @@ public class AttendanceMarkingController implements Initializable {
         stage.show();
         return eventName;
     }
+    private void attendenceDatabse ()throws SQLException {
+        eventName = selecteventdropdown.getValue();
+        String selectQuery = "SELECT * FROM `attendanc`;";
+        Connection comm = connectEvent.connect();
+        try (PreparedStatement statement = comm.prepareStatement(selectQuery)) {
+            ResultSet results = statement.executeQuery();
+            while (results.next()) {
+                if (eventName.equals(results.getString(1))){
+                    displayStudent.addAll(new Attendance(results.getString(4), results.getString(5)));
+                 }
+            }
+            }
 
+
+    }
+    @FXML
+    void viewStudents(ActionEvent event) throws IOException {
+        stdNameTbl.refresh();
+        if (selecteventdropdown.getValue()!=null){try {
+            clubMembers();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+            studentname.setCellValueFactory(new PropertyValueFactory<Attendance, String>("username1"));
+            attendance.setCellValueFactory(new PropertyValueFactory<Attendance, String>("attendence"));
+            stdNameTbl.refresh();
+        } stdNameTbl.setItems(displayStudent);
+
+
+    }
 
 }
