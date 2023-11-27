@@ -23,14 +23,11 @@ public class clubCreationController {
     @FXML
     private TextField description;
     @FXML
-    private TextField adid;
-    @FXML
     private Label namelabel;
     @FXML
     private Label descriplabel;
     @FXML
-    private Label idlabel;
-
+    private Label moreclub;
     private  DatabaseConnection connectclubcreation;
     private Stage stage;
     private Scene scene;
@@ -38,71 +35,64 @@ public class clubCreationController {
 
     public clubCreationController() {
     }
-
     public void clubCreation (ActionEvent event) throws IOException, SQLException {
-        String Clubname = name.getText();
+        String Clubname = name.getText().toUpperCase();
         String Clubdescrip = description.getText();
-        String advisorID = adid.getText();
-        int no_students = 0;
-        if (!clubcreation_validation(Clubname, Clubdescrip, advisorID)){
-            return;
+        String advisorID = stafflogincontroller.username1;
+        for (int z=0; z<OOPCoursework.clublist.size();z++){
+            if(!OOPCoursework.clublist.get(z).getAdvisorID().equals(stafflogincontroller.username1)){
+                int no_students = 0;
+                if (!clubcreation_validation(Clubname, Clubdescrip)){
+                    return;
+                }
+                club Clubs = new club(Clubname,Clubdescrip,advisorID,no_students);
+                OOPCoursework.clublist.add(Clubs);
+                String insertQuery =
+                        "INSERT INTO clubs(`Name` , `AdvisorID`, `Description`, `No_Students`)VALUES(?, ?, ?, ?)";
+                Connection connection = connectclubcreation.connect();
+
+                try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+                    preparedStatement.setString(1, Clubs.getName());
+                    preparedStatement.setString(2, Clubs.getAdvisorID());
+                    preparedStatement.setString(3, Clubs.getDescription());
+                    preparedStatement.setInt(4,Clubs.getNo_students());
+                    int rowInsert = preparedStatement.executeUpdate();
+                    if (rowInsert > 0) {
+                        System.out.println("Data inserted successfully");
+                    } else {
+                        System.out.println("Data insertion failed");
+                    }
+                }catch (SQLException e){
+                    System.out.println();
+                }
+            } else{
+                moreclub.setText("Cannot create more than one club!");
+                System.out.println("hi");
+                break;
+            }
         }
-        club Clubs = new club(Clubname,Clubdescrip,advisorID,no_students);
-        OOPCoursework.clublist.add(Clubs);
-        String insertQuery =
-                "INSERT INTO clubs(`Name` , `AdvisorID`, `Description`, `No_Students`)VALUES(?, ?, ?, ?)";
-        Connection connection = connectclubcreation.connect();
-
-        try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
-            preparedStatement.setString(1, Clubs.getName());
-            preparedStatement.setString(2, Clubs.getAdvisorID());
-            preparedStatement.setString(3, Clubs.getDescription());
-            preparedStatement.setInt(4,Clubs.getNo_students());
-            int rowInsert = preparedStatement.executeUpdate();
-
-            if (rowInsert > 0) {
-                System.out.println("Data inserted successfully");
-            } else {
-                System.out.println("Data insertion failed");
-            }
-        }catch (SQLException e){
-            System.out.println();
-            }
-
-
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("clubcreation.fxml")));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        moreclub.setText(" ");
     }
-    public boolean clubcreation_validation(String Clubname, String Clubdescrip, String advisorID){
+
+    public boolean clubcreation_validation(String Clubname, String Clubdescrip) {
         boolean ResultClubName = Clubname.matches("[a-zA-Z ]+$");//Checks if the club name contains only letters and stores the result of the checking in a boolean
         boolean ResultDescription = Clubdescrip.matches("[a-zA-Z ]+");//Checks if the club description contains only letters and stores the result of the checking in a boolean
-        boolean ResultAdvisorID = advisorID.matches("[a-zA-Z0-9]+$");//Checks if the advisor ID  contains only letters and numbers and stores the result of the checking in a boolean
-
-        for(int  i=0;i<OOPCoursework.clublist.size();i++){//Checks if the club was already made in the system
-            String currentClubName = OOPCoursework.clublist.get(i).getName().trim();
-            if(currentClubName.equalsIgnoreCase(Clubname.trim())){
-                namelabel.setText("Club already present!");
-                break;//not working
+        for(int x=0;x<OOPCoursework.clublist.size();x++){
+            if(Clubname.equals(OOPCoursework.clublist.get(x).getName())){
+                    namelabel.setText("This club already exists");
+                    return false;
             }
         }
-        if (ResultClubName==false){
+        namelabel.setText(" ");
+        if (ResultClubName == false) {
             namelabel.setText("Input only letters");
             return false;
         }
         namelabel.setText(" ");
-        if (ResultDescription==false){
+        if (ResultDescription == false) {
             descriplabel.setText("Input only letters");
             return false;
         }
-        descriplabel.setText(" ");
-        if (ResultAdvisorID==false){
-            idlabel.setText("Input only letters and numbers");
-            return false;
-        }
-        idlabel.setText(" ");
         return true;
     }
     @FXML

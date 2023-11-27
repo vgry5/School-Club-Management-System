@@ -107,7 +107,7 @@ public class InchargeclubController  implements Initializable {
 
     @FXML
     public void save() throws SQLException {
-        String c_name = name.getText();
+        String c_name = name.getText().toLowerCase();
         String c_description = description.getText();
         int i;
         for (i=0; i<OOPCoursework.clublist.size();i++){
@@ -132,6 +132,29 @@ public class InchargeclubController  implements Initializable {
         }catch (SQLException e){
             e.printStackTrace();
         }
+//        int x;
+//        for(x=0 ; x<OOPCoursework.studentList.size();x++){
+//            if(OOPCoursework.studentList.get(x).getClubs().contains(getAdvisorClub())){
+//
+//                break;
+//            }
+//        }
+//        String insertQuery1 =
+//                "UPDATE students set clubs = ? WHERE Username = ?";
+//        Connection connection1 = connectRegister.connect();
+//
+//        try (PreparedStatement preparedStatement = connection1.prepareStatement(insertQuery1)){
+//            preparedStatement.setString(2,OOPCoursework.studentList.get(x).getUsername());
+//            preparedStatement.setString(1,OOPCoursework.studentList.get(x).setClubs(c_name));
+//            int affectRow1 = preparedStatement.executeUpdate();
+//            if (affectRow1>0) {
+//                System.out.println("Updated");
+//            }else{
+//                System.out.println("Not Updated");
+//            }
+//        }catch (SQLException e){
+//            e.printStackTrace();
+//        }
     }
 }
 

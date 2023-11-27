@@ -6,29 +6,40 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="644.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sms.clubCreationController">
+<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="644.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sms.clubCreationController">
     <children>
-        <Label layoutX="240.0" layoutY="42.0" prefHeight="80.0" prefWidth="237.0" text="Club Creation" textFill="WHITE">
+        <Label layoutX="247.0" layoutY="46.0" prefHeight="80.0" prefWidth="237.0" text="Club Creation" textFill="WHITE">
             <font>
                 <Font name="Century Gothic Bold" size="35.0" />
             </font>
         </Label>
         <AnchorPane layoutX="160.0" layoutY="162.0" prefHeight="320.0" prefWidth="412.0" style="-fx-background-color: white; -fx-border-radius: 5;">
             <children>
-                <TextField fx:id="name" layoutX="33.0" layoutY="43.0" prefHeight="35.0" prefWidth="351.0" promptText="Club Name">
+                <TextField fx:id="name" layoutX="31.0" layoutY="87.0" prefHeight="35.0" prefWidth="351.0" promptText="Club Name">
                     <font>
                         <Font name="Century Gothic Bold" size="14.0" />
                     </font>
                 </TextField>
-                <TextField fx:id="description" layoutX="33.0" layoutY="146.0" prefHeight="35.0" prefWidth="351.0" promptText="Description ">
+                <TextField fx:id="description" layoutX="31.0" layoutY="197.0" prefHeight="35.0" prefWidth="351.0" promptText="Description ">
                     <font>
                         <Font name="Century Gothic Bold" size="14.0" />
                     </font>
                 </TextField>
-            <Label fx:id="namelabel" layoutX="43.0" layoutY="4.0" prefHeight="28.0" prefWidth="218.0" />
-            <Label fx:id="descriplabel" layoutX="43.0" layoutY="108.0" prefHeight="28.0" prefWidth="218.0" />
-            <Label fx:id="idlabel" layoutX="43.0" layoutY="214.0" prefHeight="28.0" prefWidth="218.0" />
-            <TextField fx:id="adid" layoutX="33.0" layoutY="253.0" prefHeight="26.0" prefWidth="351.0" promptText="Username" />
+            <Label fx:id="namelabel" layoutX="34.0" layoutY="60.0" prefHeight="18.0" prefWidth="345.0" textFill="RED">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="descriplabel" layoutX="34.0" layoutY="169.0" prefHeight="18.0" prefWidth="345.0" textFill="RED">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="moreclub" layoutX="34.0" layoutY="20.0" prefHeight="18.0" prefWidth="345.0" textFill="RED">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
           <Button fx:id="create" layoutX="304.0" layoutY="542.0" mnemonicParsing="false" onAction="#clubCreation" prefHeight="48.0" prefWidth="123.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="Create " textFill="WHITE">
