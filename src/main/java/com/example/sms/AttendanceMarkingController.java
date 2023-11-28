@@ -150,14 +150,12 @@ public class AttendanceMarkingController implements Initializable {
         if (selectedAttendance == null) {
             return;
         }
-
         // Update the status to "Present"
         selectedAttendance.setAttendence("Present");
 
         // Refresh the TableView
         stdNameTbl.refresh();
     }
-
     @FXML
     void markAbsent(ActionEvent event) throws IOException {
         selectedAttendance = stdNameTbl.getSelectionModel().getSelectedItem();
@@ -204,7 +202,7 @@ public class AttendanceMarkingController implements Initializable {
                 System.out.println("Data insertion failed.");
             }
 
-        } catch (SQLException e) {
+            }catch (SQLException e) {
             e.printStackTrace();
         }
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("advisor.fxml")));
@@ -225,9 +223,7 @@ public class AttendanceMarkingController implements Initializable {
                     displayStudent.addAll(new Attendance(results.getString(4), results.getString(5)));
                  }
             }
-            }
-
-
+        }
     }
     @FXML
     void viewStudents(ActionEvent event) throws IOException {
@@ -241,8 +237,5 @@ public class AttendanceMarkingController implements Initializable {
             attendance.setCellValueFactory(new PropertyValueFactory<Attendance, String>("attendence"));
             stdNameTbl.refresh();
         } stdNameTbl.setItems(displayStudent);
-
-
     }
-
 }

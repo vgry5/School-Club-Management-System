@@ -133,7 +133,7 @@ public class InchargeclubController  implements Initializable {
             e.printStackTrace();
         }
         int x;
-        for(x=0 ; x<OOPCoursework.studentList.size();x++){
+        for(x=0 ; x<OOPCoursework.studentList.size();x++){// Updates the club column in the student table
             if(OOPCoursework.studentList.get(x).getClubs().contains(getAdvisorClub())){
                 break;
             }
