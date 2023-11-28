@@ -2,30 +2,31 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sms.studentdetailscontroller">
     <children>
-        <AnchorPane layoutX="165.0" layoutY="154.0" prefHeight="357.0" prefWidth="413.0" style="-fx-background-color: white; -fx-border-radius: 5;">
+        <AnchorPane layoutX="165.0" layoutY="40.0" prefHeight="610.0" prefWidth="413.0" style="-fx-background-color: white; -fx-border-radius: 5;">
             <children>
-                <TextField fx:id="firstname" layoutX="33.0" layoutY="96.0" prefHeight="35.0" prefWidth="351.0" promptText="Firstname">
+                <TextField fx:id="firstnameinput" layoutX="33.0" layoutY="100.0" prefHeight="35.0" prefWidth="351.0" promptText="Firstname">
                     <font>
                         <Font name="Century Gothic Bold" size="14.0" />
                     </font>
                 </TextField>
-                <TextField fx:id="lastname" layoutX="33.0" layoutY="154.0" prefHeight="35.0" prefWidth="351.0" promptText="Lastname">
+                <TextField fx:id="lastnameinput" layoutX="33.0" layoutY="169.0" prefHeight="35.0" prefWidth="351.0" promptText="Lastname">
                     <font>
                         <Font name="Century Gothic Bold" size="14.0" />
                     </font>
                 </TextField>
-                <TextField fx:id="age" layoutX="33.0" layoutY="216.0" prefHeight="35.0" prefWidth="351.0" promptText="Age">
+                <TextField fx:id="ageinput" layoutX="33.0" layoutY="241.0" prefHeight="35.0" prefWidth="351.0" promptText="Age">
                     <font>
                         <Font name="Century Gothic Bold" size="14.0" />
                     </font>
                 </TextField>
-                <TextField fx:id="adnumber" layoutX="33.0" layoutY="277.0" prefHeight="35.0" prefWidth="351.0" promptText="Admisson number">
+                <TextField fx:id="adnumberinput" layoutX="31.0" layoutY="317.0" prefHeight="35.0" prefWidth="351.0" promptText="Admisson number">
                     <font>
                         <Font name="Century Gothic Bold" size="14.0" />
                     </font>
@@ -35,6 +36,56 @@
                         <Font name="Century Gothic Bold" size="35.0" />
                     </font>
                 </Label>
+            <Button fx:id="registerbutton" layoutX="145.0" layoutY="518.0" mnemonicParsing="false" onAction="#submit" prefHeight="48.0" prefWidth="123.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="SUBMIT" textFill="WHITE">
+               <font>
+                  <Font name="Century Gothic Bold" size="16.0" />
+               </font>
+            </Button>
+            <TextField fx:id="usernameinput" layoutX="31.0" layoutY="385.0" prefHeight="35.0" prefWidth="351.0" promptText="Username">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="passwordinput" layoutX="31.0" layoutY="452.0" prefHeight="35.0" prefWidth="351.0" promptText="Password">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </PasswordField>
+            <Label fx:id="firstnamemessage" layoutX="37.0" layoutY="76.0" prefHeight="18.0" prefWidth="343.0" textFill="RED">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lastnamemessage" layoutX="37.0" layoutY="143.0" prefHeight="18.0" prefWidth="343.0" textFill="RED">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="agemessage" layoutX="35.0" layoutY="213.0" prefHeight="18.0" prefWidth="343.0" textFill="RED">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="admissionnumbermessage" layoutX="35.0" layoutY="287.0" prefHeight="18.0" prefWidth="343.0" textFill="RED">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="usernamemessage" layoutX="35.0" layoutY="356.0" prefHeight="18.0" prefWidth="343.0" textFill="RED">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="passwordmessage" layoutX="35.0" layoutY="432.0" prefHeight="18.0" prefWidth="343.0" textFill="RED">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="studentmessage" layoutX="116.0" layoutY="568.0" prefHeight="18.0" prefWidth="182.0" textFill="RED">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
       <Button fx:id="backbutton" layoutX="638.0" layoutY="33.0" mnemonicParsing="false" onAction="#back" prefHeight="48.0" prefWidth="83.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="BACK" textFill="WHITE">

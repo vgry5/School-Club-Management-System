@@ -3,49 +3,23 @@ package com.example.sms;
 import java.util.ArrayList;
 import java.util.SplittableRandom;
 
-public class Students {
-    public String firstname;
-    public String lastname;
-    public int age;
-    public String username;
-    public String password;
-    public String admissionNumber;
+public class Students extends Person {
+    private int age;
+    private String admissionNumber;
 
     public ArrayList<club> clubs = new ArrayList<club>();
 
     public Students(String firstname, String lastname, int age, String admissionNumber, String username, String password) {
-        this.firstname = firstname;
-        this.lastname = lastname;
+        super(firstname, lastname, username, password);
         this.age = age;
         this.admissionNumber = admissionNumber;
-        this.username = username;
-        this.password = password;
     }
 
     public Students(String firstname, String lastname, int age, String admissionNumber, String username, String password, ArrayList<club> clubs) {
-        this.firstname = firstname;
-        this.lastname = lastname;
+        super(firstname, lastname, username, password);
         this.age = age;
         this.admissionNumber = admissionNumber;
-        this.username = username;
-        this.password = password;
         this.clubs = clubs;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
     }
 
     public int getAge() {
@@ -54,22 +28,6 @@ public class Students {
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public void setAdmissionNumber(String admissionNumber) {
@@ -83,11 +41,9 @@ public class Students {
     public ArrayList<club> getClubs() {
         return clubs;
     }
-
     public void setClubs(ArrayList<club> clubs) {
         this.clubs = clubs;
     }
-
     public void addClub(club club) {
         clubs.add(club);
     }
