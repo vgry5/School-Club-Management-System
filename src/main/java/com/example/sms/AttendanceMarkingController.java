@@ -47,13 +47,21 @@ public class AttendanceMarkingController implements Initializable {
 
     @FXML
     private Button submitattendance;
+
     @FXML
     private Button viewbtn;
+
+    @FXML
+    private Label selecteventmsg;
+
+    @FXML
+    private Label nostudentmsg;
 
     private Stage stage; //create variables for scene, stage and root
     private Scene scene;
     private Parent root;
     private DatabaseConnection connectEvent;
+    private Set<String> uniqueStudentNames = new HashSet<>();
 
    String clubName; //getting the selected club for the table in club attendance.
     Attendance selectedAttendance;
@@ -125,7 +133,7 @@ public class AttendanceMarkingController implements Initializable {
                     List<String> arrayList = new ArrayList<>(Arrays.asList(clubs));
                     if (arrayList.contains(clubName)){
                         name = resultSet.getString(1);
-                        blank = "Absent";
+                        blank = " ";
 
                         // Check if the student is already in the displayStudent list
                         boolean studentFound = false;
@@ -153,8 +161,8 @@ public class AttendanceMarkingController implements Initializable {
         // Update the status to "Present"
         selectedAttendance.setAttendence("Present");
 
-        // Refresh the TableView
-        stdNameTbl.refresh();
+
+        stdNameTbl.refresh();  // Refresh the TableView
     }
     @FXML
     void markAbsent(ActionEvent event) throws IOException {
@@ -162,26 +170,39 @@ public class AttendanceMarkingController implements Initializable {
         if (selectedAttendance == null) {
             return;
         }
-
         // Update the status to "Present"
         selectedAttendance.setAttendence("Absent");
 
-        // Refresh the TableView
-        stdNameTbl.refresh();
+        stdNameTbl.refresh(); // Refresh the TableView
    }
     String eventName;
+
     @FXML
     public String submitattendance(ActionEvent event) throws IOException, SQLException {
-         eventName = selecteventdropdown.getValue();
+        if (stdNameTbl.getSelectionModel().getSelectedItem() == null ||
+                stdNameTbl.getSelectionModel().getSelectedItem().getUsername1() == null) {
+            nostudentmsg.setText("Please Select A Student!");
+            return null;  // or return some default value, depending on your requirements
+        }
+        // If a student is selected, proceed with the rest of the code
+        nostudentmsg.setText(" ");
+        eventName = selecteventdropdown.getValue();
         String club = clubName;
         String date = null;
+
         for (int i = 0; i < eventslist.size(); i++) {
             if (eventName.equals(eventslist.get(i))) {
                 date = eventslist.get(i + 1);
             }
         }
         String studentName = stdNameTbl.getSelectionModel().getSelectedItem().getUsername1();
-        String attendance = selectedAttendance.getAttendence();
+        String attendance = selectedAttendance != null ? selectedAttendance.getAttendence() : null;
+
+        if (attendance == null || attendance.isEmpty()) {
+            nostudentmsg.setText("Please mark attendance of all students!");
+            return null;  // or return some default value, depending on your requirements
+        }
+
         Attendance attendance2 = new Attendance(eventName, club, date, studentName ,attendance);
         String insertQuery =
                 "INSERT INTO attendanc(`Event Name`, `Club Name`, `Date`, `Student Name`, `Attendance`) VALUES (?,?,?,?,?)";
@@ -202,7 +223,7 @@ public class AttendanceMarkingController implements Initializable {
                 System.out.println("Data insertion failed.");
             }
 
-            }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("advisor.fxml")));
@@ -223,19 +244,27 @@ public class AttendanceMarkingController implements Initializable {
                     displayStudent.addAll(new Attendance(results.getString(4), results.getString(5)));
                  }
             }
-        }
+            }
     }
     @FXML
     void viewStudents(ActionEvent event) throws IOException {
         stdNameTbl.refresh();
-        if (selecteventdropdown.getValue()!=null){try {
+        selecteventmsg.setText(" ");
+        if (selecteventdropdown.getValue()!=null){
+            try {
             clubMembers();
-        } catch (SQLException e) {
+                 }
+        catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
             studentname.setCellValueFactory(new PropertyValueFactory<Attendance, String>("username1"));
             attendance.setCellValueFactory(new PropertyValueFactory<Attendance, String>("attendence"));
             stdNameTbl.refresh();
-        } stdNameTbl.setItems(displayStudent);
+            stdNameTbl.setItems(displayStudent);
+        } else {
+            selecteventmsg.setText("Please Select An Event!");
+        }
+
     }
 }
