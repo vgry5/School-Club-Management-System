@@ -96,4 +96,9 @@ class studentregcontrollerTest {
         assertTrue(test.checkLogin("luk23", "222"));
     }
 
+    @Test
+    void testevent() {
+        test test = new test();
+        assertTrue(test.eventValidation("", "ilyas", "fsef", "3328", "luk23"));
+    }
 }
