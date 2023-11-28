@@ -31,8 +31,6 @@ public class ReportGenerationController implements Initializable {
     private Label reportMessage;
     @FXML
     private ComboBox<String> reportSelect;
-
-
     @FXML
     private Button backbutton;
 
@@ -129,6 +127,13 @@ public class ReportGenerationController implements Initializable {
     }
 
     private void clubActivities() throws SQLException {
+        previousActivity();
+        ObservableList<event> EventOberver = FXCollections.observableList(FXCollections.observableList(CalenderController.eventList));
+        clubNameA.setCellValueFactory(new PropertyValueFactory<>("clubName"));
+        eventNameA.setCellValueFactory(new PropertyValueFactory<>("EventName"));
+        EventType.setCellValueFactory(new PropertyValueFactory<>("EventType"));
+        clubActivities.setItems(EventOberver);
+        clubActivities.toFront();
 
     }
 
@@ -145,6 +150,18 @@ public class ReportGenerationController implements Initializable {
     }
 
     private void Attendece() throws SQLException {
+        String selectQuery = "SELECT EventName,clubName, COUNT(*) AS countRec FROM attendanc GROUP BY EventName;";
+        Connection comm = connectReport.connect();
+        try (PreparedStatement statement = comm.prepareStatement(selectQuery)) {
+            ResultSet results = statement.executeQuery();
+            while (results.next()) {
+                String eventName = results.getString("EventName");
+                String club =results.getString("clubName");
+                int count = results.getInt("countRec");
+                Attendance attendece = new Attendance(eventName,club, count);
+                attendances.add(attendece);
+            }
+        }
 
     }
 }

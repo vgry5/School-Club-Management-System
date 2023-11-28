@@ -205,7 +205,7 @@ public class AttendanceMarkingController implements Initializable {
 
         Attendance attendance2 = new Attendance(eventName, club, date, studentName ,attendance);
         String insertQuery =
-                "INSERT INTO attendanc(`Event Name`, `Club Name`, `Date`, `Student Name`, `Attendance`) VALUES (?,?,?,?,?)";
+                "INSERT INTO attendanc(`EventName`, `ClubName`, `Date`, `Student Name`, `Attendance`) VALUES (?,?,?,?,?)";
 
         Connection connection = connectEvent.connect();
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
@@ -250,6 +250,7 @@ public class AttendanceMarkingController implements Initializable {
     void viewStudents(ActionEvent event) throws IOException {
         stdNameTbl.refresh();
         selecteventmsg.setText(" ");
+        displayStudent.clear();
         if (selecteventdropdown.getValue()!=null){
             try {
             clubMembers();
@@ -257,14 +258,13 @@ public class AttendanceMarkingController implements Initializable {
         catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
             studentname.setCellValueFactory(new PropertyValueFactory<Attendance, String>("username1"));
             attendance.setCellValueFactory(new PropertyValueFactory<Attendance, String>("attendence"));
-            stdNameTbl.refresh();
             stdNameTbl.setItems(displayStudent);
         } else {
             selecteventmsg.setText("Please Select An Event!");
         }
+
 
     }
 }
