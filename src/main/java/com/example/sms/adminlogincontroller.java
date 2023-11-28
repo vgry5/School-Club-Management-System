@@ -36,12 +36,10 @@ public class adminlogincontroller {
 
     @FXML
     private Label message;
-
     private DatabaseConnection connect;
     private Stage stage; //create variables for scene, stage and root
     private Scene scene;
     private Parent root;
-
     public void login(ActionEvent event) throws IOException, SQLException {
         String username = usernameinput.getText();
         String password = passwordinput.getText();
@@ -51,23 +49,19 @@ public class adminlogincontroller {
             ResultSet results = statement.executeQuery();
             while (results.next()) {
                 if (username.equals(results.getString(3)) && password.equals(results.getString(4))) {
-                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("schedule .fxml")));
+                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("admin.fxml")));
                     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     scene = new Scene(root);
                     stage.setScene(scene);
                     stage.show();
                     return;
-
                 }
-
             }
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
         message.setText("Incorrect username or password");
-
     }
 }
