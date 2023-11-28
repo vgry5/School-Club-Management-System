@@ -30,6 +30,7 @@ import java.util.ResourceBundle;
 
 public class scheduleController implements Initializable {
 
+    static String userClub;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -133,6 +134,7 @@ public class scheduleController implements Initializable {
             while (results.next()) {
                 if (userName.equals(results.getString(2)) ) {
                     club club = new club(results.getString(1), results.getString(2), results.getString(3), results.getInt(4));
+                    userClub = results.getString(1);
                     clublist.add(club.getName());
                 }
             }

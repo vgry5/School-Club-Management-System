@@ -22,6 +22,7 @@ import java.util.Objects;
 
 public class stafflogincontroller {
     static String username1;
+
     @FXML
     private Button enterbutton;
 
