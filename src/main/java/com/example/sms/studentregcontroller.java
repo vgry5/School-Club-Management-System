@@ -82,6 +82,7 @@ public class studentregcontroller {
             return;
         }
         Students student = new Students(firstname, lastname, Integer.parseInt(age),admissionNumber, username, password);
+        OOPCoursework.studentList.add(student);
         String insertQuery =
                 "INSERT INTO students (`Firstname`, `Lastname`, `Age`, `Admission Number`, `Username`, `Password`) VALUES (?, ?, ?, ?, ?, ?)";
         Connection connection = connectSRegister.connect();
@@ -173,6 +174,53 @@ public class studentregcontroller {
             }
         }
         studentmessage.setText(" ");
+        return true;
+    }
+
+    public boolean studentDetailsValidatee(String firstName, String lastName, String inputAge, String inputAdmissionNumber, String username, String password) {
+        boolean resultFirstname = firstName.matches("[a-zA-Z]+");  //Check if firstname contains only letter and store the result in a boolean
+        boolean resultLastname = lastName.matches("[a-zA-Z]+");    //Check if firstname contains only letter and store the result in a boolean
+        if (resultFirstname == false) {
+            return false;
+        }
+        if (resultLastname == false) {
+            return false;
+        }
+        int age;
+        try {    //Exception handling to store age in a variable
+            age = Integer.parseInt(inputAge);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        if (age < 5 || age > 20) {
+            return false;
+        }
+        int admissionNumber;
+        try {    //Exception handling to store age in a variable
+            admissionNumber = Integer.parseInt(inputAdmissionNumber);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        boolean resultUsername = username.matches("^[a-zA-Z0-9]+$");
+        if (resultUsername == false) {
+            return false;
+        }
+        for (int i = 0; i < OOPCoursework.studentList.size(); i++) { //Check if the driver is already there
+            if (username.equals(OOPCoursework.studentList.get(i).getUsername())) {
+                return false;
+            }
+        }
+        if (password.length() != 8) {
+            return false;
+        }
+        String name = firstName + " " + lastName; //Add the firstname and lastname
+        for (int i = 0; i < OOPCoursework.studentList.size(); i++) { //Check if the driver is already there
+            if (name.equals(OOPCoursework.studentList.get(i).getFirstname() + " " + OOPCoursework.studentList.get(i).getLastname())) {
+                return false;
+            }
+        }
+        Students student = new Students(firstName, lastName, Integer.parseInt(inputAge) , inputAdmissionNumber , username, password);
+        OOPCoursework.studentList.add(student);
         return true;
     }
 

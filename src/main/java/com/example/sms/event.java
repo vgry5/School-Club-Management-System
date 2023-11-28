@@ -17,6 +17,7 @@ public class event {
         this.EventType = eventType;
     }
 
+
     public String getClubName() {
         return clubName;
     }
