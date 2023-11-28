@@ -44,15 +44,15 @@ public class clubCreationController {
         String Clubdescrip = description.getText();
         String advisorID = stafflogincontroller.username1;
         System.out.println(advisorID);
-        for (int z=0; z<OOPCoursework.clublist.size();z++){
+        for (int z=0; z<OOPCoursework.clublist.size();z++){//Adds all the existing usernames with clubs to a arraylist
             ClubAd_Username.add(OOPCoursework.clublist.get(z).getAdvisorID());}
-        if(ClubAd_Username.contains(advisorID)){
+        if(ClubAd_Username.contains(advisorID)){//checks if the advisor has already made a club
             moreclub.setText("Cannot create more than one club!");
-            PauseTransition pauseTransition = getPauseTransition(event);
+            PauseTransition pauseTransition = getPauseTransition(event);//The transition pause
             pauseTransition.play();
         }
-        else{int no_students = 0;
-        if (!clubcreation_validation(Clubname, Clubdescrip)){
+        else{int no_students = 0;//if the advisor hasn't made a club before, allows him/her to create a club
+        if (!clubcreation_validation(Clubname, Clubdescrip)){//validation of the inputs
             return;
         }
         club Clubs = new club(Clubname,Clubdescrip,advisorID,no_students);
@@ -76,8 +76,8 @@ public class clubCreationController {
             System.out.println();
         }}
     }
-    private PauseTransition getPauseTransition(ActionEvent event) {
-        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(2));
+    private PauseTransition getPauseTransition(ActionEvent event) {//To pause the transition for a while
+        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(1));
         pauseTransition.setOnFinished(event1 -> {
             try {root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("advisor.fxml")));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -100,7 +100,7 @@ public class clubCreationController {
         }
         namelabel.setText(" ");
         if (!ResultClubName) {
-            namelabel.setText("Input the proper club name!");
+            namelabel.setText("Input a proper club name!");
             return false;
         }
         namelabel.setText(" ");

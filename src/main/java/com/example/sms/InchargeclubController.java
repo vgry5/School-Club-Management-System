@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -32,6 +33,8 @@ public class InchargeclubController  implements Initializable {
     private TextField name;
     @FXML
     private TextField description;
+    @FXML
+    private Label errorLabel;
     private DatabaseConnection connectRegister;
     @FXML
     @Override
@@ -53,7 +56,6 @@ public class InchargeclubController  implements Initializable {
             }
         }
     }
-
     private club getAdvisorClub() {//Use to retrieve the relevant club of the advisor
         club advisorClub = null;
         for (club club : OOPCoursework.clublist) {
@@ -64,7 +66,6 @@ public class InchargeclubController  implements Initializable {
         }
         return advisorClub;
     }
-
     @FXML
     public void back(ActionEvent event) throws IOException {//Goes back to the previous FXML
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("advisor.fxml")));
@@ -106,14 +107,17 @@ public class InchargeclubController  implements Initializable {
     }
 
     @FXML
-    public void save() throws SQLException {
+    public void save() throws SQLException {//updates the edited info.
         String c_name = name.getText().toLowerCase();
         String c_description = description.getText();
         int i;
-        for (i = 0; i < OOPCoursework.clublist.size(); i++) {
+        for (i = 0; i < OOPCoursework.clublist.size(); i++) {//gets the correct index of the club
             if (OOPCoursework.clublist.get(i).getAdvisorID().equals(stafflogincontroller.username1)) {
                 break;
             }
+        }
+        if (!clubcreation_validation(c_name,c_description)){//validation of the edited inputs
+            return;
         }
         String insertQuery =
                 "UPDATE clubs SET Name = ?, Description = ?  WHERE AdvisorID = ?";
@@ -154,6 +158,21 @@ public class InchargeclubController  implements Initializable {
         }catch (SQLException e){
             e.printStackTrace();
         }
+    }
+    public boolean clubcreation_validation(String Clubname, String Clubdescrip) {
+        boolean ResultClubName = Clubname.matches("[a-zA-Z ]+$");//Checks if the club name contains only letters and stores the result of the checking in a boolean
+        boolean ResultDescription = Clubdescrip.matches("[a-zA-Z ]+");//Checks if the club description contains only letters and stores the result of the checking in a boolean
+        if (!ResultClubName) {
+            errorLabel.setText("Input the details properly!");
+            return false;
+        }
+        errorLabel.setText(" ");
+        if (!ResultDescription) {
+            errorLabel.setText("Input the details properly!");
+            return false;
+        }
+        errorLabel.setText(" ");
+        return true;
     }
 }
 
