@@ -48,6 +48,11 @@
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>
             </Button>
+            <Label fx:id="errorLabel" layoutX="123.0" layoutY="123.0" prefHeight="18.0" prefWidth="502.0" textFill="RED">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </children>
