@@ -89,4 +89,11 @@ class studentregcontrollerTest {
         assertTrue(test.studentDetailsValidatee("lukmal", "ilyas", "19", "3328", "luk23", "11111111"));
     }
 
+    @Test
+    void testlogin() {
+        test test = new test();
+        test.createStudent("lukmal", "ilyas", 19, "3328", "luk23", "11111111");
+        assertTrue(test.checkLogin("luk23", "222"));
+    }
+
 }
