@@ -31,8 +31,6 @@ public class ReportGenerationController implements Initializable {
     private Label reportMessage;
     @FXML
     private ComboBox<String> reportSelect;
-
-
     @FXML
     private Button backbutton;
 

@@ -1,5 +1,7 @@
 package com.example.sms;
 
+import java.sql.SQLException;
+
 public class test {
     public void createStudent(String firstname, String lastname, int age, String adno, String username, String password) {
         Students student = new Students(firstname, lastname, age, adno, username, password);
@@ -14,6 +16,32 @@ public class test {
 
     }
         return false;
-}
+    }
+    public void ScheduleEvent (String eventName , String club, String eventType, String date , String description) {
+        event event = new event(eventName,club,eventType,date,description);
+        OOPCoursework.scheduleEvents.add(event);
+    }
+    public boolean eventValidation(String eventName , String club, String eventType, String date , String description) throws SQLException {
+
+        for (int i =0 ;i<OOPCoursework.scheduleEvents.size();i++){
+            if (OOPCoursework.scheduleEvents.get(i).getEventName().equals(eventName)){
+                return false;
+            }
+        }
+        if (eventName.isEmpty()){
+            return false;
+        }
+        if (club == null){
+            return false;}
+        if (eventType  == null){
+            return false;}
+        if ( date == null){
+            return false;}
+        if (description.isEmpty()){
+            return false;
+        }
+        return true;
+    }
+
 }
 

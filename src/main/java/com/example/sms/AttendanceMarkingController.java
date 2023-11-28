@@ -205,7 +205,7 @@ public class AttendanceMarkingController implements Initializable {
 
         Attendance attendance2 = new Attendance(eventName, club, date, studentName ,attendance);
         String insertQuery =
-                "INSERT INTO attendanc(`Event Name`, `Club Name`, `Date`, `Student Name`, `Attendance`) VALUES (?,?,?,?,?)";
+                "INSERT INTO attendanc(`EventName`, `ClubName`, `Date`, `Student Name`, `Attendance`) VALUES (?,?,?,?,?)";
 
         Connection connection = connectEvent.connect();
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
