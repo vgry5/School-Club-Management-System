@@ -250,6 +250,7 @@ public class AttendanceMarkingController implements Initializable {
     void viewStudents(ActionEvent event) throws IOException {
         stdNameTbl.refresh();
         selecteventmsg.setText(" ");
+        displayStudent.clear();
         if (selecteventdropdown.getValue()!=null){
             try {
             clubMembers();
@@ -257,14 +258,13 @@ public class AttendanceMarkingController implements Initializable {
         catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
             studentname.setCellValueFactory(new PropertyValueFactory<Attendance, String>("username1"));
             attendance.setCellValueFactory(new PropertyValueFactory<Attendance, String>("attendence"));
-            stdNameTbl.refresh();
             stdNameTbl.setItems(displayStudent);
         } else {
             selecteventmsg.setText("Please Select An Event!");
         }
+
 
     }
 }
