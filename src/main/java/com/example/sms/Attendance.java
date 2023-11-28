@@ -6,14 +6,7 @@ public class Attendance extends scheduleController{
      String clubName1;
      String attendence;
      String date;
-
-    public String getAttendence() {
-        return attendence;
-    }
-
-    public void setAttendence(String attendence) {
-        this.attendence = attendence;
-    }
+     int no_students;
 
     public Attendance(String eventName,String clubName1 ,String date, String username1,  String attendence){
         this.eventName = eventName;
@@ -21,14 +14,16 @@ public class Attendance extends scheduleController{
         this.date = date;
         this.username1 = username1;
         this.attendence = attendence;
-
-
     }
-
     public Attendance(String username1, String attendence) {
         this.username1 = username1;
         this.attendence = attendence;
     }
+    public Attendance(String eventname, String ClubName, int noOfStudent ){
+        this.eventName=eventname;
+        this.clubName1=ClubName;
+        this.no_students=noOfStudent;
+   }
     public String getDate() {
         return date;
     }
@@ -58,4 +53,19 @@ public class Attendance extends scheduleController{
     public void setClubName1(String clubName1) {
         this.clubName1 = clubName1;
     }
+    public int getNo_students() {
+        return no_students;
+    }
+
+    public void setNo_students(int no_students) {
+        this.no_students = no_students;
+      }
+    public String getAttendence() {
+        return attendence;
+    }
+
+    public void setAttendence(String attendence) {
+        this.attendence = attendence;
+    }
 }
+

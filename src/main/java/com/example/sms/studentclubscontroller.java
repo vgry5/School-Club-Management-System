@@ -55,7 +55,7 @@ public class studentclubscontroller implements Initializable {
         String username = studentlogincontroller.studentLoginDetails.get(0);
         String password = studentlogincontroller.studentLoginDetails.get(1);
         for (int i = 0; i < OOPCoursework.studentList.size(); i++) {
-            if (OOPCoursework.studentList.get(i).username.equals(username) && OOPCoursework.studentList.get(i).password.equals(password)) {
+            if (OOPCoursework.studentList.get(i).getUsername().equals(username) && OOPCoursework.studentList.get(i).getPassword().equals(password)) {
                 for (int z = 0; z < OOPCoursework.studentList.get(i).clubs.size(); z++) {
                     clubtable.getItems().add(OOPCoursework.studentList.get(i).clubs.get(z));
                 }

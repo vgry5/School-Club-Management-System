@@ -70,7 +70,7 @@ public class joinclubcontroller implements Initializable {
         String password = studentlogincontroller.studentLoginDetails.get(1);
         int i;
         for (i = 0; i < OOPCoursework.studentList.size(); i++) {
-            if (OOPCoursework.studentList.get(i).username.equals(username) && OOPCoursework.studentList.get(i).password.equals(password)) {
+            if (OOPCoursework.studentList.get(i).getUsername().equals(username) && OOPCoursework.studentList.get(i).getPassword().equals(password)) {
                 int selectedClub = clubtable.getSelectionModel().getSelectedIndex();
                 for(int z = 0 ; z < OOPCoursework.studentList.get(i).clubs.size() ; z++) {
                     if (OOPCoursework.clublist.get(selectedClub).getName().equals(OOPCoursework.studentList.get(i).clubs.get(z).getName())) {

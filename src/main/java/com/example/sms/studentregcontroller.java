@@ -154,7 +154,7 @@ public class studentregcontroller {
         }
         usernamemessage.setText(" ");
         for (int i = 0; i < OOPCoursework.studentList.size(); i++) { //Check if the driver is already there
-            if (username.equals(OOPCoursework.studentList.get(i).username)) {
+            if (username.equals(OOPCoursework.studentList.get(i).getUsername())) {
                 usernamemessage.setText("This username already exists");
                 return false;
             }
@@ -167,7 +167,7 @@ public class studentregcontroller {
         passwordmessage.setText(" ");
         String name = firstName + " " + lastName; //Add the firstname and lastname
         for (int i = 0; i < OOPCoursework.studentList.size(); i++) { //Check if the driver is already there
-            if (name.equals(OOPCoursework.studentList.get(i).firstname + " " + OOPCoursework.studentList.get(i).lastname)) {
+            if (name.equals(OOPCoursework.studentList.get(i).getFirstname() + " " + OOPCoursework.studentList.get(i).getLastname())) {
                 studentmessage.setText("The student already exists");
                 return false;
             }
