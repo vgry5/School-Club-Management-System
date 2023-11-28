@@ -10,43 +10,53 @@
 
 <AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sms.AttendanceMarkingController">
     <children>
-  <AnchorPane fx:id="ProjectTable" layoutX="92.0" layoutY="48.0" prefHeight="577.0" prefWidth="494.0" style="-fx-background-color: white; -fx-border-radius: 5;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+  <AnchorPane fx:id="ProjectTable" layoutX="97.0" layoutY="66.0" prefHeight="578.0" prefWidth="550.0" style="-fx-background-color: white; -fx-border-radius: 5;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
       <children>
-          <Label prefHeight="70.0" prefWidth="494.0" style="-fx-background-color: linear-gradient(to right, #be93c5, #7bc6cc);" text="   Attendance Marking" textAlignment="CENTER" textFill="WHITE">
+          <Label prefHeight="70.0" prefWidth="550.0" style="-fx-background-color: linear-gradient(to right, #be93c5, #7bc6cc);" text="          Attendance Marking" textAlignment="RIGHT" textFill="WHITE">
               <font>
                   <Font name="Century Gothic Bold" size="35.0" />
               </font>
           </Label>
-          <TableView fx:id="stdNameTbl" layoutX="41.0" layoutY="153.0" prefHeight="330.0" prefWidth="411.0">
+          <TableView fx:id="stdNameTbl" layoutX="41.0" layoutY="153.0" prefHeight="330.0" prefWidth="478.0">
               <columns>
                   <TableColumn fx:id="studentname" prefWidth="233.60003662109375" text="Student Name" />
-                  <TableColumn fx:id="attendance" prefWidth="176.79998779296875" text="Attendance" />
+                  <TableColumn fx:id="attendance" prefWidth="243.19998779296873" text="Attendance" />
               </columns>
           </TableView>
-            <ComboBox fx:id="selecteventdropdown" layoutX="23.0" layoutY="97.0" prefHeight="26.0" prefWidth="305.0" promptText="Select Event" />
-            <Button fx:id="presentbtn" layoutX="163.0" layoutY="497.0" mnemonicParsing="false" onAction="#markPresent" prefHeight="25.0" prefWidth="83.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="Present" textFill="WHITE">
+            <ComboBox fx:id="selecteventdropdown" layoutX="23.0" layoutY="83.0" prefHeight="34.0" prefWidth="368.0" promptText="Select Event" />
+            <Button fx:id="presentbtn" layoutX="214.0" layoutY="490.0" mnemonicParsing="false" onAction="#markPresent" prefHeight="25.0" prefWidth="83.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="Present" textFill="WHITE">
                <font>
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="absentbtn" layoutX="255.0" layoutY="497.0" mnemonicParsing="false" onAction="#markAbsent" prefHeight="25.0" prefWidth="83.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="Absent" textFill="WHITE">
+            <Button fx:id="absentbtn" layoutX="305.0" layoutY="490.0" mnemonicParsing="false" onAction="#markAbsent" prefHeight="25.0" prefWidth="83.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="Absent" textFill="WHITE">
                <font>
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="submitattendance" layoutX="421.0" layoutY="530.0" mnemonicParsing="false" onAction="#submitattendance" prefHeight="33.0" prefWidth="62.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="Save" textFill="WHITE">
+            <Button fx:id="submitattendance" layoutX="452.0" layoutY="531.0" mnemonicParsing="false" onAction="#submitattendance" prefHeight="33.0" prefWidth="83.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="Save" textFill="WHITE">
                <font>
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="viewbtn" layoutX="339.0" layoutY="94.0" mnemonicParsing="false" onAction="#viewStudents" prefHeight="18.0" prefWidth="132.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="View Studnets" textFill="WHITE">
+            <Button fx:id="viewbtn" layoutX="404.0" layoutY="84.0" mnemonicParsing="false" onAction="#viewStudents" prefHeight="18.0" prefWidth="132.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="View Studnets" textFill="WHITE">
                <font>
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>
             </Button>
+            <Label fx:id="selecteventmsg" layoutX="26.0" layoutY="120.0" prefHeight="34.0" prefWidth="362.0" textFill="RED">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="nostudentmsg" layoutX="23.0" layoutY="530.0" prefHeight="34.0" prefWidth="343.0" textFill="RED">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </Label>
       </children>
   </AnchorPane>
-      <Button fx:id="backbutton" layoutX="598.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="132.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="MAIN MENU" textFill="WHITE">
+      <Button fx:id="backbutton" layoutX="611.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="118.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="MAIN MENU" textFill="WHITE">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>

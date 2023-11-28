@@ -74,6 +74,7 @@ public class scheduleController implements Initializable {
             return;
         }
         event Event1 = new event(eventName, club,eventType, Date, Description);
+
         String insertQuery =
                 "INSERT INTO events (`Event Name`, `club`,`Event Type`, `date`, `Description`) VALUES (?, ?, ?,?, ?)";
 
