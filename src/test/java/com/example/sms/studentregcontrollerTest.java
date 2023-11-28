@@ -132,7 +132,7 @@ class studentregcontrollerTest {
 
 
     @Test
-    void testevent() {
+    void testevent() throws SQLException {
         test test = new test();
         assertTrue(test.eventValidation("", "ilyas", "fsef", "3328", "luk23"));
     }
