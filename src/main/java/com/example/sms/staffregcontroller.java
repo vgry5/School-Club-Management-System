@@ -78,6 +78,7 @@ public class staffregcontroller {
             return;
         }
         Staff advisor = new Staff(firstname, lastname, staffid, username, password);
+        OOPCoursework.advisorList.add(advisor);
         String insertQuery =
                 "INSERT INTO teachers (`Firstname`, `Lastname`, `StaffID`, `Username`, `Password`) VALUES (?, ?, ?, ?, ?)";
         Connection connection = connectSRegister.connect();
