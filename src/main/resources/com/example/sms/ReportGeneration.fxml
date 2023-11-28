@@ -23,30 +23,30 @@
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>
             </Button>
-            <TableView fx:id="EventAttendence" layoutY="93.0" prefHeight="278.0" prefWidth="499.0">
-              <columns>
-                <TableColumn fx:id="clubName" prefWidth="157.0" text="Club Name" />
-                  <TableColumn fx:id="eventName" prefWidth="205.0" text="Event Name " />
-                  <TableColumn fx:id="noOfStudent" prefWidth="136.0" text="No of Students" />
-              </columns>
-            </TableView>
             <Label fx:id="reportMessage" layoutX="37.0" layoutY="66.0" prefHeight="18.0" prefWidth="212.0" textFill="RED">
                <font>
                   <Font name="Century Gothic Bold" size="14.0" />
                </font>
             </Label>
-            <TableView fx:id="clubActivities" layoutY="93.0" prefHeight="278.0" prefWidth="499.0">
-              <columns>
-                <TableColumn fx:id="eventNameA" prefWidth="168.0" text="Event Name" />
-                <TableColumn fx:id="clubNameA" prefWidth="190.0" text="Club Name" />
-                  <TableColumn fx:id="EventType" prefWidth="139.0" text="Event Type" />
-              </columns>
-            </TableView>
             <TableView fx:id="clubMembership" layoutY="93.0" prefHeight="278.0" prefWidth="499.0">
               <columns>
                 <TableColumn fx:id="clubNameC" prefWidth="168.0" text="Club Name " />
                 <TableColumn fx:id="NoofStudentC" prefWidth="151.0" text="No of Student " />
-                  <TableColumn fx:id="AdviserNameC" prefWidth="179.0" text="Adviser name" />
+                  <TableColumn fx:id="AdviserName" prefWidth="179.0" text="Adviser name" />
+              </columns>
+            </TableView>
+            <TableView fx:id="clubActivities" layoutY="93.0" prefHeight="278.0" prefWidth="499.0">
+              <columns>
+                <TableColumn fx:id="eventNameA" prefWidth="168.0" text="Club Name" />
+                <TableColumn fx:id="clubNameA" prefWidth="190.0" text="Event Name" />
+                  <TableColumn fx:id="EventType" prefWidth="139.0" text="Event Type" />
+              </columns>
+            </TableView>
+            <TableView fx:id="clubAttendence" layoutY="93.0" prefHeight="278.0" prefWidth="499.0">
+              <columns>
+                  <TableColumn fx:id="eventName" prefWidth="152.0" text="Event Name " />
+                <TableColumn fx:id="clubName" prefWidth="197.0" text="Club Name" />
+                  <TableColumn fx:id="noOfStudent" prefWidth="149.0" text="No of Students" />
               </columns>
             </TableView>
             <AnchorPane layoutY="91.0" prefHeight="348.0" prefWidth="499.0" style="-fx-background-color: white;" />
