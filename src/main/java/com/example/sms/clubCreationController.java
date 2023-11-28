@@ -51,7 +51,8 @@ public class clubCreationController {
             PauseTransition pauseTransition = getPauseTransition(event);//The transition pause
             pauseTransition.play();
         }
-        else{int no_students = 0;//if the advisor hasn't made a club before, allows him/her to create a club
+        else{
+            int no_students = 0;//if the advisor hasn't made a club before, allows him/her to create a club
         if (!clubcreation_validation(Clubname, Clubdescrip)){//validation of the inputs
             return;
         }
