@@ -35,12 +35,39 @@ public class clubCreationController {
 
     public clubCreationController() {
     }
-    public void clubCreation (ActionEvent event) throws IOException, SQLException {
+    public void clubCreation () throws SQLException {
         String Clubname = name.getText().toUpperCase();
         String Clubdescrip = description.getText();
         String advisorID = stafflogincontroller.username1;
         for (int z=0; z<OOPCoursework.clublist.size();z++){
-            if(!OOPCoursework.clublist.get(z).getAdvisorID().equals(stafflogincontroller.username1)){
+            if(OOPCoursework.clublist.get(z).getAdvisorID().equals(stafflogincontroller.username1)){
+                moreclub.setText("Cannot create more than one club!");
+                break;
+//                int no_students = 0;
+//                if (!clubcreation_validation(Clubname, Clubdescrip)){
+//                    return;
+//                }
+//                club Clubs = new club(Clubname,Clubdescrip,advisorID,no_students);
+//                OOPCoursework.clublist.add(Clubs);
+//                String insertQuery =
+//                        "INSERT INTO clubs(`Name` , `AdvisorID`, `Description`, `No_Students`)VALUES(?, ?, ?, ?)";
+//                Connection connection = connectclubcreation.connect();
+//
+//                try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+//                    preparedStatement.setString(1, Clubs.getName());
+//                    preparedStatement.setString(2, Clubs.getAdvisorID());
+//                    preparedStatement.setString(3, Clubs.getDescription());
+//                    preparedStatement.setInt(4,Clubs.getNo_students());
+//                    int rowInsert = preparedStatement.executeUpdate();
+//                    if (rowInsert > 0) {
+//                        System.out.println("Data inserted successfully");
+//                    } else {
+//                        System.out.println("Data insertion failed");
+//                    }
+//                }catch (SQLException e){
+//                    System.out.println();
+//                }
+            } else{
                 int no_students = 0;
                 if (!clubcreation_validation(Clubname, Clubdescrip)){
                     return;
@@ -65,12 +92,10 @@ public class clubCreationController {
                 }catch (SQLException e){
                     System.out.println();
                 }
-            } else{
-                moreclub.setText("Cannot create more than one club!");
-                System.out.println("hi");
+//                moreclub.setText("Cannot create more than one club!");
+//                break;
                 break;
             }
-            moreclub.setText(" ");
         }
 
     }
@@ -79,21 +104,22 @@ public class clubCreationController {
         boolean ResultClubName = Clubname.matches("[a-zA-Z ]+$");//Checks if the club name contains only letters and stores the result of the checking in a boolean
         boolean ResultDescription = Clubdescrip.matches("[a-zA-Z ]+");//Checks if the club description contains only letters and stores the result of the checking in a boolean
         for(int x=0;x<OOPCoursework.clublist.size();x++){
-            if(Clubname.equals(OOPCoursework.clublist.get(x).getName())){
+            if(OOPCoursework.clublist.get(x).getName().equals(Clubname)){
                     namelabel.setText("This club already exists");
                     return false;
             }
         }
         namelabel.setText(" ");
-        if (ResultClubName == false) {
-            namelabel.setText("Input only letters");
+        if (!ResultClubName) {
+            namelabel.setText("Input the proper club name!");
             return false;
         }
         namelabel.setText(" ");
-        if (ResultDescription == false) {
-            descriplabel.setText("Input only letters");
+        if (!ResultDescription) {
+            descriplabel.setText("Input the description properly!");
             return false;
         }
+        descriplabel.setText(" ");
         return true;
     }
     @FXML
