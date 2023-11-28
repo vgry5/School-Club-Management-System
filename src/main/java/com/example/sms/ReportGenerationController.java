@@ -105,10 +105,17 @@ public class ReportGenerationController implements Initializable {
     }
 
     private void ClubMembership() {
-
-
+        ObservableList<club> clubObserver = FXCollections.observableArrayList();
+        for (int i=0;i<OOPCoursework.clublist.size();i++){
+            club allClub = new club(OOPCoursework.clublist.get(i).getName(),OOPCoursework.clublist.get(i).getNo_students(),OOPCoursework.clublist.get(i).getAdvisorID());
+            clubObserver.addAll(allClub);
+        }
+        clubMembership.toFront();
+        clubNameC.setCellValueFactory(new PropertyValueFactory<club,String>("name"));
+        NoofStudentC.setCellValueFactory(new PropertyValueFactory<club, Integer>("no_students"));
+        AdviserNameC.setCellValueFactory(new PropertyValueFactory<club,String>("advisorID"));
+        clubMembership.setItems(clubObserver);
     }
-
     private void eventAttendence() throws SQLException {
         attendances.clear();
         Attendece();

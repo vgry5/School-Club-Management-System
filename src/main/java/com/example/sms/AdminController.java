@@ -37,6 +37,7 @@ public class AdminController implements Initializable {
     @FXML
     private ComboBox<String> advisorDrop;
     private DatabaseConnection connectRegister;
+    private boolean advisorAddedOrRemoved = false;
     ArrayList<String> NotAdvisor_Usernames = new ArrayList<>();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -69,7 +70,6 @@ public class AdminController implements Initializable {
             }
         }
     }
-
     @FXML
     void remove() throws SQLException {
             club selectedClub = adminTable.getSelectionModel().getSelectedItem();
@@ -98,6 +98,7 @@ public class AdminController implements Initializable {
                         }
                     }
                 }
+                advisorAddedOrRemoved = true;
                 adminTable.refresh();
                 String updateQuery = "DELETE FROM `teachers` WHERE Username = ?";
                 Connection connection = connectRegister.connect();
@@ -146,13 +147,19 @@ public class AdminController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+            advisorAddedOrRemoved = true;
         }
     @FXML
     void logout(ActionEvent event) throws IOException {
+        if (advisorAddedOrRemoved) {
+            warning.setText("Please assign an advisor to the club!");
+        } else {
+            warning.setText("");
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainmenu.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+ }
 }

@@ -16,9 +16,10 @@ public class test {
 
     }
         return false;
+
     }
-    public void ScheduleEvent (String eventName , String club, String eventType, String date , String description) {
-        event event = new event(eventName,club,eventType,date,description);
+    public void ScheduleEvent(String eventName, String clubName, String eventType, String date, String Description){
+        event event =new event(eventName,clubName,eventType,date,Description);
         OOPCoursework.scheduleEvents.add(event);
     }
     public boolean eventValidation(String eventName , String club, String eventType, String date , String description) throws SQLException {
