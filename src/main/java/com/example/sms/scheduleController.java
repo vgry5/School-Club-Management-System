@@ -28,8 +28,11 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+
+
 public class scheduleController implements Initializable {
 
+    static String userClub;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -74,7 +77,7 @@ public class scheduleController implements Initializable {
             return;
         }
         event Event1 = new event(eventName, club,eventType, Date, Description);
-
+        OOPCoursework.scheduleEvents.add(Event1);
         String insertQuery =
                 "INSERT INTO events (`Event Name`, `club`,`Event Type`, `date`, `Description`) VALUES (?, ?, ?,?, ?)";
 
@@ -133,6 +136,7 @@ public class scheduleController implements Initializable {
             while (results.next()) {
                 if (userName.equals(results.getString(2)) ) {
                     club club = new club(results.getString(1), results.getString(2), results.getString(3), results.getInt(4));
+                    userClub = results.getString(1);
                     clublist.add(club.getName());
                 }
             }
@@ -146,7 +150,15 @@ public class scheduleController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    public boolean eventValidation(String eventName , String club, String eventType, String date , String description){
+    public boolean eventValidation(String eventName , String club, String eventType, String date , String description) throws SQLException {
+
+        for (int i =0 ;i<OOPCoursework.scheduleEvents.size();i++){
+            if (OOPCoursework.scheduleEvents.get(i).getEventName().equals(eventName)){
+                eventmessage.setText("The Event has already Created ");
+                return false;
+            }
+        }
+        eventmessage.setText("");
         if (eventName.isEmpty()){
             eventmessage.setText("Please enter a event name ");
             return false;
@@ -168,12 +180,15 @@ public class scheduleController implements Initializable {
         }
         datemessage.setText(" ");
         if (description.isEmpty()){
-            Descriptionmessage.setText("Please enter a event name ");
+            Descriptionmessage.setText("Please enter a Description ");
             return false;
         }
         Descriptionmessage.setText(" ");
         return true;
     }
+
+
+
 }
 
 

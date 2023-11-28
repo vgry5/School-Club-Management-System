@@ -18,6 +18,7 @@ public class OOPCoursework extends Application {
     static ArrayList<Staff> advisorList = new ArrayList<>();
     static ArrayList<Admins> adminList = new ArrayList<>();
     static ArrayList<club>  clublist = new ArrayList<>();
+    static ArrayList<event>scheduleEvents= new ArrayList<>();
     @Override
     public void start(Stage stage) throws IOException, SQLException {
         previousData();
@@ -89,6 +90,19 @@ public class OOPCoursework extends Application {
                     i++;
                     }
                 }
+            }
+
+
+         selectQuery = "SELECT * FROM `events`;";
+         comm = connect.connect();
+            try (PreparedStatement statement = comm.prepareStatement(selectQuery)) {
+                ResultSet results = statement.executeQuery();
+                while (results.next()) {
+                    event scheduledEvents = new event(results.getString(1),results.getString(2),results.getString(3),results.getString(4),results.getString(5));
+                    scheduleEvents.add(scheduledEvents);
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
     }
     public static void main(String[] args) {

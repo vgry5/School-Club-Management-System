@@ -2,6 +2,8 @@ package com.example.sms;
 
 import org.junit.jupiter.api.Test;
 
+import java.sql.SQLException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class studentregcontrollerTest {
@@ -95,6 +97,39 @@ class studentregcontrollerTest {
         test.createStudent("lukmal", "ilyas", 19, "3328", "luk23", "11111111");
         assertTrue(test.checkLogin("luk23", "222"));
     }
+    @Test
+    void testschedule() throws SQLException {
+        test test =new test();
+        assertTrue(test.eventValidation("","environment Club","Activity","2022-10-10","planting trees"));
+    }
+
+    @Test
+    void testscheduleDuplicate() throws SQLException {
+        test test =new test();
+        test.ScheduleEvent("friendly football encounter 23","football","Event","2022-10-10","at school grounds");
+        assertTrue(test.eventValidation("friendly football encounter 23","football","Event","2022-10-10","at school grounds"));
+    }
+    @Test
+    void testschedule1() throws SQLException {
+        test test =new test();
+        assertTrue(test.eventValidation("tree planting","environment Club",null,"2022-10-10","planting trees"));
+    }
+    @Test
+    void testschedule2() throws SQLException {
+        test test =new test();
+        assertTrue(test.eventValidation("tree planting",null,"Activity","2022-10-10","planting trees"));
+    }
+    @Test
+    void testschedule3() throws SQLException {
+        test test =new test();
+        assertTrue(test.eventValidation("tree planting","environment Club","Activity",null,"planting trees"));
+    }
+    @Test
+    void testschedule4() throws SQLException {
+        test test =new test();
+        assertTrue(test.eventValidation("tree planting","environment Club","Activity","2022-10-10",""));
+    }
+
 
     @Test
     void testevent() {

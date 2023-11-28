@@ -15,23 +15,5 @@ public class test {
     }
         return false;
 }
-    public boolean eventValidation(String eventName , String club, String eventType, String date , String description){
-        if (eventName.isEmpty()){
-            return false;
-        }
-        if (club == null){
-            return false;
-        }
-        if (eventType  == null){
-            return false;
-        }
-        if ( date == null){
-            return false;
-        }
-        if (description.isEmpty()){
-            return false;
-        }
-        return true;
-    }
 }
 
