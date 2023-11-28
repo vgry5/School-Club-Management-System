@@ -94,7 +94,7 @@ public class clubCreationController {
                 }
 //                moreclub.setText("Cannot create more than one club!");
 //                break;
-                break;
+//                break;
             }
         }
 
