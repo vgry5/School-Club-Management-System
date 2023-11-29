@@ -43,6 +43,37 @@ public class test {
         }
         return true;
     }
+    public boolean clubcreationValidation(String Clubname, String Clubdescrip) {
+        boolean ResultClubName = Clubname.matches("[a-zA-Z ]+$");//Checks if the club name contains only letters and stores the result of the checking in a boolean
+        boolean ResultDescription = Clubdescrip.matches("[a-zA-Z ]+");//Checks if the club description contains only letters and stores the result of the checking in a boolean
+        for(int x=0;x<OOPCoursework.clublist.size();x++){
+            if(OOPCoursework.clublist.get(x).getName().equals(Clubname)){
+                return false;
+            }
+        }
+        if (!ResultClubName) {
+            return false;
+        }
+        if (!ResultDescription) {
+            return false;
+        }
+        return true;
+    }
+    public boolean clubcreationValidationInCharge(String Clubname, String Clubdescrip) {
+        boolean ResultClubName = Clubname.matches("[a-zA-Z ]+$");//Checks if the club name contains only letters and stores the result of the checking in a boolean
+        boolean ResultDescription = Clubdescrip.matches("[a-zA-Z ]+");//Checks if the club description contains only letters and stores the result of the checking in a boolean
+        if (!ResultClubName) {
+            return false;
+        }
+        if (!ResultDescription) {
 
+            return false;
+        }
+        return true;
+    }
+    public void ClubCreation( String Clubname, String Clubdescrip, String AdvisorID, int no_students){
+        club Club =new club(Clubname,Clubdescrip,AdvisorID,no_students);
+        OOPCoursework.clublist.add(Club);
+    }
 }
 
