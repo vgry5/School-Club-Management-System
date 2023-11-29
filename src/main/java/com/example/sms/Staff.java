@@ -1,11 +1,7 @@
 package com.example.sms;
 
-public class Staff {
-    public String firstname;
-    public String lastname;
+public class Staff extends Person {
     public String staffid;
-    public String username;
-    public String password;
 
     public club getClub() {
         return Club;
@@ -18,27 +14,8 @@ public class Staff {
     public club Club;
 
     public Staff(String firstname, String lastname, String staffid, String username, String password) {
-        this.firstname = firstname;
-        this.lastname = lastname;
+        super(firstname, lastname, username, password);
         this.staffid = staffid;
-        this.username = username;
-        this.password = password;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
     }
 
     public String getStaffid() {
@@ -49,19 +26,5 @@ public class Staff {
         this.staffid = staffid;
     }
 
-    public String getUsername() {
-        return username;
-    }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

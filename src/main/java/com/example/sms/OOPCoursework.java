@@ -180,7 +180,6 @@ public class OOPCoursework extends Application {
                     }
                     for(int z = 0 ; z < OOPCoursework.clublist.size() ; z++) {
                         if (columnValue.equals(OOPCoursework.clublist.get(z).getName())) {
-                            System.out.println(columnValue);
                             OOPCoursework.clublist.get(i).addEvent(OOPCoursework.scheduleEvents.get(z));
                             }
                         }

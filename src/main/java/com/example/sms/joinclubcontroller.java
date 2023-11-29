@@ -51,11 +51,11 @@ public class joinclubcontroller implements Initializable {
     @FXML
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //Set values of column attributes to the drivers class
+        //Set values of column attributes to the students class
         namecol.setCellValueFactory(new PropertyValueFactory<club, String>("name"));
         advisorcol.setCellValueFactory(new PropertyValueFactory<club, String>("advisorID"));
         studentscol.setCellValueFactory(new PropertyValueFactory<club, Integer>("no_students"));
-        //Add drivers to the table from drivers list
+        //Add students to the table from students list
         for (int i = 0; i < OOPCoursework.clublist.size(); i++) {
             clubtable.getItems().add(OOPCoursework.clublist.get(i));
         }
@@ -63,11 +63,14 @@ public class joinclubcontroller implements Initializable {
 
     @FXML
     public void joinClub() throws SQLException {
+        //Check if the student list is zero
         if (OOPCoursework.studentList.size() == 0) {
             return;
         }
+        //Get the login details
         String username = studentlogincontroller.studentLoginDetails.get(0);
         String password = studentlogincontroller.studentLoginDetails.get(1);
+        //Get the selected student from the table and check if the student has already joined the club
         int selectedClub = clubtable.getSelectionModel().getSelectedIndex();
         int i = 0;
         for (i = 0; i < OOPCoursework.studentList.size(); i++) {
@@ -79,13 +82,15 @@ public class joinclubcontroller implements Initializable {
                 }
             }
         }
+        //Get the club object
         for (i = 0; i < OOPCoursework.studentList.size(); i++) {
             if (OOPCoursework.studentList.get(i).getUsername().equals(username) && OOPCoursework.studentList.get(i).getPassword().equals(password)) {
-                OOPCoursework.studentList.get(i).addClub(OOPCoursework.clublist.get(selectedClub)); //selectedDriver saves the index of the driver from the table and used to delete the driver
+                OOPCoursework.studentList.get(i).addClub(OOPCoursework.clublist.get(selectedClub));
                 OOPCoursework.clublist.get(selectedClub).addStudent();
                 break;
             }
         }
+        //Update student number in the clubs table
         String insertQuery =
                 "UPDATE clubs SET No_Students = ? WHERE Name = ?";
         Connection connection = connectSRegister.connect();
@@ -107,6 +112,7 @@ public class joinclubcontroller implements Initializable {
         catch (SQLException e) {
             e.printStackTrace();
         }
+        //Update student clubs in the student table
         insertQuery =
                 "UPDATE students SET clubs = ? WHERE Username = ?";
 
@@ -124,6 +130,7 @@ public class joinclubcontroller implements Initializable {
                 System.out.println("No rows were updated. Student with username " + username + " not found.");
             }
         }
+        //Exception handling to check sql
      catch (SQLException e) {
         e.printStackTrace();
     }
