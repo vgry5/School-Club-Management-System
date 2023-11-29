@@ -20,6 +20,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -32,6 +33,7 @@ public class ReportGenerationController implements Initializable {
     @FXML
     private ComboBox<String> reportSelect;
     @FXML
+
     private Button backbutton;
 
     @FXML
@@ -115,10 +117,9 @@ public class ReportGenerationController implements Initializable {
         clubMembership.setItems(clubObserver);
     }
     private void eventAttendence() throws SQLException {
+        attendances.clear();
         Attendece();
         ObservableList<Attendance> AttendenceOberver = FXCollections.observableList(attendances);
-
-
         clubName.setCellValueFactory(new PropertyValueFactory<>("clubName1"));
         eventName.setCellValueFactory(new PropertyValueFactory<>("EventName"));
         noOfStudent.setCellValueFactory(new PropertyValueFactory<>("no_students"));
@@ -127,6 +128,7 @@ public class ReportGenerationController implements Initializable {
     }
 
     private void clubActivities() throws SQLException {
+        CalenderController.eventList.clear();
         previousActivity();
         ObservableList<event> EventOberver = FXCollections.observableList(FXCollections.observableList(CalenderController.eventList));
         clubNameA.setCellValueFactory(new PropertyValueFactory<>("clubName"));
