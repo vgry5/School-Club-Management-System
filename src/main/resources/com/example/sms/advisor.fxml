@@ -24,7 +24,7 @@
                         <Font name="Century Gothic Bold" size="35.0" />
                     </font>
                 </Label>
-                <Button fx:id="advisorbutton" layoutX="97.0" layoutY="100.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="VIEW ADVISOR PROFILE" textFill="WHITE">
+                <Button fx:id="advisorbutton" layoutX="97.0" layoutY="100.0" mnemonicParsing="false" onAction="#ViewProfile" prefHeight="48.0" prefWidth="219.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="VIEW ADVISOR PROFILE" textFill="WHITE">
                     <font>
                         <Font name="Century Gothic Bold" size="16.0" />
                     </font>
