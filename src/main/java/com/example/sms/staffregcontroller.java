@@ -138,7 +138,7 @@ public class staffregcontroller {
         //to check if the username already exists
         usernamemessage.setText(" ");
         for (int i = 0; i < OOPCoursework.advisorList.size(); i++) { //Check if the driver is already there
-            if (username.equals(OOPCoursework.advisorList.get(i).username)) {
+            if (username.equals(OOPCoursework.advisorList.get(i).getUsername())) {
                 usernamemessage.setText("This username already exists");
                 return false;
             }
@@ -151,7 +151,7 @@ public class staffregcontroller {
         passwordmessage.setText(" ");
         String name = firstName + " " + lastName; //Add the firstname and lastname
         for (int i = 0; i < OOPCoursework.advisorList.size(); i++) { //Check if the driver is already there
-            if (name.equals(OOPCoursework.advisorList.get(i).firstname + " " + OOPCoursework.advisorList.get(i).lastname)) {
+            if (name.equals(OOPCoursework.advisorList.get(i).getFirstname() + " " + OOPCoursework.advisorList.get(i).getLastname())) {
                 staffmessage.setText("The Adviser already exists");
                 return false;
             }
