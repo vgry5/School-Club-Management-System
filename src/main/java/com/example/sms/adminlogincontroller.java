@@ -37,7 +37,7 @@ public class adminlogincontroller {
     @FXML
     private Label message;
     private DatabaseConnection connect;
-    private Stage stage; //create variables for scene, stage and root
+    private Stage stage;
     private Scene scene;
     private Parent root;
     public void login(ActionEvent event) throws IOException, SQLException {

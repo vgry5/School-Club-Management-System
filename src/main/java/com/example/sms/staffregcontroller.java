@@ -35,6 +35,8 @@ public class staffregcontroller {
 
     @FXML
     private TextField lastnameinput;
+    @FXML
+    private TextField AuthenticationCode ;
 
     @FXML
     private Label lastnamemessage;
@@ -74,7 +76,8 @@ public class staffregcontroller {
         String staffid = staffidinput.getText();
         String username = usernameinput.getText();
         String password = passwordinput.getText();
-        if (staffDetailsValidate(firstname, lastname, staffid, username, password) == false) {
+        String Auth = AuthenticationCode.getText();
+        if (staffDetailsValidate(firstname, lastname, staffid, username, password,Auth) == false) {
             return;
         }
         Staff advisor = new Staff(firstname, lastname, staffid, username, password);
@@ -108,7 +111,7 @@ public class staffregcontroller {
         stage.show();
     }
 
-    public boolean staffDetailsValidate(String firstName, String lastName, String staffid, String username, String password) {
+    public boolean staffDetailsValidate(String firstName, String lastName, String staffid, String username, String password,String auth) {
         boolean resultFirstname = firstName.matches("[a-zA-Z]+");  //Check if firstname contains only letter and store the result in a boolean
         boolean resultLastname = lastName.matches("[a-zA-Z]+");    //Check if firstname contains only letter and store the result in a boolean
         if (resultFirstname == false) {
@@ -148,9 +151,14 @@ public class staffregcontroller {
         String name = firstName + " " + lastName; //Add the firstname and lastname
         for (int i = 0; i < OOPCoursework.advisorList.size(); i++) { //Check if the driver is already there
             if (name.equals(OOPCoursework.advisorList.get(i).firstname + " " + OOPCoursework.advisorList.get(i).lastname)) {
-                staffmessage.setText("The student already exists");
+                staffmessage.setText("The Adviser already exists");
                 return false;
             }
+        }
+        String Auther = "OOD@123";
+        if (!auth.equals(Auther)||auth.equals(null)){
+            staffmessage.setText("Incorrect Authentication Code");
+            return false;
         }
         staffmessage.setText(" ");
         return true;

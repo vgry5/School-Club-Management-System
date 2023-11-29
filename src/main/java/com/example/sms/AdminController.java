@@ -37,17 +37,17 @@ public class AdminController implements Initializable {
     @FXML
     private ComboBox<String> advisorDrop;
     private DatabaseConnection connectRegister;
-    private boolean advisorAddedOrRemoved = false;
-    ArrayList<String> NotAdvisor_Usernames = new ArrayList<>();
+    private boolean advisorAddedOrRemoved = false;//To check if advisor added or removed
+    ArrayList<String> NotAdvisor_Usernames = new ArrayList<>();//stores advisors without a club
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         clubName.setCellValueFactory(new PropertyValueFactory<>("name"));
         adUsername.setCellValueFactory(new PropertyValueFactory<>("advisorID"));
         NoOfStud.setCellValueFactory(new PropertyValueFactory<>("no_students"));
         NotAssignedAdvisors();
-        ObservableList<String> event_type = advisorDrop.getItems();
+        ObservableList<String> event_type = advisorDrop.getItems();//add advisors to the comboBox
         int index = 0;
-        while (index < NotAdvisor_Usernames.size()) {
+        while (index < NotAdvisor_Usernames.size()) {//adds the usernames to the observable lists
             event_type.add(NotAdvisor_Usernames.get(index));
             index++;
         }
@@ -74,14 +74,14 @@ public class AdminController implements Initializable {
     void remove() throws SQLException {
             club selectedClub = adminTable.getSelectionModel().getSelectedItem();
             if (selectedClub != null) {
-                String advisorIDToRemove = selectedClub.getAdvisorID();
-                for (int i = 0; i < OOPCoursework.clublist.size(); i++) {
+                String advisorIDToRemove = selectedClub.getAdvisorID();//Gets the username of the selected advisor
+                for (int i = 0; i < OOPCoursework.clublist.size(); i++) {//Removes the advisor from the club
                     club c = OOPCoursework.clublist.get(i);
                     if (c.getAdvisorID() != null && c.getAdvisorID().equals(advisorIDToRemove)) {
                         c.setAdvisorID(null);
                     }
                 }
-                boolean advisorAssigned = false;
+                boolean advisorAssigned = false;//checks if advisor is assigned to any club after the removal
                 for (int i = 0; i < OOPCoursework.clublist.size(); i++) {
                     club c = OOPCoursework.clublist.get(i);
                     if (c.getAdvisorID() != null && c.getAdvisorID().equals(advisorIDToRemove)) {
@@ -89,7 +89,7 @@ public class AdminController implements Initializable {
                         break;
                     }
                 }
-                if (!advisorAssigned) {
+                if (!advisorAssigned) {//if not assigned to any club , remove the advisor
                     for (int i = 0; i < OOPCoursework.advisorList.size(); i++) {
                         Staff advisor = OOPCoursework.advisorList.get(i);
                         if (advisor.getUsername().equals(advisorIDToRemove)) {
@@ -98,8 +98,8 @@ public class AdminController implements Initializable {
                         }
                     }
                 }
-                advisorAddedOrRemoved = true;
-                adminTable.refresh();
+                advisorAddedOrRemoved = true;//marks the advisor as removed
+                adminTable.refresh();//refresh
                 String updateQuery = "DELETE FROM `teachers` WHERE Username = ?";
                 Connection connection = connectRegister.connect();
                 try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
@@ -119,11 +119,11 @@ public class AdminController implements Initializable {
 
         @FXML
         void add() throws SQLException {
-            String selectedAdvisor = advisorDrop.getValue();
+            String selectedAdvisor = advisorDrop.getValue();//Gets value from drop down
             club selectedClub = adminTable.getSelectionModel().getSelectedItem();
             if (selectedAdvisor != null && selectedClub != null) {
                 selectedClub.setAdvisorID(selectedAdvisor);
-                for (int i = 0; i < OOPCoursework.clublist.size(); i++) {
+                for (int i = 0; i < OOPCoursework.clublist.size(); i++) {//updates the new advisor to the clublist arraylist
                     club c = OOPCoursework.clublist.get(i);
                     if (c.getName().equals(selectedClub.getName())) {
                         c.setAdvisorID(selectedAdvisor);
@@ -151,7 +151,7 @@ public class AdminController implements Initializable {
         }
     @FXML
     void logout(ActionEvent event) throws IOException {
-        if (advisorAddedOrRemoved) {
+        if (advisorAddedOrRemoved) {//if an advisor is removed but a new one is not added
             warning.setText("Please assign an advisor to the club!");
         } else {
             warning.setText("");

@@ -9,74 +9,79 @@
 
 <AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sms.staffregcontroller">
     <children>
-        <AnchorPane layoutX="166.0" layoutY="111.0" prefHeight="483.0" prefWidth="413.0" style="-fx-background-color: white; -fx-border-radius: 5;">
+        <AnchorPane layoutX="165.0" layoutY="70.0" prefHeight="549.0" prefWidth="413.0" style="-fx-background-color: white; -fx-border-radius: 5;">
             <children>
-                <Button fx:id="registerbutton" layoutX="144.0" layoutY="392.0" mnemonicParsing="false" onAction="#signup" prefHeight="48.0" prefWidth="123.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="REGISTER" textFill="WHITE">
+                <Button fx:id="registerbutton" layoutX="147.0" layoutY="487.0" mnemonicParsing="false" onAction="#signup" prefHeight="48.0" prefWidth="123.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" text="REGISTER" textFill="WHITE">
                     <font>
                         <Font name="Century Gothic Bold" size="16.0" />
                     </font>
                 </Button>
-                <TextField fx:id="firstnameinput" layoutX="33.0" layoutY="96.0" prefHeight="35.0" prefWidth="351.0" promptText="Firsname">
+                <TextField fx:id="firstnameinput" layoutX="32.0" layoutY="75.0" prefHeight="35.0" prefWidth="351.0" promptText="Firsname">
                     <font>
                         <Font name="Century Gothic Bold" size="14.0" />
                     </font>
                 </TextField>
-                <TextField fx:id="lastnameinput" layoutX="33.0" layoutY="154.0" prefHeight="35.0" prefWidth="351.0" promptText="Lastname">
+                <TextField fx:id="lastnameinput" layoutX="32.0" layoutY="135.0" prefHeight="35.0" prefWidth="351.0" promptText="Lastname">
                     <font>
                         <Font name="Century Gothic Bold" size="14.0" />
                     </font>
                 </TextField>
-                <TextField fx:id="staffidinput" layoutX="33.0" layoutY="214.0" prefHeight="35.0" prefWidth="351.0" promptText="StaffID">
+                <TextField fx:id="staffidinput" layoutX="33.0" layoutY="202.0" prefHeight="35.0" prefWidth="351.0" promptText="StaffID">
                     <font>
                         <Font name="Century Gothic Bold" size="14.0" />
                     </font>
                 </TextField>
-                <TextField fx:id="usernameinput" layoutX="32.0" layoutY="274.0" prefHeight="35.0" prefWidth="351.0" promptText="Username">
+                <TextField fx:id="usernameinput" layoutX="33.0" layoutY="262.0" prefHeight="35.0" prefWidth="351.0" promptText="Username">
                     <font>
                         <Font name="Century Gothic Bold" size="14.0" />
                     </font>
                 </TextField>
-                <PasswordField fx:id="passwordinput" layoutX="33.0" layoutY="335.0" prefHeight="35.0" prefWidth="351.0" promptText="Password">
+                <PasswordField fx:id="passwordinput" layoutX="32.0" layoutY="324.0" prefHeight="35.0" prefWidth="351.0" promptText="Password">
                     <font>
                         <Font name="Century Gothic Bold" size="14.0" />
                     </font>
                 </PasswordField>
-                <Label prefHeight="70.0" prefWidth="413.0" style="-fx-background-color: linear-gradient(to right, #be93c5, #7bc6cc);" text="        Advisor Sign Up" textFill="WHITE">
+                <Label prefHeight="61.0" prefWidth="415.0" style="-fx-background-color: linear-gradient(to right, #be93c5, #7bc6cc);" text="        Advisor Sign Up" textFill="WHITE">
                     <font>
                         <Font name="Century Gothic Bold" size="35.0" />
                     </font>
                 </Label>
-            <Label fx:id="firstnamemessage" layoutX="36.0" layoutY="74.0" prefHeight="18.0" prefWidth="343.0" textFill="RED">
+            <Label fx:id="firstnamemessage" layoutX="32.0" layoutY="110.0" prefHeight="18.0" prefWidth="343.0" textFill="RED">
                <font>
                   <Font name="Century Gothic Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="lastnamemessage" layoutX="35.0" layoutY="134.0" prefHeight="18.0" prefWidth="343.0" textFill="RED">
+            <Label fx:id="lastnamemessage" layoutX="32.0" layoutY="170.0" prefHeight="18.0" prefWidth="343.0" textFill="RED">
                <font>
                   <Font name="Century Gothic Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="staffidmessage" layoutX="36.0" layoutY="193.0" prefHeight="18.0" prefWidth="343.0" textFill="RED">
+            <Label fx:id="staffidmessage" layoutX="32.0" layoutY="237.0" prefHeight="18.0" prefWidth="343.0" textFill="RED">
                <font>
                   <Font name="Century Gothic Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="usernamemessage" layoutX="34.0" layoutY="253.0" prefHeight="18.0" prefWidth="343.0" textFill="RED">
+            <Label fx:id="usernamemessage" layoutX="32.0" layoutY="297.0" prefHeight="18.0" prefWidth="343.0" textFill="RED">
                <font>
                   <Font name="Century Gothic Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="staffmessage" layoutX="115.0" layoutY="452.0" prefHeight="18.0" prefWidth="182.0" textFill="RED">
+            <Label fx:id="staffmessage" layoutX="33.0" layoutY="443.0" prefHeight="28.0" prefWidth="263.0" textFill="RED">
                <font>
                   <Font name="Century Gothic Bold" size="14.0" />
                </font>
             </Label>
+            <Label fx:id="passwordmessage" layoutX="32.0" layoutY="363.0" prefHeight="18.0" prefWidth="343.0" textFill="RED">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="AuthenticationCode" layoutX="33.0" layoutY="394.0" prefHeight="35.0" prefWidth="351.0" promptText="Authentication Code ">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </TextField>
             </children>
         </AnchorPane>
-      <Label fx:id="passwordmessage" layoutX="199.0" layoutY="425.0" prefHeight="18.0" prefWidth="343.0" textFill="RED">
-         <font>
-            <Font name="Century Gothic Bold" size="14.0" />
-         </font>
-      </Label>
     </children>
 </AnchorPane>
