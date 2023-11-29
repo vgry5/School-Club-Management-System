@@ -23,7 +23,6 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class leaveclubcontroller implements Initializable {
-
     @FXML
     private TableColumn<club, String> advisorcol;
 

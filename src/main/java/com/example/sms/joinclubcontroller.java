@@ -130,7 +130,7 @@ public class joinclubcontroller implements Initializable {
                 System.out.println("No rows were updated. Student with username " + username + " not found.");
             }
         }
-        //Exception handling to check sql
+        //Exception handling to for sql
      catch (SQLException e) {
         e.printStackTrace();
     }
@@ -140,6 +140,7 @@ public class joinclubcontroller implements Initializable {
 
     @FXML
     void back(ActionEvent event)throws IOException {
+        //Get back to main menu
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("studentmenu.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);

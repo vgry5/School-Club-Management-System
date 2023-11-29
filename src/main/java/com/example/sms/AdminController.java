@@ -148,6 +148,21 @@ public class AdminController implements Initializable {
             e.printStackTrace();
         }
             advisorAddedOrRemoved = true;
+            updateQuery = "UPDATE teachers SET clubs = ? WHERE Username = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+                preparedStatement.setString(1, selectedClub.getName());
+                preparedStatement.setString(2, selectedAdvisor);
+                int affectedRow = preparedStatement.executeUpdate();
+                if (affectedRow > 0) {
+                    System.out.println("Club table updated with the new advisor");
+                    adminTable.refresh();
+                } else {
+                    System.out.println("No rows affected or Club not found");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            advisorAddedOrRemoved = true;
         }
     @FXML
     void logout(ActionEvent event) throws IOException {
