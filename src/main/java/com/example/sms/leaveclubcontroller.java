@@ -75,14 +75,34 @@ public class leaveclubcontroller implements Initializable {
         int i;
         for (i = 0; i < OOPCoursework.studentList.size(); i++) {
             if (OOPCoursework.studentList.get(i).getUsername().equals(username) && OOPCoursework.studentList.get(i).getPassword().equals(password)) {
-                club club = OOPCoursework.studentList.get(i).removeClub(selectedClub);
-                club.removeStudent();
                 break;
             }
         }
+        club club = OOPCoursework.studentList.get(i).removeClub(selectedClub);
+        club.removeStudent();
         String insertQuery =
-                "UPDATE students SET clubs = ? WHERE Username = ?";
+                "UPDATE clubs SET No_Students = ? WHERE Name = ?";
         Connection connection = connectSRegister.connect();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+            preparedStatement.setString(2, club.getName());
+            preparedStatement.setString(1, String.valueOf(club.getNo_students()));
+
+            // Execute the update
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            // Check the number of rows affected
+            if (rowsAffected > 0) {
+                System.out.println("Club updated successfully for student with username: " + username);
+            } else {
+                System.out.println("No rows were updated. Student with username " + username + " not found.");
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        insertQuery =
+                "UPDATE students SET clubs = ? WHERE Username = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
             preparedStatement.setString(2, username);
