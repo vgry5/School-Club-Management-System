@@ -18,9 +18,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class stafflogincontroller {
+    static ArrayList<String> staffLoginDetails = new ArrayList<>();
     static String username1;
 
     @FXML
@@ -53,6 +55,8 @@ public void advisorlogin(ActionEvent event) throws IOException, SQLException{
         ResultSet results = statement.executeQuery();
         while (results.next()) {
             if (username.equals(results.getString(4)) && password.equals(results.getString(5))) {
+                staffLoginDetails.add(username);
+                staffLoginDetails.add(password);
                 username1 = username;
                 root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("advisor.fxml")));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

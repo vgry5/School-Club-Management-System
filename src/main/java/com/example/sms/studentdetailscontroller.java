@@ -71,7 +71,6 @@ public class studentdetailscontroller implements Initializable {
     private DatabaseConnection connectSRegister;
 
     int i;
-
     @FXML
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
