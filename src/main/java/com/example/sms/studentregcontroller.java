@@ -67,11 +67,11 @@ public class studentregcontroller {
     @FXML
     private Label usernamemessage;
     private DatabaseConnection connectSRegister;
-    private Stage stage; //create variables for scene, stage and root
+    private Stage stage; //to create variables for scene, stage and root
     private Scene scene;
     private Parent root;
 
-    public void signup(ActionEvent event) throws SQLException, IOException {
+    public void signup(ActionEvent event) throws SQLException, IOException { //retrieving input values
         String firstname = firstnameinput.getText();
         String lastname = lastnameinput.getText();
         String age = ageinput.getText();
@@ -82,7 +82,7 @@ public class studentregcontroller {
             return;
         }
         Students student = new Students(firstname, lastname, Integer.parseInt(age),admissionNumber, username, password);
-        OOPCoursework.studentList.add(student);
+        OOPCoursework.studentList.add(student); // adding the student to the student list
         String insertQuery =
                 "INSERT INTO students (`Firstname`, `Lastname`, `Age`, `Admission Number`, `Username`, `Password`) VALUES (?, ?, ?, ?, ?, ?)";
         Connection connection = connectSRegister.connect();

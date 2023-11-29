@@ -93,28 +93,28 @@ public class studentdetailscontroller implements Initializable {
         return;
     }
 
-    public void submit() throws SQLException {
+    public void submit() throws SQLException { //getting the input values
         String firstname = firstnameinput.getText();
         String lastname = lastnameinput.getText();
         String age = ageinput.getText();
         String admissionNumber = adnumberinput.getText();
         String username = usernameinput.getText();
         String password = passwordinput.getText();
-        if (!studentDetailsValidate(firstname, lastname, age, admissionNumber, username, password)) {
+        if (!studentDetailsValidate(firstname, lastname, age, admissionNumber, username, password)) { // to validate input details
             return;
-        }
+        } // updating the student details in the list
         OOPCoursework.studentList.get(i).setFirstname(firstname);
         OOPCoursework.studentList.get(i).setLastname(lastname);
         OOPCoursework.studentList.get(i).setAge(Integer.parseInt(age));
         OOPCoursework.studentList.get(i).setAdmissionNumber(admissionNumber);
         OOPCoursework.studentList.get(i).setUsername(username);
         OOPCoursework.studentList.get(i).setPassword(password);
-        String deleteQuery = "DELETE FROM students";
+        String deleteQuery = "DELETE FROM students"; //to delete existing records and update them
         Connection connection = connectSRegister.connect();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery)) {
 
-            // Execute the SQL DELETE statement
+            // Executing the SQL DELETE statement
             int rowsDeleted = preparedStatement.executeUpdate();
 
             if (rowsDeleted > 0) {

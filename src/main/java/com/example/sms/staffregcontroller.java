@@ -77,7 +77,7 @@ public class staffregcontroller {
         String username = usernameinput.getText();
         String password = passwordinput.getText();
         String Auth = AuthenticationCode.getText();
-        if (staffDetailsValidate(firstname, lastname, staffid, username, password,Auth) == false) {
+        if (staffDetailsValidate(firstname, lastname, staffid, username, password,Auth) == false) { //to validate staff details
             return;
         }
         Staff advisor = new Staff(firstname, lastname, staffid, username, password);
@@ -93,10 +93,10 @@ public class staffregcontroller {
             preparedStatement.setString(4, advisor.getUsername());
             preparedStatement.setString(5, advisor.getPassword());
 
-            // Execute the SQL INSERT statement
+            // To Execute the SQL INSERT statement
             int rowsInserted = preparedStatement.executeUpdate();
 
-            if (rowsInserted > 0) {
+            if (rowsInserted > 0) { //checking the inserted results
                 System.out.println("Data inserted successfully!");
             } else {
                 System.out.println("Data insertion failed.");
@@ -135,6 +135,7 @@ public class staffregcontroller {
             usernamemessage.setText("Input only letters and numbers");
             return false;
         }
+        //to check if the username already exists
         usernamemessage.setText(" ");
         for (int i = 0; i < OOPCoursework.advisorList.size(); i++) { //Check if the driver is already there
             if (username.equals(OOPCoursework.advisorList.get(i).getUsername())) {
@@ -142,7 +143,7 @@ public class staffregcontroller {
                 return false;
             }
         }
-        usernamemessage.setText(" ");
+        usernamemessage.setText(" "); // to check if the password length as 8
         if (password.length() != 8) {
             passwordmessage.setText("The length of the password should be 8");
             return false;

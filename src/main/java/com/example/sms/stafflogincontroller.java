@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class stafflogincontroller {
-    static ArrayList<String> staffLoginDetails = new ArrayList<>();
+    static ArrayList<String> staffLoginDetails = new ArrayList<>(); //to store login details of the staff
     static String username1;
 
     @FXML
@@ -49,7 +49,7 @@ public void advisorlogin(ActionEvent event) throws IOException, SQLException{
     String username = usernameinput.getText();
     String password = passwordinput.getText();
 
-    String selectQuery = "SELECT * FROM `teachers`;";
+    String selectQuery = "SELECT * FROM `teachers`;"; //to get data from the teachers table
     Connection comm= connect.connect();
     try (PreparedStatement statement = comm.prepareStatement(selectQuery)) {
         ResultSet results = statement.executeQuery();

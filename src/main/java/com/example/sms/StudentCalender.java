@@ -52,13 +52,13 @@ public class StudentCalender implements Initializable {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-            ObservableList<event> EventObserver = FXCollections.observableArrayList(eventList);
+            ObservableList<event> EventObserver = FXCollections.observableArrayList(eventList); // displaying the events in a table
             ClubName.setCellValueFactory(new PropertyValueFactory<>("ClubName"));
             EventName.setCellValueFactory(new PropertyValueFactory<>("EventName"));
             EventType.setCellValueFactory(new PropertyValueFactory<>("EventType"));
             Date.setCellValueFactory(new PropertyValueFactory<>("Date"));
             Description.setCellValueFactory(new PropertyValueFactory<>("Description"));
-            tableView.setItems(EventObserver);
+            tableView.setItems(EventObserver); //setting the  items of the table view
         }
 
         private void data() throws SQLException {

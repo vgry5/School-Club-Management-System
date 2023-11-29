@@ -22,7 +22,7 @@ import java.util.*;
 
 public class AttendanceMarkingController implements Initializable {
 
-    ArrayList<String> eventslist = new ArrayList<>();
+    ArrayList<String> eventslist = new ArrayList<>(); // Creating an arraylist to store the events
 
     @FXML
     private Button absentbtn;
@@ -57,16 +57,16 @@ public class AttendanceMarkingController implements Initializable {
     @FXML
     private Label nostudentmsg;
 
-    private Stage stage; //create variables for scene, stage and root
+    private Stage stage; //creating variables for scene, stage and root
     private Scene scene;
     private Parent root;
-    private DatabaseConnection connectEvent;
+    private DatabaseConnection connectEvent; // to connect the database
     private Set<String> uniqueStudentNames = new HashSet<>();
 
    String clubName; //getting the selected club for the table in club attendance.
     Attendance selectedAttendance;
 
-    ObservableList<Attendance> displayStudent = FXCollections.observableArrayList();
+    ObservableList<Attendance> displayStudent = FXCollections.observableArrayList(); //creating observable lists for table view
     ObservableList<Attendance> markAttendance = FXCollections.observableArrayList();
 
     @Override
@@ -76,7 +76,7 @@ public class AttendanceMarkingController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        ObservableList<String> events = selecteventdropdown.getItems();  //represent events of the respective club in a dropdown
+        ObservableList<String> events = selecteventdropdown.getItems();  // to get the events from the dropdown list
         int index = 0;
         while (index < eventslist.size()) {
             events.add(eventslist.get(index));
@@ -85,7 +85,7 @@ public class AttendanceMarkingController implements Initializable {
     }
 
     private void allEvents() throws SQLException {
-        String selectQuery = "SELECT * FROM `events`;";  //adding the  events in the database related to the club to a array list
+        String selectQuery = "SELECT * FROM `events`;";  //to load all the events related to the club.
         Connection comm = connectEvent.connect();
         try (PreparedStatement statement = comm.prepareStatement(selectQuery)) {
             ResultSet results = statement.executeQuery();
@@ -104,7 +104,7 @@ public class AttendanceMarkingController implements Initializable {
 
     }
     @FXML
-    void back(ActionEvent event)throws IOException {//back navigation
+    void back(ActionEvent event)throws IOException {// to go back
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("advisor.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -158,11 +158,11 @@ public class AttendanceMarkingController implements Initializable {
         if (selectedAttendance == null) {
             return;
         }
-        // Update the status to "Present"
+        // To Update the status to Present
         selectedAttendance.setAttendence("Present");
 
 
-        stdNameTbl.refresh();  // Refresh the TableView
+        stdNameTbl.refresh();  // To Refresh the TableView
     }
     @FXML
     void markAbsent(ActionEvent event) throws IOException {
@@ -201,26 +201,21 @@ public String submitattendance(ActionEvent event) throws IOException, SQLExcepti
     String attendance = selectedAttendance != null ? selectedAttendance.getAttendence() : null;
 
     if (attendance == null || attendance.isEmpty()) {
-        nostudentmsg.setText("Please mark attendance of all students!");
+        nostudentmsg.setText("Please Mark the Attendance of Students!");
         return null;
     }
 
-    // Check if the record already exists in the database
+    // To Check if the record already exists in the database
     boolean recordExists = checkAttendanceRecord(eventName, club, date, studentName);
 
     if (recordExists) {
-        // Update the existing record
+        // To Update the existing record
         updateAttendance(eventName, club, date, studentName, attendance);
     } else {
-        // Insert a new record
+        // To Insert a new record
         insertAttendance(eventName, club, date, studentName, attendance);
     }
 
-    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("advisor.fxml")));
-    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
 
     return eventName;
 }
@@ -297,7 +292,7 @@ public String submitattendance(ActionEvent event) throws IOException, SQLExcepti
             }
     }
     @FXML
-    void viewStudents(ActionEvent event) throws IOException { //displaying the students in a table who enrolled with the respective club
+    void viewStudents(ActionEvent event) throws IOException { //to display the students in a table who enrolled with the respective club
         stdNameTbl.refresh();
         selecteventmsg.setText(" ");
         displayStudent.clear();
