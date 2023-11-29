@@ -14,12 +14,12 @@
                         <Font name="Century Gothic Bold" size="16.0" />
                     </font>
                 </Button>
-            <Label contentDisplay="CENTER" layoutX="123.0" layoutY="54.0" prefHeight="23.0" prefWidth="168.0" text="Are you a student ?">
+            <Label contentDisplay="CENTER" layoutX="127.0" layoutY="54.0" prefHeight="23.0" prefWidth="179.0" text="Are you a student?">
                <font>
                   <Font name="Century Gothic Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="127.0" layoutY="199.0" prefHeight="23.0" prefWidth="179.0" text="Are you an advisor ?">
+            <Label layoutX="127.0" layoutY="199.0" prefHeight="23.0" prefWidth="179.0" text="Are you an advisor?">
                <font>
                   <Font name="Century Gothic Bold" size="18.0" />
                </font>
