@@ -78,10 +78,38 @@ public class scheduleController implements Initializable {
         }
         event Event1 = new event(eventName, club,eventType, Date, Description);
         OOPCoursework.scheduleEvents.add(Event1);
+        int i;
+        for(i = 0 ; i < OOPCoursework.clublist.size() ; i++) {
+            if(club.equals(OOPCoursework.clublist.get(i).getName())) {
+                OOPCoursework.clublist.get(i).addEvent(Event1);
+                break;
+            }
+        }
+        Event1.setClub(OOPCoursework.clublist.get(i));
         String insertQuery =
+                "UPDATE clubs SET events = ? WHERE AdvisorID = ?";
+        Connection connection = connectSchedule.connect();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+            preparedStatement.setString(2, OOPCoursework.clublist.get(i).getAdvisor().getUsername());
+            preparedStatement.setString(1, OOPCoursework.clublist.get(i).eventString());
+
+            // Execute the update
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            // Check the number of rows affected
+            if (rowsAffected > 0) {
+                System.out.println("Club updated successfully for student with username: " + club);
+            } else {
+                System.out.println("No rows were updated. Student with username " + club + " not found.");
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        insertQuery =
                 "INSERT INTO events (`Event Name`, `club`,`Event Type`, `date`, `Description`) VALUES (?, ?, ?,?, ?)";
 
-        Connection connection = connectSchedule.connect();
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
             preparedStatement.setString(1, Event1.getEventName());
             preparedStatement.setString(2, Event1.getClubName());
@@ -113,6 +141,9 @@ public class scheduleController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        for(int i = 0 ; i < OOPCoursework.scheduleEvents.size() ; i++) {
+            System.out.println(OOPCoursework.scheduleEvents.get(i).getClub().getName());
+        }
         try {
             previuosClubs();
         } catch (SQLException e) {

@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sms.AdvisorController">
+<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="744.0" stylesheets="@stylingsheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sms.AdvisorController">
     <children>
         <AnchorPane layoutX="166.0" layoutY="32.0" prefHeight="556.0" prefWidth="412.0" style="-fx-background-color: white; -fx-border-radius: 5;">
             <children>
-                <Button fx:id="joinbutton" layoutX="94.0" layoutY="164.0" mnemonicParsing="false" onAction="#joinbutton" prefHeight="48.0" prefWidth="225.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="CREAT A CLUB" textFill="WHITE">
+                <Button fx:id="joinbutton" layoutX="94.0" layoutY="164.0" mnemonicParsing="false" onAction="#joinbutton" prefHeight="48.0" prefWidth="225.0" style="-fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #38ef7d;" stylesheets="@stylingsheet.css" text="CREATE A CLUB" textFill="WHITE">
                     <font>
                         <Font name="Century Gothic Bold" size="16.0" />
                     </font>

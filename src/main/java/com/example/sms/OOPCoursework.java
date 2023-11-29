@@ -18,7 +18,7 @@ public class OOPCoursework extends Application {
     static ArrayList<Staff> advisorList = new ArrayList<>();
     static ArrayList<Admins> adminList = new ArrayList<>();
     static ArrayList<club>  clublist = new ArrayList<>();
-    static ArrayList<event>scheduleEvents= new ArrayList<>();
+    static ArrayList<event>  scheduleEvents = new ArrayList<>();
     @Override
     public void start(Stage stage) throws IOException, SQLException {
         previousData();
@@ -68,6 +68,17 @@ public class OOPCoursework extends Application {
                 clublist.add(Clubs);
             }
         }
+
+        selectQuery = "SELECT * FROM `events`;";
+        comm = connect.connect();
+        try (PreparedStatement statement = comm.prepareStatement(selectQuery)){
+            ResultSet results = statement.executeQuery();
+            while (results.next()){
+                event event = new event(results.getString(1),results.getString(3),
+                        results.getString(2),results.getString(4),results.getString(5));
+                scheduleEvents.add(event);
+            }
+        }
         selectQuery = "SELECT " + "clubs" + " FROM students";
         int i = 0;
         try (PreparedStatement preparedStatement = comm.prepareStatement(selectQuery)) {
@@ -91,18 +102,96 @@ public class OOPCoursework extends Application {
                     }
                 }
             }
-         selectQuery = "SELECT * FROM `events`;";
-         comm = connect.connect();
-            try (PreparedStatement statement = comm.prepareStatement(selectQuery)) {
-                ResultSet results = statement.executeQuery();
-                while (results.next()) {
-                    event scheduledEvents = new event(results.getString(1),results.getString(2),results.getString(3),results.getString(4),results.getString(5));
-                    scheduleEvents.add(scheduledEvents);
+        selectQuery = "SELECT " + "clubs" + " FROM teachers";
+        i = 0;
+        try (PreparedStatement preparedStatement = comm.prepareStatement(selectQuery)) {
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                // Loop through the result set
+                while (resultSet.next()) {
+                    String columnValue = resultSet.getString("clubs");
+                    if(columnValue == null) {
+                        i++;
+                        continue;
+                    }
+                    for(int z = 0 ; z < OOPCoursework.clublist.size() ; z++) {
+                        if (columnValue.equals(OOPCoursework.clublist.get(z).getName())) {
+                            OOPCoursework.advisorList.get(i).setClub(OOPCoursework.clublist.get(z));
+                            }
+                        }
+                    i++;
                 }
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
             }
-    }
+        }
+        selectQuery = "SELECT " + "AdvisorID" + " FROM clubs";
+        i = 0;
+        try (PreparedStatement preparedStatement = comm.prepareStatement(selectQuery)) {
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                // Loop through the result set
+                while (resultSet.next()) {
+                    String columnValue = resultSet.getString("AdvisorID");
+                    if(columnValue == null) {
+                        i++;
+                        continue;
+                    }
+                    for(int z = 0 ; z < OOPCoursework.advisorList.size() ; z++) {
+                        if (columnValue.equals(OOPCoursework.advisorList.get(z).getUsername())) {
+                            OOPCoursework.clublist.get(i).setAdvisor(OOPCoursework.advisorList.get(z));
+                        }
+                    }
+                    i++;
+                }
+            }
+        }
+        selectQuery = "SELECT " + "events" + " FROM clubs";
+        i = 0;
+        try (PreparedStatement preparedStatement = comm.prepareStatement(selectQuery)) {
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                // Loop through the result set
+                while (resultSet.next()) {
+                    String columnValue = resultSet.getString("events");
+                    if(columnValue == null) {
+                        i++;
+                        continue;
+                    }
+                    String[] events = columnValue.split(",");
+                    for (String event : events) {
+                        for(int z = 0 ; z < OOPCoursework.scheduleEvents.size() ; z++) {
+                            if (event.equals(OOPCoursework.scheduleEvents.get(z).getEventName())) {
+                                OOPCoursework.scheduleEvents.get(i).setClub(OOPCoursework.clublist.get(z));
+                            }
+                        }
+                    }
+                    i++;
+                }
+
+            }
+
+        }
+        selectQuery = "SELECT " + "club" + " FROM events";
+        i = 0;
+        try (PreparedStatement preparedStatement = comm.prepareStatement(selectQuery)) {
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                // Loop through the result set
+                while (resultSet.next()) {
+                    String columnValue = resultSet.getString("club");
+                    if(columnValue == null) {
+                        i++;
+                        continue;
+                    }
+                    for(int z = 0 ; z < OOPCoursework.clublist.size() ; z++) {
+                        if (columnValue.equals(OOPCoursework.clublist.get(z).getName())) {
+                            System.out.println(columnValue);
+                            OOPCoursework.clublist.get(i).addEvent(OOPCoursework.scheduleEvents.get(z));
+                            }
+                        }
+                    }
+                    i++;
+                }
+
+            }
+
+        }
+
     public static void main(String[] args) {
         launch();
     }

@@ -72,6 +72,7 @@ public class ReportGenerationController implements Initializable {
 
     @FXML
     void back(ActionEvent event) throws IOException {
+        CalenderController.eventList.clear();
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("advisor.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -136,7 +137,6 @@ public class ReportGenerationController implements Initializable {
         EventType.setCellValueFactory(new PropertyValueFactory<>("EventType"));
         clubActivities.setItems(EventOberver);
         clubActivities.toFront();
-
     }
 
     private void previousActivity() throws SQLException {

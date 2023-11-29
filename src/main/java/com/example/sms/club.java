@@ -10,6 +10,26 @@ public class club {
     private String advisorID;
     private int no_students;
 
+    private Staff advisor;
+
+    private ArrayList<event> events = new ArrayList<>();
+
+    public ArrayList<event> getEvent() {
+        return events;
+    }
+
+    public void setEvent(ArrayList<com.example.sms.event> event) {
+        this.events = event;
+    }
+
+    public Staff getAdvisor() {
+        return advisor;
+    }
+
+    public void setAdvisor(Staff advisor) {
+        this.advisor = advisor;
+    }
+
     //Constructor
     public club (String name,String description,String advisorID,int no_students){
         this.name = name;
@@ -60,6 +80,23 @@ public class club {
 
     public void removeStudent() {
         no_students--;
+    }
+
+    public void addEvent(event event) {
+        events.add(event);
+    }
+    public String eventString() {
+        StringBuilder result = new StringBuilder();
+        for (event element : events) {
+            result.append(element.getEventName()).append(",");
+        }
+
+        // Remove the trailing space
+        if (result.length() > 0) {
+            result.setLength(result.length() - 1);
+        }
+        String string = String.valueOf(result);
+        return string;
     }
     }
 

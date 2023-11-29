@@ -32,7 +32,7 @@
               <columns>
                 <TableColumn fx:id="clubNameC" prefWidth="168.0" text="Club Name " />
                 <TableColumn fx:id="NoofStudentC" prefWidth="151.0" text="No of Student " />
-                  <TableColumn fx:id="AdviserName" prefWidth="179.0" text="Adviser name" />
+                  <TableColumn fx:id="AdviserNameC" prefWidth="179.0" text="Adviser name" />
               </columns>
             </TableView>
             <TableView fx:id="clubActivities" layoutY="93.0" prefHeight="278.0" prefWidth="499.0">

@@ -104,6 +104,27 @@ public class InchargeclubController  implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        getAdvisorClub().removeStudent();
+        insertQuery =
+                "UPDATE clubs SET No_Students = ? WHERE Name = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+            preparedStatement.setString(2, getAdvisorClub().getName());
+            preparedStatement.setString(1, String.valueOf(getAdvisorClub().getNo_students()));
+
+            // Execute the update
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            // Check the number of rows affected
+            if (rowsAffected > 0) {
+                System.out.println("Club updated successfully for student with username: " + getAdvisorClub().getName());
+            } else {
+                System.out.println("No rows were updated. Student with username " + getAdvisorClub().getName() + " not found.");
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

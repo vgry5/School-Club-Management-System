@@ -151,10 +151,6 @@ public class AdminController implements Initializable {
         }
     @FXML
     void logout(ActionEvent event) throws IOException {
-        if (advisorAddedOrRemoved) {//if an advisor is removed but a new one is not added
-            warning.setText("Please assign an advisor to the club!");
-        } else {
-            warning.setText("");
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainmenu.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -162,4 +158,3 @@ public class AdminController implements Initializable {
         stage.show();
     }
  }
-}

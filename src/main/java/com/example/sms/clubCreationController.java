@@ -37,33 +37,47 @@ public class clubCreationController {
     private Parent root;
     private static ArrayList<String> ClubAd_Username = new ArrayList<>();
 
+    int k;
+
     public clubCreationController() {
     }
     public void clubCreation (ActionEvent event) throws IOException,SQLException {
+        for(int i = 0 ; i < OOPCoursework.advisorList.size() ; i++) {
+            System.out.println(OOPCoursework.advisorList.get(i).getClub());
+        }
         String Clubname = name.getText().toUpperCase();
         String Clubdescrip = description.getText();
         String advisorID = stafflogincontroller.username1;
+        System.out.println(advisorID);
         for (int z=0; z<OOPCoursework.clublist.size();z++){//Adds all the existing usernames with clubs to a arraylist
             ClubAd_Username.add(OOPCoursework.clublist.get(z).getAdvisorID());}
         if(ClubAd_Username.contains(advisorID)){//checks if the advisor has already made a club
             moreclub.setText("Cannot create more than one club!");
             PauseTransition pauseTransition = getPauseTransition(event);//The transition pause
             pauseTransition.play();
+            return;
         }
-        else{
-            int no_students = 0;//if the advisor hasn't made a club before, allows him/her to create a club
-        if (!clubcreationValidation(Clubname, Clubdescrip)){//validation of the inputs
+        else{int no_students = 0;//if the advisor hasn't made a club before, allows him/her to create a club
+        if (!clubcreation_validation(Clubname, Clubdescrip)){//validation of the inputs
             return;
         }
         club Clubs = new club(Clubname,Clubdescrip,advisorID,no_students);
         OOPCoursework.clublist.add(Clubs);
+        for (int i = 0 ; i < OOPCoursework.advisorList.size() ; i++) {
+            if(advisorID.equals(OOPCoursework.advisorList.get(i).getUsername())) {
+                OOPCoursework.advisorList.get(i).setClub(Clubs);
+                Clubs.setAdvisor(OOPCoursework.advisorList.get(i));
+                k = i;
+                break;
+            }
+        }
         String insertQuery =
                 "INSERT INTO clubs(`Name` , `AdvisorID`, `Description`, `No_Students`)VALUES(?, ?, ?, ?)";
         Connection connection = connectclubcreation.connect();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
             preparedStatement.setString(1, Clubs.getName());
-            preparedStatement.setString(2, Clubs.getAdvisorID());
+            preparedStatement.setString(2, Clubs.getAdvisor().getUsername());
             preparedStatement.setString(3, Clubs.getDescription());
             preparedStatement.setInt(4,Clubs.getNo_students());
             int rowInsert = preparedStatement.executeUpdate();
@@ -75,8 +89,29 @@ public class clubCreationController {
         }catch (SQLException e){
             System.out.println();
         }}
-    }
 
+        String insertQuery =
+                "UPDATE teachers SET clubs = ? WHERE Username = ?";
+        Connection connection = connectclubcreation.connect();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+            preparedStatement.setString(2, advisorID);
+            preparedStatement.setString(1, OOPCoursework.advisorList.get(k).getClub().getName());
+
+            // Execute the update
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            // Check the number of rows affected
+            if (rowsAffected > 0) {
+                System.out.println("Club updated successfully for student with username: " + advisorID);
+            } else {
+                System.out.println("No rows were updated. Student with username " + advisorID + " not found.");
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     private PauseTransition getPauseTransition(ActionEvent event) {//To pause the transition for a while
         PauseTransition pauseTransition = new PauseTransition(Duration.seconds(1));
         pauseTransition.setOnFinished(event1 -> {
@@ -90,7 +125,7 @@ public class clubCreationController {
         });
         return pauseTransition;
     }
-    public boolean clubcreationValidation(String Clubname, String Clubdescrip) {
+    public boolean clubcreation_validation(String Clubname, String Clubdescrip) {
         boolean ResultClubName = Clubname.matches("[a-zA-Z ]+$");//Checks if the club name contains only letters and stores the result of the checking in a boolean
         boolean ResultDescription = Clubdescrip.matches("[a-zA-Z ]+");//Checks if the club description contains only letters and stores the result of the checking in a boolean
         for(int x=0;x<OOPCoursework.clublist.size();x++){

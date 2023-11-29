@@ -69,7 +69,7 @@ public class joinclubcontroller implements Initializable {
         String username = studentlogincontroller.studentLoginDetails.get(0);
         String password = studentlogincontroller.studentLoginDetails.get(1);
         int selectedClub = clubtable.getSelectionModel().getSelectedIndex();
-        int i;
+        int i = 0;
         for (i = 0; i < OOPCoursework.studentList.size(); i++) {
             if (OOPCoursework.studentList.get(i).getUsername().equals(username) && OOPCoursework.studentList.get(i).getPassword().equals(password)) {
                 for(int z = 0 ; z < OOPCoursework.studentList.get(i).clubs.size() ; z++) {
@@ -77,6 +77,10 @@ public class joinclubcontroller implements Initializable {
                         return;
                     }
                 }
+            }
+        }
+        for (i = 0; i < OOPCoursework.studentList.size(); i++) {
+            if (OOPCoursework.studentList.get(i).getUsername().equals(username) && OOPCoursework.studentList.get(i).getPassword().equals(password)) {
                 OOPCoursework.studentList.get(i).addClub(OOPCoursework.clublist.get(selectedClub)); //selectedDriver saves the index of the driver from the table and used to delete the driver
                 OOPCoursework.clublist.get(selectedClub).addStudent();
                 break;

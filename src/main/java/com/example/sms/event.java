@@ -1,6 +1,8 @@
 package com.example.sms;
 public class event {
     String Description, clubName, eventName, date, EventType;
+    club club;
+
 
 
     public event(String eventName, String clubName, String eventType, String date, String Description) {
@@ -56,6 +58,14 @@ public class event {
 
     public void setDescription(String description) {
         Description = description;
+    }
+
+    public com.example.sms.club getClub() {
+        return club;
+    }
+
+    public void setClub(com.example.sms.club club) {
+        this.club = club;
     }
 }
 
