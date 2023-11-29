@@ -61,7 +61,7 @@ public class studentlogincontroller {
         Connection comm= connect.connect();
         try (PreparedStatement statement = comm.prepareStatement(selectQuery)) {
             ResultSet results = statement.executeQuery();
-            while (results.next()) {
+            while (results.next()) { //to check if the username and password enterd matches the records in the database.
                 if (username.equals(results.getString(5)) && password.equals(results.getString(6))) {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("studentmenu.fxml"));
                     Parent root = loader.load();
