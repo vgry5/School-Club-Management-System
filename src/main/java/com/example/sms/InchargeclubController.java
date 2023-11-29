@@ -116,7 +116,7 @@ public class InchargeclubController  implements Initializable {
                 break;
             }
         }
-        if (!clubcreation_validation(c_name,c_description)){//validation of the edited inputs
+        if (!clubcreationValidationInCharge(c_name,c_description)){//validation of the edited inputs
             return;
         }
         String insertQuery =
@@ -159,7 +159,7 @@ public class InchargeclubController  implements Initializable {
             e.printStackTrace();
         }
     }
-    public boolean clubcreation_validation(String Clubname, String Clubdescrip) {
+    public boolean clubcreationValidationInCharge(String Clubname, String Clubdescrip) {
         boolean ResultClubName = Clubname.matches("[a-zA-Z ]+$");//Checks if the club name contains only letters and stores the result of the checking in a boolean
         boolean ResultDescription = Clubdescrip.matches("[a-zA-Z ]+");//Checks if the club description contains only letters and stores the result of the checking in a boolean
         if (!ResultClubName) {

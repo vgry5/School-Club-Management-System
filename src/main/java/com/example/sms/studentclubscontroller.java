@@ -62,7 +62,6 @@ public class studentclubscontroller implements Initializable {
             }
         }
     }
-
     @FXML
     void back(ActionEvent event)throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("studentmenu.fxml")));

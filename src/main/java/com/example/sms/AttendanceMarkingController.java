@@ -76,7 +76,7 @@ public class AttendanceMarkingController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        ObservableList<String> events = selecteventdropdown.getItems();
+        ObservableList<String> events = selecteventdropdown.getItems();  //represent events of the respective club in a dropdown
         int index = 0;
         while (index < eventslist.size()) {
             events.add(eventslist.get(index));
@@ -85,7 +85,7 @@ public class AttendanceMarkingController implements Initializable {
     }
 
     private void allEvents() throws SQLException {
-        String selectQuery = "SELECT * FROM `events`;";
+        String selectQuery = "SELECT * FROM `events`;";  //adding the  events in the database related to the club to a array list
         Connection comm = connectEvent.connect();
         try (PreparedStatement statement = comm.prepareStatement(selectQuery)) {
             ResultSet results = statement.executeQuery();
@@ -104,7 +104,7 @@ public class AttendanceMarkingController implements Initializable {
 
     }
     @FXML
-    void back(ActionEvent event)throws IOException {
+    void back(ActionEvent event)throws IOException {//back navigation
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("advisor.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -115,7 +115,7 @@ public class AttendanceMarkingController implements Initializable {
     String name;
     String blank;
 
-    public void clubMembers() throws SQLException {
+    public void clubMembers() throws SQLException { // showing the members of the club
         attendenceDatabse();
         String selectQuery = "SELECT * FROM `students`;";
         Connection comm = connectEvent.connect();
@@ -173,47 +173,105 @@ public class AttendanceMarkingController implements Initializable {
         // Update the status to "Present"
         selectedAttendance.setAttendence("Absent");
 
-        stdNameTbl.refresh(); // Refresh the TableView
+        stdNameTbl.refresh();
    }
     String eventName;
 
-    @FXML
-    public String submitattendance(ActionEvent event) throws IOException, SQLException {
-        if (stdNameTbl.getSelectionModel().getSelectedItem() == null ||
-                stdNameTbl.getSelectionModel().getSelectedItem().getUsername1() == null) {
-            nostudentmsg.setText("Please Select A Student!");
-            return null;  // or return some default value, depending on your requirements
-        }
-        // If a student is selected, proceed with the rest of the code
-        nostudentmsg.setText(" ");
-        eventName = selecteventdropdown.getValue();
-        String club = clubName;
-        String date = null;
+@FXML
+public String submitattendance(ActionEvent event) throws IOException, SQLException { //saving the data to database
+    if (stdNameTbl.getSelectionModel().getSelectedItem() == null ||
+            stdNameTbl.getSelectionModel().getSelectedItem().getUsername1() == null) {
+        nostudentmsg.setText("Please Select A Student!");
+        return null;
+    }
 
-        for (int i = 0; i < eventslist.size(); i++) {
-            if (eventName.equals(eventslist.get(i))) {
-                date = eventslist.get(i + 1);
+    nostudentmsg.setText(" ");
+
+    eventName = selecteventdropdown.getValue();
+    String club = clubName;
+    String date = null;
+//
+    for (int i = 0; i < eventslist.size(); i++) {
+        if (eventName.equals(eventslist.get(i))) {
+            date = eventslist.get(i + 1);
+        }
+    }
+
+    String studentName = stdNameTbl.getSelectionModel().getSelectedItem().getUsername1();
+    String attendance = selectedAttendance != null ? selectedAttendance.getAttendence() : null;
+
+    if (attendance == null || attendance.isEmpty()) {
+        nostudentmsg.setText("Please mark attendance of all students!");
+        return null;
+    }
+
+    // Check if the record already exists in the database
+    boolean recordExists = checkAttendanceRecord(eventName, club, date, studentName);
+
+    if (recordExists) {
+        // Update the existing record
+        updateAttendance(eventName, club, date, studentName, attendance);
+    } else {
+        // Insert a new record
+        insertAttendance(eventName, club, date, studentName, attendance);
+    }
+
+    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("advisor.fxml")));
+    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+
+    return eventName;
+}
+
+    private boolean checkAttendanceRecord(String eventName, String club, String date, String studentName) throws SQLException {
+        String selectQuery = "SELECT * FROM `attendanc` WHERE `EventName`=? AND `ClubName`=? AND `Date`=? AND `Student Name`=?";
+        Connection connection = connectEvent.connect();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)) {
+            preparedStatement.setString(1, eventName);
+            preparedStatement.setString(2, club);
+            preparedStatement.setString(3, date);
+            preparedStatement.setString(4, studentName);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            return resultSet.next(); // Return true if a record exists
+        }
+    }
+
+    private void updateAttendance(String eventName, String club, String date, String studentName, String attendance) throws SQLException {//updating the data if the student is added previously
+        String updateQuery = "UPDATE `attendanc` SET `Attendance`=? WHERE `EventName`=? AND `ClubName`=? AND `Date`=? AND `Student Name`=?";
+        Connection connection = connectEvent.connect();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+            preparedStatement.setString(1, attendance);
+            preparedStatement.setString(2, eventName);
+            preparedStatement.setString(3, club);
+            preparedStatement.setString(4, date);
+            preparedStatement.setString(5, studentName);
+
+            int rowsUpdated = preparedStatement.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                System.out.println("Data updated successfully!");
+            } else {
+                System.out.println("Data update failed.");
             }
         }
-        String studentName = stdNameTbl.getSelectionModel().getSelectedItem().getUsername1();
-        String attendance = selectedAttendance != null ? selectedAttendance.getAttendence() : null;
+    }
 
-        if (attendance == null || attendance.isEmpty()) {
-            nostudentmsg.setText("Please mark attendance of all students!");
-            return null;  // or return some default value, depending on your requirements
-        }
-
-        Attendance attendance2 = new Attendance(eventName, club, date, studentName ,attendance);
-        String insertQuery =
-                "INSERT INTO attendanc(`EventName`, `ClubName`, `Date`, `Student Name`, `Attendance`) VALUES (?,?,?,?,?)";
-
+    private void insertAttendance(String eventName, String club, String date, String studentName, String attendance) throws SQLException {// adding the new data
+        String insertQuery = "INSERT INTO attendanc(`EventName`, `ClubName`, `Date`, `Student Name`, `Attendance`) VALUES (?,?,?,?,?)";
         Connection connection = connectEvent.connect();
+
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
-            preparedStatement.setString(1, attendance2.getEventName());
-            preparedStatement.setString(2, attendance2.getClubName1());
-            preparedStatement.setString(3,attendance2.getDate());
-            preparedStatement.setString(4, attendance2.getUsername1());
-            preparedStatement.setString(5, attendance2.getAttendence());
+            preparedStatement.setString(1, eventName);
+            preparedStatement.setString(2, club);
+            preparedStatement.setString(3, date);
+            preparedStatement.setString(4, studentName);
+            preparedStatement.setString(5, attendance);
 
             int rowsInserted = preparedStatement.executeUpdate();
 
@@ -222,18 +280,10 @@ public class AttendanceMarkingController implements Initializable {
             } else {
                 System.out.println("Data insertion failed.");
             }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("advisor.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        return eventName;
     }
-    private void attendenceDatabse ()throws SQLException {
+
+    private void attendenceDatabse ()throws SQLException {  //loading the previous attendence data
         eventName = selecteventdropdown.getValue();
         String selectQuery = "SELECT * FROM `attendanc`;";
         Connection comm = connectEvent.connect();
@@ -247,7 +297,7 @@ public class AttendanceMarkingController implements Initializable {
             }
     }
     @FXML
-    void viewStudents(ActionEvent event) throws IOException {
+    void viewStudents(ActionEvent event) throws IOException { //displaying the students in a table who enrolled with the respective club
         stdNameTbl.refresh();
         selecteventmsg.setText(" ");
         displayStudent.clear();

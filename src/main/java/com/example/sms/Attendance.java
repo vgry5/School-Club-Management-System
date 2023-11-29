@@ -15,11 +15,11 @@ public class Attendance extends scheduleController{
         this.username1 = username1;
         this.attendence = attendence;
     }
-    public Attendance(String username1, String attendence) {
+    public Attendance(String username1, String attendence) {//displaying students in table
         this.username1 = username1;
         this.attendence = attendence;
     }
-    public Attendance(String eventname, String ClubName, int noOfStudent ){
+    public Attendance(String eventname, String ClubName, int noOfStudent ){// report generation
         this.eventName=eventname;
         this.clubName1=ClubName;
         this.no_students=noOfStudent;
