@@ -91,8 +91,6 @@ public class OOPCoursework extends Application {
                     }
                 }
             }
-
-
          selectQuery = "SELECT * FROM `events`;";
          comm = connect.connect();
             try (PreparedStatement statement = comm.prepareStatement(selectQuery)) {
